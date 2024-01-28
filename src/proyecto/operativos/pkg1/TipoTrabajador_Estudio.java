@@ -9,5 +9,5 @@ package proyecto.operativos.pkg1;
  * @author Sergionx
  */
 public enum TipoTrabajador_Estudio {
-    GUIONISTA, DISENADOR, ANIMADOR, ACTOR_DOBLAJE, PLOT_TWIST, 
+    GUIONISTA, DISENADOR_ESCENARIO, ANIMADOR, ACTOR_DOBLAJE, PLOT_TWIST, 
 }

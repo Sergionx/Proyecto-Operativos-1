@@ -6,9 +6,9 @@ package proyecto.operativos.pkg1;
 
 /**
  *
- * @author Sergionx
+ * @author valeriazampetti
  */
-public class Drive {
+public class CapacidadDrive {
 
     public static final int GUIONES_MAX = 25;
     public static final int ESCENARIOS_MAX = 20;
@@ -20,9 +20,10 @@ public class Drive {
     public int escenarios;
     public int animaciones;
     public int doblajes;
+
     public int plot_twist;
 
-    public Drive() {
+    public CapacidadDrive() {
         this.guiones = 0;
         this.escenarios = 0;
         this.animaciones = 0;
@@ -31,6 +32,7 @@ public class Drive {
     }
 
     public void SubirDrive(TipoTrabajador_Estudio tipo) {
+
         switch (tipo) {
             case GUIONISTA:
                 if (this.guiones < GUIONES_MAX) {
@@ -43,7 +45,7 @@ public class Drive {
                     this.escenarios++;
                 }
                 break;
-
+                
             case ANIMADOR:
                 if (this.animaciones < ANIMACIONES_MAX) {
                     this.animaciones++;
@@ -54,7 +56,7 @@ public class Drive {
                     this.doblajes++;
                 }
                 break;
-
+                
             case PLOT_TWIST:
                 if (this.plot_twist < PLOT_TWIST_MAX) {
                     this.plot_twist++;
