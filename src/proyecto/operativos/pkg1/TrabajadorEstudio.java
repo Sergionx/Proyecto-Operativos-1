@@ -12,6 +12,7 @@ import java.util.concurrent.Semaphore;
  */
 public class TrabajadorEstudio extends Trabajador {
 
+    private int working_rate;
     private TipoTrabajador_Estudio tipo;
 
     public TrabajadorEstudio(TipoTrabajador_Estudio tipo, Semaphore mutex, Drive drive) {
