@@ -2,9 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto.operativos.pkg1;
+package Trabajadores;
 
+import Trabajadores.Trabajador;
+import Trabajadores.TipoTrabajador_Estudio;
 import java.util.concurrent.Semaphore;
+import Empresa.Drive;
 
 /**
  *
@@ -46,7 +49,7 @@ public class TrabajadorEstudio extends Trabajador {
 
     @Override
     public void trabajar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.drive.SubirDrive(tipo);
     }
 
 }
