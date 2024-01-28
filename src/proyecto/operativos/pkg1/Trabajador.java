@@ -14,13 +14,13 @@ import java.util.concurrent.Semaphore;
  */
 public abstract class Trabajador extends Thread {
     protected int sueldo;
-    private float salaryAcc;
+    private float sueldoTotal;
     private Semaphore mutex;    
     private Drive drive;
 
 
     public Trabajador(Semaphore mutex, Drive drive) {
-        this.salaryAcc = 0;
+        this.sueldoTotal = 0;
         this.mutex = mutex;
         this.drive = drive;
     }
@@ -30,7 +30,7 @@ public abstract class Trabajador extends Thread {
         while(true) {
             try {
                 trabajar();
-                System.out.println("Trabajador: " + " gana: "+this.salaryAcc+"$");
+                System.out.println("Trabajador: " + " gana: "+this.sueldoTotal+"$");
                 sleep(Constants.DAY_DURATION);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
