@@ -21,6 +21,8 @@ public class Drive {
     public int animaciones;
     public int doblajes;
     public int plot_twist;
+    
+    public int capitulos;
 
     public Drive() {
         this.guiones = 0;
@@ -28,38 +30,42 @@ public class Drive {
         this.animaciones = 0;
         this.doblajes = 0;
         this.plot_twist = 0;
+        this.capitulos = 0;
     }
 
     public void SubirDrive(TipoTrabajador_Estudio tipo) {
         switch (tipo) {
-            case GUIONISTA:
+            case GUIONISTA -> {
                 if (this.guiones < GUIONES_MAX) {
                     this.guiones++;
                 }
-                break;
+            }
 
-            case DISENADOR_ESCENARIO:
+            case DISENADOR_ESCENARIO -> {
                 if (this.escenarios < ESCENARIOS_MAX) {
                     this.escenarios++;
                 }
-                break;
+            }
 
-            case ANIMADOR:
+            case ANIMADOR -> {
                 if (this.animaciones < ANIMACIONES_MAX) {
                     this.animaciones++;
                 }
-                break;
-            case ACTOR_DOBLAJE:
+            }
+            case ACTOR_DOBLAJE -> {
                 if (this.doblajes < DOBLAJES_MAX) {
                     this.doblajes++;
                 }
-                break;
+            }
 
-            case PLOT_TWIST:
+            case PLOT_TWIST -> {
                 if (this.plot_twist < PLOT_TWIST_MAX) {
                     this.plot_twist++;
                 }
-                break;
+            }
+            default ->
+                throw new AssertionError(tipo.name());
+
         }
 
     }

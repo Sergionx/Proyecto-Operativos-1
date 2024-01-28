@@ -9,5 +9,5 @@ package proyecto.operativos.pkg1;
  * @author Sergionx
  */
 public class Constants {
-        public static final int DAY_DURATION = 24; 
+        public static final int DAY_DURATION = 24;
 }
