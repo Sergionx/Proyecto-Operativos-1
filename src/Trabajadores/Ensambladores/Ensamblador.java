@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto.operativos.pkg1;
+package Trabajadores.Ensambladores;
 
+import Trabajadores.Ensambladores.Requerimientos_Capitulo;
 import Empresa.Drive;
+import Trabajadores.Trabajador;
 import Trabajadores.Trabajador;
 import java.util.concurrent.Semaphore;
 
@@ -25,6 +27,7 @@ public class Ensamblador extends Trabajador {
         this.capitulos_Para_PlotTwist = 0;
         this.requerimientos_Estandar = requerimientos;
         this.requerimientos_Plot = requerimientos_Plot;
+        this.sueldo= 50;
     }
 
     @Override
@@ -43,12 +46,12 @@ public class Ensamblador extends Trabajador {
                 return;
             }
             
-//            TODO - Subir capitulo
+              this.drive.SubirCapitulo(requerimientos_Plot);
         } else {
             if (!requerimientos_Estandar.cumplirRequerimientos(drive)) {
                 return;
             }
-            //            TODO - Subir capitulo
+            this.drive.SubirCapitulo(requerimientos_Estandar);
 
             
         }
