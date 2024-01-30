@@ -15,33 +15,29 @@ import Empresa.Drive;
  * @author Sergionx
  */
 public abstract class Trabajador extends Thread {
+
     protected int sueldo;
     private float salaryAcc;
-    private Semaphore mutex;    
+    private Semaphore mutex;
     protected Drive drive;
-
 
     public Trabajador(Semaphore mutex, Drive drive) {
         this.salaryAcc = 0;
         this.mutex = mutex;
         this.drive = drive;
     }
-    
+
     @Override
-    public void run(){
-        while(true) {
-            try {
-                trabajar();
-                System.out.println("Trabajador: " + " gana: "+this.salaryAcc+"$");
-                descansar();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    public void run() {
+        while (true) {
+            trabajar();
+            System.out.println("Trabajador: " + " gana: " + this.salaryAcc + "$");
+            descansar();
         }
     }
-    
+
     public abstract void descansar();
-    
+
     public abstract void trabajar();
-    
+
 }

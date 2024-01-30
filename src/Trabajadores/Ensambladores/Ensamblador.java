@@ -8,6 +8,8 @@ import Empresa.Drive;
 import Trabajadores.Trabajador;
 import Utils.Constants;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,6 +58,10 @@ public class Ensamblador extends Trabajador {
 
     @Override
     public void descansar() {
-        sleep(Constants.DAY_DURATION * 2)
+        try {
+            sleep(Constants.DAY_DURATION * 2);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
