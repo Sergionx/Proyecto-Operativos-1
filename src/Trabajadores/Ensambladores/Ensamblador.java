@@ -4,10 +4,9 @@
  */
 package Trabajadores.Ensambladores;
 
-import Trabajadores.Ensambladores.Requerimientos_Capitulo;
 import Empresa.Drive;
 import Trabajadores.Trabajador;
-import Trabajadores.Trabajador;
+import Utils.Constants;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -27,7 +26,7 @@ public class Ensamblador extends Trabajador {
         this.capitulos_Para_PlotTwist = 0;
         this.requerimientos_Estandar = requerimientos;
         this.requerimientos_Plot = requerimientos_Plot;
-        this.sueldo= 50;
+        this.sueldo = 50;
     }
 
     @Override
@@ -45,15 +44,18 @@ public class Ensamblador extends Trabajador {
             if (!requerimientos_Plot.cumplirRequerimientos(drive)) {
                 return;
             }
-            
-              this.drive.SubirCapitulo(requerimientos_Plot);
+            this.drive.SubirCapitulo(requerimientos_Plot);
         } else {
             if (!requerimientos_Estandar.cumplirRequerimientos(drive)) {
                 return;
             }
             this.drive.SubirCapitulo(requerimientos_Estandar);
 
-            
         }
+    }
+
+    @Override
+    public void descansar() {
+        sleep(Constants.DAY_DURATION * 2)
     }
 }

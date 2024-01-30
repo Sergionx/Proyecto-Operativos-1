@@ -33,15 +33,15 @@ public abstract class Trabajador extends Thread {
             try {
                 trabajar();
                 System.out.println("Trabajador: " + " gana: "+this.salaryAcc+"$");
-                sleep(Constants.DAY_DURATION);
+                descansar();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
     
-    public abstract void trabajar(
-// TODO - Codigo para cobrar dinero
-    );
+    public abstract void descansar();
+    
+    public abstract void trabajar();
     
 }
