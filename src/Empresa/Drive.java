@@ -4,6 +4,7 @@
  */
 package Empresa;
 
+import Trabajadores.Ensambladores.Requerimientos_Capitulo;
 import Trabajadores.TipoTrabajador_Estudio;
 
 /**
@@ -72,6 +73,17 @@ public class Drive {
 
         }
 
+    }
+    
+    public void SubirCapitulo(Requerimientos_Capitulo requerimientos){
+        this.guiones-= requerimientos.guiones;
+        this.doblajes -= requerimientos.doblajes;
+        this.animaciones -= requerimientos.animaciones;
+        this.escenarios -= requerimientos.escenarios;
+        this.plot_twist -= requerimientos.plotTwists;
+        this.capitulos ++;
+     
+        
     }
 
 }

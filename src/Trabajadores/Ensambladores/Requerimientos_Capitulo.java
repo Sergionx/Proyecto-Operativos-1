@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto.operativos.pkg1;
+package Trabajadores.Ensambladores;
 
 import Empresa.Drive;
 
@@ -12,11 +12,11 @@ import Empresa.Drive;
  */
 public class Requerimientos_Capitulo {
 
-    private int guiones;
-    private int escenarios;
-    private int animaciones;
-    private int doblajes;
-    private int plotTwists;
+    public int guiones;
+    public int escenarios;
+    public int animaciones;
+    public int doblajes;
+    public int plotTwists;
 
     public Requerimientos_Capitulo(int guiones, int escenarios, int animaciones, int doblajes, int plotTwists) {
         this.guiones = guiones;
