@@ -60,6 +60,7 @@ public class Ensamblador extends Trabajador {
     public void descansar() {
         try {
             sleep(Constants.DAY_DURATION * 2);
+            this.sueldoTotal = sueldo * 24 * 2;
         } catch (InterruptedException ex) {
             Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);
         }

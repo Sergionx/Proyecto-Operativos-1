@@ -91,17 +91,20 @@ public class TrabajadorEstudio extends Trabajador {
     /**
      * Solo los animadores y dobaladores completan su trabajo en menos de un día
      */
+    @Override
     public void descansar() {
         try {
             if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
                 sleep(Constants.DAY_DURATION);
+                this.sueldoTotal = sueldo * 24;
 
             } else {
                 sleep(Constants.DAY_DURATION * working_rate);
+                this.sueldoTotal = sueldo * 24 * working_rate;
+
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(TrabajadorEstudio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
