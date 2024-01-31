@@ -17,12 +17,12 @@ import Empresa.Drive;
 public abstract class Trabajador extends Thread {
 
     protected int sueldo;
-    private float salaryAcc;
+    protected float sueldoTotal;
     private Semaphore mutex;
     protected Drive drive;
 
     public Trabajador(Semaphore mutex, Drive drive) {
-        this.salaryAcc = 0;
+        this.sueldoTotal = 0;
         this.mutex = mutex;
         this.drive = drive;
     }
@@ -31,7 +31,7 @@ public abstract class Trabajador extends Thread {
     public void run() {
         while (true) {
             trabajar();
-            System.out.println("Trabajador: " + " gana: " + this.salaryAcc + "$");
+            System.out.println("Trabajador: " + " gana: " + this.sueldoTotal + "$");
             descansar();
         }
     }
