@@ -35,44 +35,44 @@ public class Drive {
         this.plot_twist = 0;
         this.capitulos = 0;
     }
-    
-    
 
     public void SubirDrive(TipoTrabajador_Estudio tipo) {
+        SubirDrive(tipo, 1);
+    }
+    
+     public void SubirDrive(TipoTrabajador_Estudio tipo, int cantidad) {
         switch (tipo) {
             case GUIONISTA -> {
                 if (this.guiones < GUIONES_MAX) {
-                    this.guiones++;
+                    this.guiones += cantidad;
                 }
             }
 
             case DISENADOR_ESCENARIO -> {
                 if (this.escenarios < ESCENARIOS_MAX) {
-                    this.escenarios++;
+                    this.escenarios += cantidad;;
                 }
             }
 
             case ANIMADOR -> {
                 if (this.animaciones < ANIMACIONES_MAX) {
-                    this.animaciones++;
+                    this.animaciones += cantidad;
                 }
             }
             case ACTOR_DOBLAJE -> {
                 if (this.doblajes < DOBLAJES_MAX) {
-                    this.doblajes++;
+                    this.doblajes += cantidad;
                 }
             }
 
             case PLOT_TWIST -> {
                 if (this.plot_twist < PLOT_TWIST_MAX) {
-                    this.plot_twist++;
+                    this.plot_twist += cantidad;
                 }
             }
             default ->
                 throw new AssertionError(tipo.name());
-
         }
-
     }
     
     public void SubirCapitulo(Requerimientos_Capitulo requerimientos){
