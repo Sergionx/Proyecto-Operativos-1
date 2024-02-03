@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ProjectManager extends Trabajador {
 
     private boolean viendo_Anime = false;
-    private Contador contador;
+    private final Contador contador;
     public int tiempo_Para_Contador = 32;
 
     public ProjectManager(Semaphore mutex, Drive drive, Contador contador) {
@@ -37,22 +37,25 @@ public class ProjectManager extends Trabajador {
 
     @Override
     public void trabajar() {
-        try {
-            if (this.tiempo_Para_Contador == 0) {
-                this.contador.dias_faltantes -= 1;
-                sleep(Constants.HOUR_DURATION * 8);
-            } else {
-                this.viendo_Anime = !viendo_Anime;
+        while (this.tiempo_Para_Contador != 0) {
+            this.viendo_Anime = !viendo_Anime;
+            try {
                 sleep(Constants.MINUTE_DURATION * 30);
-                this.tiempo_Para_Contador -= 1;
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
+            this.tiempo_Para_Contador -= 1;
         }
     }
 
     @Override
     public void descansar() {
-        
+        this.contador.siguiente_Dia();
+        try {
+            sleep(Constants.HOUR_DURATION * 8);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.sueldoTotal = sueldo * 24;
     }
 }
