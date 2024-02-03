@@ -24,7 +24,7 @@ public class Drive {
     public int animaciones;
     public int doblajes;
     public int plot_twist;
-    
+
     public int capitulos;
 
     public Drive() {
@@ -39,8 +39,8 @@ public class Drive {
     public void SubirDrive(TipoTrabajador_Estudio tipo) {
         SubirDrive(tipo, 1);
     }
-    
-     public void SubirDrive(TipoTrabajador_Estudio tipo, int cantidad) {
+
+    public void SubirDrive(TipoTrabajador_Estudio tipo, int cantidad) {
         switch (tipo) {
             case GUIONISTA -> {
                 if (this.guiones < GUIONES_MAX) {
@@ -74,16 +74,13 @@ public class Drive {
                 throw new AssertionError(tipo.name());
         }
     }
-    
-    public void SubirCapitulo(Requerimientos_Capitulo requerimientos){
-        this.guiones-= requerimientos.guiones;
+
+    public void SubirCapitulo(Requerimientos_Capitulo requerimientos) {
+        this.guiones -= requerimientos.guiones;
         this.doblajes -= requerimientos.doblajes;
         this.animaciones -= requerimientos.animaciones;
         this.escenarios -= requerimientos.escenarios;
         this.plot_twist -= requerimientos.plotTwists;
-        this.capitulos ++;
-     
-        
+        this.capitulos++;
     }
-
 }
