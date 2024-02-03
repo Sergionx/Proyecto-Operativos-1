@@ -15,22 +15,22 @@ import java.util.concurrent.Semaphore;
  * @author valeriazampetti
  */
 public class Interfaz1 extends javax.swing.JFrame {
-    static Empresa empresa;
-    static Drive drive;
+
+    static Empresa[] empresas = {
+        new Empresa(1, "Disney"),
+        new Empresa(6, "Star Channel")
+    };
 
     /**
      * Creates new form Interfaz1
      */
     public Interfaz1() {
         initComponents();
-        Interfaz1.drive = new Drive();
-       
-       var mutex= new Semaphore(1); 
-       Interfaz1.empresa= new Empresa( 1, "Disney", Interfaz1.drive, mutex);
-     
-        System.out.println(TabbedPane_principal.getTabCount());
         
-       this.Disney_Pane.setToolTipText(empresa.nombre);
+        for (int i = 0; i < empresas.length; i++) {
+            var empresa = empresas[i];
+            this.TabbedPane_principal.setTitleAt(i, empresa.nombre);
+        }
     }
 
     /**
@@ -44,8 +44,9 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         TabbedPane_principal = new javax.swing.JTabbedPane();
-        Disney_Pane = new javax.swing.JTabbedPane();
-        Star_Pane = new javax.swing.JTabbedPane();
+        Star_Pane = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        Disney_Pane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -53,8 +54,11 @@ public class Interfaz1 extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
-        TabbedPane_principal.addTab("tab1", Disney_Pane);
+        jButton2.setText("jButton2");
+        Star_Pane.add(jButton2);
+
         TabbedPane_principal.addTab("tab2", Star_Pane);
+        TabbedPane_principal.addTab("tab2", Disney_Pane);
 
         getContentPane().add(TabbedPane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 450));
 
@@ -97,9 +101,10 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane Disney_Pane;
-    private javax.swing.JTabbedPane Star_Pane;
+    private javax.swing.JPanel Disney_Pane;
+    private javax.swing.JPanel Star_Pane;
     private javax.swing.JTabbedPane TabbedPane_principal;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
