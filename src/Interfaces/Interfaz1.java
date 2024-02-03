@@ -31,6 +31,12 @@ public class Interfaz1 extends javax.swing.JFrame {
         System.out.println(TabbedPane_principal.getTabCount());
         
        this.Disney_Pane.setToolTipText(empresa.nombre);
+       for(int i = 0; i < TabbedPane_principal.getTabCount(); i++) {
+    if(SwingUtilities.isDescendingFrom(textField, tabbedPane.getComponentAt(i))) {
+        tabbedPane.setTitleAt(i, textField.getText());
+        break;
+    }
+}
     }
 
     /**
