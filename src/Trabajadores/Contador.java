@@ -10,14 +10,28 @@ package Trabajadores;
  */
 public class Contador {
 
-    public int dias_faltantes;
+    private final int duracion;
+    private int dias_faltantes;
 
     public Contador() {
-        this.dias_faltantes = leerTxt();
+        this.dias_faltantes = this.duracion = leerTxt();
     }
 
     private int leerTxt() {
 //        TODO - Logica para leer txt
         return 1;
+    }
+
+     public void siguiente_Dia(){
+         this.dias_faltantes--;
+     }
+    
+//    Review pensar mejor nombre
+    public boolean finalizo() {
+        return this.dias_faltantes == 0;
+    }
+
+    public void reset() {
+        this.dias_faltantes = this.duracion;
     }
 }
