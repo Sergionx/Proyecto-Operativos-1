@@ -18,11 +18,11 @@ public class Empresa {
     private Drive drive;
     private Semaphore mutex;
     
-    public Empresa(int last_carnet, String nombre, Drive drive, Semaphore mutex) {
+    public Empresa(int last_carnet, String nombre) {
         this.empleados = new Trabajador[last_carnet + 12];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
-        this.drive = drive;
-        this.mutex = mutex;
+        this.drive = new Drive();
+        this.mutex = new Semaphore(1);
     } 
  }
