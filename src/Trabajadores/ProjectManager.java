@@ -58,4 +58,8 @@ public class ProjectManager extends Trabajador {
         }
         this.sueldoTotal = sueldo * 24;
     }
+    
+    public boolean viendo_anime(){
+        return this.viendo_Anime;
+    }
 }
