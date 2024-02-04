@@ -4,6 +4,7 @@
  */
 package Empresa;
 
+import Interfaces.clases.Drive_Labels;
 import Trabajadores.Ensambladores.Requerimientos_Capitulo;
 import Trabajadores.TipoTrabajador_Estudio;
 import javax.swing.JTextField;
@@ -20,8 +21,7 @@ public class Drive {
     public static final int DOBLAJES_MAX = 35;
     public static final int PLOT_TWIST_MAX = 10;
 
-    private final JTextField field_Estandar;
-    private final JTextField field_PlotTwist;
+    private final Drive_Labels labels;
 
     public int guiones;
     public int escenarios;
@@ -32,7 +32,7 @@ public class Drive {
     private int capitulos_Estandar;
     private int capitulos_PlotTwist;
 
-    public Drive(JTextField field_Estandar, JTextField field_PlotTwist) {
+    public Drive(Drive_Labels labels) {
         this.guiones = 0;
         this.escenarios = 0;
         this.animaciones = 0;
@@ -41,8 +41,7 @@ public class Drive {
         this.capitulos_Estandar = 0;
         this.capitulos_PlotTwist = 0;
 
-        this.field_Estandar = field_Estandar;
-        this.field_PlotTwist = field_PlotTwist;
+        this.labels = labels;
     }
 
     public void SubirDrive(TipoTrabajador_Estudio tipo) {
@@ -58,30 +57,30 @@ public class Drive {
         switch (tipo) {
             case GUIONISTA -> {
                 if (this.guiones < GUIONES_MAX) {
-                    this.guiones += cantidad;
+                    this.setGuiones(guiones + cantidad);
                 }
             }
 
             case DISENADOR_ESCENARIO -> {
                 if (this.escenarios < ESCENARIOS_MAX) {
-                    this.escenarios += cantidad;
+                    this.setEscenarios(escenarios + cantidad);
                 }
             }
 
             case ANIMADOR -> {
                 if (this.animaciones < ANIMACIONES_MAX) {
-                    this.animaciones += cantidad;
+                    this.setAnimaciones(animaciones + cantidad);
                 }
             }
             case ACTOR_DOBLAJE -> {
                 if (this.doblajes < DOBLAJES_MAX) {
-                    this.doblajes += cantidad;
+                    this.setDoblajes(doblajes + cantidad);
                 }
             }
 
             case PLOT_TWIST -> {
                 if (this.plot_twist < PLOT_TWIST_MAX) {
-                    this.plot_twist += cantidad;
+                    this.setPlot_twist(plot_twist + cantidad);
                 }
             }
             default ->
@@ -106,19 +105,37 @@ public class Drive {
 
     public void setCapitulos_Estandar(int capitulos_Estandar) {
         this.capitulos_Estandar = capitulos_Estandar;
-        this.field_Estandar.setText("" + this.capitulos_Estandar);
-    }
-
-    public int getCapitulos_Estandar() {
-        return this.capitulos_Estandar;
+        System.out.println("CAPITULO ESTANDAR" + capitulos_Estandar);
+        this.labels.field_Estandar.setText("" + this.capitulos_Estandar);
     }
 
     public void setCapitulos_PlotTwist(int capitulos_PlotTwist) {
         this.capitulos_PlotTwist = capitulos_PlotTwist;
-        this.field_PlotTwist.setText("" + this.capitulos_PlotTwist);
+        this.labels.field_PlotTwist.setText("" + this.capitulos_PlotTwist);
     }
 
-    public int getCapitulos_PlotTwist() {
-        return this.capitulos_PlotTwist;
+    public void setGuiones(int guiones) {
+        this.guiones = guiones;
+        this.labels.field_Guiones_actual.setText("" + this.guiones);
+    }
+
+    public void setEscenarios(int escenarios) {
+        this.escenarios = escenarios;
+        this.labels.field_Escenarios_actual.setText("" + this.escenarios);
+    }
+
+    public void setAnimaciones(int animaciones) {
+        this.animaciones = animaciones;
+        this.labels.field_Animaciones_actual.setText("" + this.animaciones);
+    }
+
+    public void setDoblajes(int doblajes) {
+        this.doblajes = doblajes;
+        this.labels.field_Doblajes_actual.setText("" + this.doblajes);
+    }
+
+    public void setPlot_twist(int plot_twist) {
+        this.plot_twist = plot_twist;
+        this.labels.field_PlotTwist_actual.setText("" + this.escenarios);
     }
 }

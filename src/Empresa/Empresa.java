@@ -33,7 +33,7 @@ public class Empresa {
     private int capitulos_rate;
     private Requerimientos_Capitulo requerimiento_Estandar;
     private Requerimientos_Capitulo requerimiento_PlotTwist;
-    
+
     private Empresa_Trabajadores_Iniciales trabajadores_Iniciales;
 
     private final Ganancias ganancias;
@@ -53,11 +53,11 @@ public class Empresa {
         this.nombre = nombre;
 
         this.empresa_Labels = empresa_Labels;
-        
+
         this.trabajadores_Iniciales = trabajadores_Iniciales;
 
         this.ganancias = new Ganancias();
-        this.drive = new Drive(empresa_Labels.field_Estandar, empresa_Labels.field_PlotTwist);
+        this.drive = new Drive(empresa_Labels.drive_Labels);
         this.mutex = new Semaphore(1);
 
         this.initalizeEmpresaEspecifica(nombre);
