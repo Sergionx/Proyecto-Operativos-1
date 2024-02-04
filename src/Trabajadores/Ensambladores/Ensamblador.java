@@ -43,15 +43,13 @@ public class Ensamblador extends Trabajador {
 
     public void subirCapitulo(boolean plotTwist) {
         if (plotTwist) {
-            if (!requerimientos_Plot.cumplirRequerimientos(drive)) {
-                return;
+            if (requerimientos_Plot.cumplirRequerimientos(drive)) {
+                this.drive.SubirCapitulo(requerimientos_Plot, plotTwist);
             }
-            this.drive.SubirCapitulo(requerimientos_Plot);
         } else {
-            if (!requerimientos_Estandar.cumplirRequerimientos(drive)) {
-                return;
+            if (requerimientos_Estandar.cumplirRequerimientos(drive)) {
+                this.drive.SubirCapitulo(requerimientos_Estandar, plotTwist);
             }
-            this.drive.SubirCapitulo(requerimientos_Estandar);
 
         }
     }

@@ -18,12 +18,16 @@ public class Requerimientos_Capitulo {
     public int doblajes;
     public int plotTwists;
 
-    public Requerimientos_Capitulo(int guiones, int escenarios, int animaciones, int doblajes, int plotTwists) {
+    public int ganancia;
+
+    public Requerimientos_Capitulo(int guiones, int escenarios, int animaciones,
+            int doblajes, int plotTwists, int ganancia) {
         this.guiones = guiones;
         this.escenarios = escenarios;
         this.animaciones = animaciones;
         this.doblajes = doblajes;
         this.plotTwists = plotTwists;
+        this.ganancia = ganancia;
     }
 
     public boolean cumplirRequerimientos(Drive drive) {
