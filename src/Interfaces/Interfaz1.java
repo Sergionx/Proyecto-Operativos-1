@@ -4,11 +4,9 @@
  */
 package Interfaces;
 
-import Empresa.Drive;
 import Empresa.Empresa;
-import Trabajadores.Trabajador;
-import java.lang.reflect.Array;
-import java.util.concurrent.Semaphore;
+
+import org.jfree.chart.JFreeChart;
 
 /**
  *
@@ -20,6 +18,8 @@ public class Interfaz1 extends javax.swing.JFrame {
         new Empresa(1, "Disney"),
         new Empresa(6, "Star Channel")
     };
+    
+    JFreeChart chart;
 
     /**
      * Creates new form Interfaz1
@@ -42,20 +42,34 @@ public class Interfaz1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         TabbedPane_principal = new javax.swing.JTabbedPane();
         Star_Pane = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Star_PlotTwist_Field = new javax.swing.JTextField();
+        Star_Estandar_Field = new javax.swing.JTextField();
         Disney_Pane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+        Star_Pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("jButton2");
-        Star_Pane.add(jButton2);
+        jLabel1.setText("Capitulos listos para entregar");
+        Star_Pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
+
+        jLabel2.setText("Plot Twist");
+        Star_Pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, -1));
+
+        jLabel3.setText("Estándar");
+        Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, -1, -1));
+
+        Star_PlotTwist_Field.setText("jTextField1");
+        Star_Pane.add(Star_PlotTwist_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, -1, -1));
+
+        Star_Estandar_Field.setText("jTextField1");
+        Star_Pane.add(Star_Estandar_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, -1));
 
         TabbedPane_principal.addTab("tab2", Star_Pane);
         TabbedPane_principal.addTab("tab2", Disney_Pane);
@@ -99,12 +113,19 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void crearGrafico(){
+//        TODO
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Disney_Pane;
+    private javax.swing.JTextField Star_Estandar_Field;
     private javax.swing.JPanel Star_Pane;
+    private javax.swing.JTextField Star_PlotTwist_Field;
     private javax.swing.JTabbedPane TabbedPane_principal;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
