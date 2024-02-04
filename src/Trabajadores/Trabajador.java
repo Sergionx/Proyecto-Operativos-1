@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import java.util.concurrent.Semaphore;
 import Utils.Constants;
 import Empresa.Drive;
+import Empresa.Ganancias;
 
 /**
  *
@@ -17,14 +18,16 @@ import Empresa.Drive;
 public abstract class Trabajador extends Thread {
 
     protected int sueldo;
-    protected float sueldoTotal;
-    private Semaphore mutex;
+    private int sueldoTotal;
+    private final Semaphore mutex;
     protected Drive drive;
+    private final Ganancias ganancias;
 
-    public Trabajador(Semaphore mutex, Drive drive) {
+    public Trabajador(Semaphore mutex, Drive drive, Ganancias ganancias) {
         this.sueldoTotal = 0;
         this.mutex = mutex;
         this.drive = drive;
+        this.ganancias = ganancias;
     }
 
     @Override
@@ -36,6 +39,16 @@ public abstract class Trabajador extends Thread {
         }
     }
 
+    public void pagarSueldo(int cantidad){
+        this.sueldoTotal += cantidad;
+        this.ganancias.costos_Operativos += cantidad;
+    }
+    
+    public void descontarSueldo(int cantidad){
+        this.sueldoTotal -= cantidad;
+        this.ganancias.costos_Operativos -= cantidad;
+    }
+    
     public abstract void descansar();
 
     public abstract void trabajar();

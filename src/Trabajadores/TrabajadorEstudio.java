@@ -6,6 +6,7 @@ package Trabajadores;
 
 import java.util.concurrent.Semaphore;
 import Empresa.Drive;
+import Empresa.Ganancias;
 import Utils.Constants;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
@@ -18,10 +19,12 @@ import java.util.logging.Logger;
 public class TrabajadorEstudio extends Trabajador {
 
     private int working_rate;
-    private TipoTrabajador_Estudio tipo;
+    private final TipoTrabajador_Estudio tipo;
 
-    public TrabajadorEstudio(TipoTrabajador_Estudio tipo, Semaphore mutex, Drive drive, int last_carnet) {
-        super(mutex, drive);
+    public TrabajadorEstudio(TipoTrabajador_Estudio tipo, Semaphore mutex,
+            Drive drive, Ganancias ganancias, int last_carnet
+    ) {
+        super(mutex, drive, ganancias);
         this.tipo = tipo;
         this.asignarSueldo(tipo);
         this.asignarWorkingRate(tipo, last_carnet);
@@ -96,12 +99,11 @@ public class TrabajadorEstudio extends Trabajador {
         try {
             if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
                 sleep(Constants.DAY_DURATION);
-                this.sueldoTotal = sueldo * 24;
+                this.pagarSueldo(sueldo * 24);
 
             } else {
                 sleep(Constants.DAY_DURATION * working_rate);
-                this.sueldoTotal = sueldo * 24 * working_rate;
-
+                this.pagarSueldo(sueldo * 24 * working_rate);
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(TrabajadorEstudio.class.getName()).log(Level.SEVERE, null, ex);

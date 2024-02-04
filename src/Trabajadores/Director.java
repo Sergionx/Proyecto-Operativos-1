@@ -5,6 +5,7 @@
 package Trabajadores;
 
 import Empresa.Drive;
+import Empresa.Ganancias;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -21,8 +22,8 @@ public class Director extends Trabajador {
     private final Contador contador;
     private final ProjectManager projectmanager;
     
-    public Director(Semaphore mutex, Drive drive, Contador contador, ProjectManager projectmanager) {
-        super(mutex, drive);
+    public Director(Semaphore mutex, Drive drive, Ganancias ganancias, Contador contador, ProjectManager projectmanager) {
+        super(mutex, drive, ganancias);
         this.sueldo = 60;
         this.contador = contador;
         this.projectmanager = projectmanager;
@@ -32,7 +33,6 @@ public class Director extends Trabajador {
     public void run() {
         while (true) {
             trabajar();
-            System.out.println("Trabajador: " + " gana: " + this.sueldoTotal + "$");
         }
     }
     
@@ -47,6 +47,7 @@ public class Director extends Trabajador {
     
     @Override
     public void trabajar() {
+        this.pagarSueldo(sueldo * 24);
         if (this.contador.finalizo()) {
             this.enviarCapitulos();
         } else {
@@ -56,7 +57,6 @@ public class Director extends Trabajador {
     
     private void enviarCapitulos() {
         this.descansar();
-        this.sueldoTotal = sueldo * 24;
         this.contador.reset();
 //        ENviarcapitulos al drive
 
@@ -73,10 +73,7 @@ public class Director extends Trabajador {
             
         } catch (InterruptedException ex) {
             Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        this.sueldoTotal = sueldo * 24;
-        
+        }        
     }
     
     private void comenzarVigilancia() {
@@ -96,7 +93,7 @@ public class Director extends Trabajador {
     
     private void vigilar_ProjectManager() {
         if (this.projectmanager.viendo_anime()) {
-            this.projectmanager.sueldoTotal -= 100;
+            this.descontarSueldo(100);
         }
     }
 
