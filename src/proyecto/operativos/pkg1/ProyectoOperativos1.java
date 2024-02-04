@@ -4,6 +4,8 @@
  */
 package proyecto.operativos.pkg1;
 
+import Interfaces.Interfaz1;
+
 /**
  *
  * @author Sergionx
@@ -15,6 +17,11 @@ public class ProyectoOperativos1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Interfaz1 interfaz= new Interfaz1();
+        interfaz.show();
+        
+        
     }
     
 }

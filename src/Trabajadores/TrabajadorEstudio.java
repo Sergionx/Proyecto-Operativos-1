@@ -2,9 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto.operativos.pkg1;
+package Trabajadores;
 
 import java.util.concurrent.Semaphore;
+import Empresa.Drive;
+import Utils.Constants;
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,7 +20,7 @@ public class TrabajadorEstudio extends Trabajador {
     private int working_rate;
     private TipoTrabajador_Estudio tipo;
 
-    public TrabajadorEstudio(int last_carnet, TipoTrabajador_Estudio tipo, Semaphore mutex, Drive drive) {
+    public TrabajadorEstudio(TipoTrabajador_Estudio tipo, Semaphore mutex, Drive drive, int last_carnet) {
         super(mutex, drive);
         this.tipo = tipo;
         this.asignarSueldo(tipo);
@@ -56,7 +61,7 @@ public class TrabajadorEstudio extends Trabajador {
                     this.working_rate = 2 + last_carnet == 9 ? 2 : last_carnet / 3;
                     break;
                 case ANIMADOR:
-                    this.working_rate = 3 - last_carnet == 9 ? 1 : last_carnet / 3;
+                    this.working_rate = 3 - last_carnet == 9 ? 2 : last_carnet / 3;
                     break;
                 case ACTOR_DOBLAJE:
                     this.working_rate = last_carnet < 5 ? 3 : 5;
@@ -70,9 +75,36 @@ public class TrabajadorEstudio extends Trabajador {
         }
     }
 
+    /**
+     * Solo los animadores y dobaladores completan su trabajo en menos de un día
+     */
     @Override
     public void trabajar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
+            this.drive.SubirDrive(tipo, this.working_rate);
+        } else {
+            this.drive.SubirDrive(tipo);
+        }
+
     }
 
+    /**
+     * Solo los animadores y dobaladores completan su trabajo en menos de un día
+     */
+    @Override
+    public void descansar() {
+        try {
+            if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
+                sleep(Constants.DAY_DURATION);
+                this.sueldoTotal = sueldo * 24;
+
+            } else {
+                sleep(Constants.DAY_DURATION * working_rate);
+                this.sueldoTotal = sueldo * 24 * working_rate;
+
+            }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TrabajadorEstudio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
