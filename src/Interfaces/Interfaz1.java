@@ -15,8 +15,8 @@ import org.jfree.chart.JFreeChart;
 public class Interfaz1 extends javax.swing.JFrame {
 
     static Empresa[] empresas = {
-        new Empresa(1, "Disney"),
-        new Empresa(6, "Star Channel")
+        new Empresa(6, "Star Channel"),
+//        new Empresa(1, "Disney"),
     };
     
     JFreeChart chart;
@@ -31,6 +31,10 @@ public class Interfaz1 extends javax.swing.JFrame {
             var empresa = empresas[i];
             this.TabbedPane_principal.setTitleAt(i, empresa.nombre);
         }
+        
+        this.Star_Estandar_Field.setText(""+empresas[0].getCapitulosListos(false));
+        this.Star_PlotTwist_Field.setText(""+empresas[0].getCapitulosListos(true));
+
     }
 
     /**
@@ -65,9 +69,11 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel3.setText("Estándar");
         Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, -1, -1));
 
+        Star_PlotTwist_Field.setEditable(false);
         Star_PlotTwist_Field.setText("jTextField1");
         Star_Pane.add(Star_PlotTwist_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, -1, -1));
 
+        Star_Estandar_Field.setEditable(false);
         Star_Estandar_Field.setText("jTextField1");
         Star_Pane.add(Star_Estandar_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, -1));
 
