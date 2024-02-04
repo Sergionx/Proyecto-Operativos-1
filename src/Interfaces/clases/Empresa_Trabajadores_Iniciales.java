@@ -16,4 +16,6 @@ public class Empresa_Trabajadores_Iniciales {
     public int plot_twist;
     
     
+    
+    
 }

@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Empresa.Empresa;
+import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 
 /**
  *
@@ -17,13 +18,14 @@ public class Interfaz1 extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz1
      */
-    public Interfaz1() {
+    public Interfaz1(Empresa_Trabajadores_Iniciales trabajadores_Disney,
+            Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
         initComponents();
 
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         empresas = new Empresa[]{
-            new Empresa(6, "Star Channel", Star_Estandar_Field, Star_PlotTwist_Field),};
+            new Empresa(6, "Star Channel", Star_Estandar_Field, Star_PlotTwist_Field, trabajadores_Star_Channel),};
 
         for (int i = 0; i < empresas.length; i++) {
             var empresa = empresas[i];
@@ -147,8 +149,14 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run(Empresa_Trabajadores_Iniciales trabajadores_Disney,
+                    Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
+                new Interfaz1(trabajadores_Disney, trabajadores_Star_Channel).setVisible(true);
+            }
+
+            @Override
             public void run() {
-                new Interfaz1().setVisible(true);
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
     }

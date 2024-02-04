@@ -5,12 +5,16 @@
 package Interfaces;
 
 import Interfaces.Interfaz1;
+import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 
 /**
  *
  * @author valeriazampetti
  */
 public class InterfazInicial extends javax.swing.JFrame {
+    
+    static Empresa_Trabajadores_Iniciales trabajadores_Disney;
+    static Empresa_Trabajadores_Iniciales trabajadores_Star_Channel;
     
 
     /**
@@ -163,7 +167,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     private void BotonRedirigeInterfazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRedirigeInterfazActionPerformed
         this.setVisible(false);
-        Interfaz1 interfaz = new Interfaz1();
+        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney,trabajadores_Star_Channel);
         interfaz.show();
         
     }//GEN-LAST:event_BotonRedirigeInterfazActionPerformed
