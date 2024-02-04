@@ -4,6 +4,7 @@
  */
 package proyecto.operativos.pkg1;
 
+import Interfaces.InterfazInicial;
 import Interfaces.Interfaz1;
 
 /**
