@@ -4,6 +4,7 @@
  */
 package Empresa;
 
+import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 import Trabajadores.Contador;
 import Trabajadores.Director;
 import Trabajadores.Ensambladores.Ensamblador;
@@ -31,6 +32,8 @@ public class Empresa {
     private int capitulos_rate;
     private Requerimientos_Capitulo requerimiento_Estandar;
     private Requerimientos_Capitulo requerimiento_PlotTwist;
+    
+    private Empresa_Trabajadores_Iniciales trabajadores_Iniciales;
 
     private final Ganancias ganancias;
 
@@ -43,13 +46,16 @@ public class Empresa {
     private final Semaphore mutex;
 
     public Empresa(int last_carnet, String nombre,
-            JTextField field_Estandar, JTextField field_PlotTwist) {
+            JTextField field_Estandar, JTextField field_PlotTwist,
+            Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
         this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
 
         this.field_Estandar = field_Estandar;
         this.field_PlotTwist = field_PlotTwist;
+        
+        this.trabajadores_Iniciales = trabajadores_Iniciales;
 
         this.ganancias = new Ganancias();
         this.drive = new Drive(field_Estandar, field_PlotTwist);
