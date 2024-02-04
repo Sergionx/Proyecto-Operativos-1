@@ -27,15 +27,21 @@ public class Requerimientos_Capitulo {
         this.animaciones = animaciones;
         this.doblajes = doblajes;
         this.plotTwists = plotTwists;
-        this.ganancia = ganancia;
+        this.ganancia = ganancia * 1000;
+    }
+
+    @Override
+    public String toString() {
+        return "Requerimientos_Capitulo{" + "guiones=" + guiones + ", escenarios=" + escenarios + ", animaciones=" + animaciones + ", doblajes=" + doblajes + ", plotTwists=" + plotTwists + '}';
     }
 
     public boolean cumplirRequerimientos(Drive drive) {
-        return !(this.guiones < drive.guiones
-                || this.escenarios < drive.escenarios
-                || this.animaciones < drive.animaciones
-                || this.doblajes < drive.doblajes
-                || this.plotTwists < drive.plot_twist);
+        return !(this.guiones > drive.guiones
+                || this.escenarios > drive.escenarios
+                || this.animaciones > drive.animaciones
+                || this.doblajes > drive.doblajes
+                || (this.plotTwists != 0 && this.plotTwists > drive.plot_twist));
+
     }
 
 }
