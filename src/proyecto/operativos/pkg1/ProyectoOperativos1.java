@@ -4,6 +4,7 @@
  */
 package proyecto.operativos.pkg1;
 
+import Interfaces.InterfazInicial;
 import Interfaces.Interfaz1;
 
 /**
@@ -18,8 +19,10 @@ public class ProyectoOperativos1 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Interfaz1 interfaz= new Interfaz1();
+        InterfazInicial interfaz= new InterfazInicial();
+       
         interfaz.show();
+        
         
         
     }

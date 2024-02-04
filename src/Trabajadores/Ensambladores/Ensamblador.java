@@ -5,6 +5,7 @@
 package Trabajadores.Ensambladores;
 
 import Empresa.Drive;
+import Empresa.Ganancias;
 import Trabajadores.Trabajador;
 import Utils.Constants;
 import java.util.concurrent.Semaphore;
@@ -22,8 +23,8 @@ public class Ensamblador extends Trabajador {
     private Requerimientos_Capitulo requerimientos_Estandar;
     private Requerimientos_Capitulo requerimientos_Plot;
 
-    public Ensamblador(Semaphore mutex, Drive drive, int capitulos_rate, Requerimientos_Capitulo requerimientos, Requerimientos_Capitulo requerimientos_Plot) {
-        super(mutex, drive);
+    public Ensamblador(Semaphore mutex, Drive drive, Ganancias ganancias, int capitulos_rate, Requerimientos_Capitulo requerimientos, Requerimientos_Capitulo requerimientos_Plot) {
+        super(mutex, drive, ganancias);
         this.capitulos_rate = capitulos_rate;
         this.capitulos_Para_PlotTwist = 0;
         this.requerimientos_Estandar = requerimientos;
@@ -43,15 +44,13 @@ public class Ensamblador extends Trabajador {
 
     public void subirCapitulo(boolean plotTwist) {
         if (plotTwist) {
-            if (!requerimientos_Plot.cumplirRequerimientos(drive)) {
-                return;
+            if (requerimientos_Plot.cumplirRequerimientos(drive)) {
+                this.drive.SubirCapitulo(requerimientos_Plot, plotTwist);
             }
-            this.drive.SubirCapitulo(requerimientos_Plot);
         } else {
-            if (!requerimientos_Estandar.cumplirRequerimientos(drive)) {
-                return;
+            if (requerimientos_Estandar.cumplirRequerimientos(drive)) {
+                this.drive.SubirCapitulo(requerimientos_Estandar, plotTwist);
             }
-            this.drive.SubirCapitulo(requerimientos_Estandar);
 
         }
     }
@@ -59,8 +58,8 @@ public class Ensamblador extends Trabajador {
     @Override
     public void descansar() {
         try {
+            this.pagarSueldo(sueldo * 24 * 2);
             sleep(Constants.DAY_DURATION * 2);
-            this.sueldoTotal = sueldo * 24 * 2;
         } catch (InterruptedException ex) {
             Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);
         }

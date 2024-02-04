@@ -4,39 +4,36 @@
  */
 package Interfaces;
 
-import Empresa.Drive;
 import Empresa.Empresa;
-import Trabajadores.Trabajador;
-import java.lang.reflect.Array;
-import java.util.concurrent.Semaphore;
+
+
 
 /**
  *
  * @author valeriazampetti
  */
 public class Interfaz1 extends javax.swing.JFrame {
-    static Empresa empresa;
-    static Drive drive;
+
+    static Empresa[] empresas = {
+        new Empresa(1, "Disney"),
+        new Empresa(6, "Star Channel")
+    };
+    
+ 
 
     /**
      * Creates new form Interfaz1
      */
     public Interfaz1() {
         initComponents();
-        Interfaz1.drive = new Drive();
-       
-       var mutex= new Semaphore(1); 
-       Interfaz1.empresa= new Empresa( 1, "Disney", Interfaz1.drive, mutex);
-     
-        System.out.println(TabbedPane_principal.getTabCount());
         
-       this.Disney_Pane.setToolTipText(empresa.nombre);
-       for(int i = 0; i < TabbedPane_principal.getTabCount(); i++) {
-    if(SwingUtilities.isDescendingFrom(textField, tabbedPane.getComponentAt(i))) {
-        tabbedPane.setTitleAt(i, textField.getText());
-        break;
-    }
-}
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        
+        for (int i = 0; i < empresas.length; i++) {
+            var empresa = empresas[i];
+            this.TabbedPane_principal.setTitleAt(i, empresa.nombre);
+        }
     }
 
     /**
@@ -48,19 +45,58 @@ public class Interfaz1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         TabbedPane_principal = new javax.swing.JTabbedPane();
-        Disney_Pane = new javax.swing.JTabbedPane();
-        Star_Pane = new javax.swing.JTabbedPane();
+        Star_Pane = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Star_PlotTwist_Field = new javax.swing.JTextField();
+        Star_Estandar_Field = new javax.swing.JTextField();
+        starfondo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        Disney_Pane = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+        TabbedPane_principal.setAutoscrolls(true);
 
-        TabbedPane_principal.addTab("tab1", Disney_Pane);
+        Star_Pane.setAutoscrolls(true);
+        Star_Pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Capitulos listos para entregar");
+        Star_Pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, -1));
+
+        jLabel2.setText("Plot Twist");
+        Star_Pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, -1, -1));
+
+        jLabel3.setText("Estándar");
+        Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, -1));
+
+        Star_PlotTwist_Field.setText("jTextField1");
+        Star_Pane.add(Star_PlotTwist_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, -1, -1));
+
+        Star_Estandar_Field.setText("jTextField1");
+        Star_Pane.add(Star_Estandar_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
+
+        starfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusimagenes.jpg"))); // NOI18N
+        starfondo.setText("jLabel4");
+        Star_Pane.add(starfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 80, 790, 1090));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 810, 450));
+
         TabbedPane_principal.addTab("tab2", Star_Pane);
+
+        Disney_Pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disneyfondo.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 760, 410));
+
+        TabbedPane_principal.addTab("tab2", Disney_Pane);
 
         getContentPane().add(TabbedPane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 450));
 
@@ -101,11 +137,22 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void crearGrafico(){
+//        TODO
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane Disney_Pane;
-    private javax.swing.JTabbedPane Star_Pane;
+    private javax.swing.JPanel Disney_Pane;
+    private javax.swing.JTextField Star_Estandar_Field;
+    private javax.swing.JPanel Star_Pane;
+    private javax.swing.JTextField Star_PlotTwist_Field;
     private javax.swing.JTabbedPane TabbedPane_principal;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel starfondo;
     // End of variables declaration//GEN-END:variables
 }

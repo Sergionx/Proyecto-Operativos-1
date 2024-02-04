@@ -5,6 +5,7 @@
 package Trabajadores;
 
 import Empresa.Drive;
+import Empresa.Ganancias;
 import Utils.Constants;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -20,19 +21,10 @@ public class ProjectManager extends Trabajador {
     private final Contador contador;
     public int tiempo_Para_Contador = 32;
 
-    public ProjectManager(Semaphore mutex, Drive drive, Contador contador) {
-        super(mutex, drive);
+    public ProjectManager(Semaphore mutex, Drive drive, Ganancias ganancias, Contador contador) {
+        super(mutex, drive, ganancias);
         this.sueldo = 40;
         this.contador = contador;
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            trabajar();
-            System.out.println("Trabajador: " + " gana: " + this.sueldoTotal + "$");
-            descansar();
-        }
     }
 
     @Override
@@ -56,7 +48,7 @@ public class ProjectManager extends Trabajador {
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.sueldoTotal = sueldo * 24;
+        this.pagarSueldo(sueldo * 24);
     }
     
     public boolean viendo_anime(){
