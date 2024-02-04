@@ -5,8 +5,7 @@
 package Interfaces;
 
 import Empresa.Empresa;
-
-
+import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 
 /**
  *
@@ -18,18 +17,17 @@ public class Interfaz1 extends javax.swing.JFrame {
         new Empresa(1, "Disney"),
         new Empresa(6, "Star Channel")
     };
-    
- 
 
     /**
      * Creates new form Interfaz1
      */
-    public Interfaz1() {
+    public Interfaz1(Empresa_Trabajadores_Iniciales trabajadores_Disney,
+            Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
         initComponents();
-        
+
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        
+
         for (int i = 0; i < empresas.length; i++) {
             var empresa = empresas[i];
             this.TabbedPane_principal.setTitleAt(i, empresa.nombre);
@@ -132,13 +130,19 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run(Empresa_Trabajadores_Iniciales trabajadores_Disney,
+                    Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
+                new Interfaz1(trabajadores_Disney, trabajadores_Star_Channel).setVisible(true);
+            }
+
+            @Override
             public void run() {
-                new Interfaz1().setVisible(true);
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
     }
-    
-    private void crearGrafico(){
+
+    private void crearGrafico() {
 //        TODO
     }
 
