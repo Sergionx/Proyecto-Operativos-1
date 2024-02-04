@@ -79,8 +79,10 @@ public class Empresa {
     }
 
     private void initalizeEmpleados() {
-        this.manager = new ProjectManager(this.mutex, this.drive, ganancias, this.contador, this.empresa_Labels.field_Viendo_Anime);
-        this.director = new Director(this.mutex, this.drive, ganancias, this.contador, this.manager);
+        this.manager = new ProjectManager(this.mutex, this.drive, ganancias, 
+                this.contador, this.empresa_Labels.field_Viendo_Anime);
+        this.director = new Director(this.mutex, this.drive, ganancias, 
+                this.contador, this.manager, this.empresa_Labels.field_vigilando);
 
         var trabajador = new TrabajadorEstudio(
                 TipoTrabajador_Estudio.GUIONISTA, mutex, drive,
