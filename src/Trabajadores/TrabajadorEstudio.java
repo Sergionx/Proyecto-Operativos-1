@@ -104,7 +104,6 @@ public class TrabajadorEstudio extends Trabajador {
      */
     @Override
     public void descansar() {
-        System.out.println("Voy a descansar");
         try {
             if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
                 this.pagarSueldo(sueldo * 24);
