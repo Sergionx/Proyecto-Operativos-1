@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Empresa.Empresa;
+import Interfaces.clases.Empresa_Labels;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 
 /**
@@ -24,8 +25,21 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.crearEmpresas(trabajadores_Disney, trabajadores_Star_Channel);
+
+    }
+
+    private void crearEmpresas(Empresa_Trabajadores_Iniciales trabajadores_Disney,
+            Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
+        var labels = new Empresa_Labels[]{
+            new Empresa_Labels(escenarios_Field, Star_PlotTwist_Field),
+            new Empresa_Labels(escenarios_Field, Star_PlotTwist_Field) // Poner labels de disney
+        };
+
         empresas = new Empresa[]{
-            new Empresa(6, "Star Channel", Star_Estandar_Field, Star_PlotTwist_Field, trabajadores_Star_Channel),};
+            new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel),
+            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
+        };
 
         for (int i = 0; i < empresas.length; i++) {
             var empresa = empresas[i];
@@ -48,8 +62,21 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Star_PlotTwist_Field = new javax.swing.JTextField();
-        Star_Estandar_Field = new javax.swing.JTextField();
+        escenarios_Field = new javax.swing.JTextField();
         starfondo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        Star_Estandar_Field1 = new javax.swing.JTextField();
+        animaciones_Field = new javax.swing.JTextField();
+        doblajes_Field = new javax.swing.JTextField();
+        plotTwist_Field = new javax.swing.JTextField();
+        guiones_Field4 = new javax.swing.JTextField();
+        guiones_FieldMAX = new javax.swing.JTextField();
+        escenarios_FieldMAX = new javax.swing.JTextField();
+        animaciones_FieldMAX = new javax.swing.JTextField();
+        doblajes_FieldMAX = new javax.swing.JTextField();
+        plotTwist_FieldMAX = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -63,13 +90,13 @@ public class Interfaz1 extends javax.swing.JFrame {
         Star_Pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Capitulos listos para entregar");
-        Star_Pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, -1));
+        Star_Pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
 
         jLabel2.setText("Plot Twist");
-        Star_Pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, -1, -1));
+        Star_Pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
 
         jLabel3.setText("Estándar");
-        Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, -1));
+        Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
 
         Star_PlotTwist_Field.setEditable(false);
         Star_PlotTwist_Field.setText("0");
@@ -78,20 +105,119 @@ public class Interfaz1 extends javax.swing.JFrame {
                 Star_PlotTwist_FieldActionPerformed(evt);
             }
         });
-        Star_Pane.add(Star_PlotTwist_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, -1, -1));
+        Star_Pane.add(Star_PlotTwist_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, -1, -1));
 
-        Star_Estandar_Field.setEditable(false);
-        Star_Estandar_Field.setText("0");
-        Star_Estandar_Field.addActionListener(new java.awt.event.ActionListener() {
+        escenarios_Field.setEditable(false);
+        escenarios_Field.setText("0");
+        escenarios_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Star_Estandar_FieldActionPerformed(evt);
+                escenarios_FieldActionPerformed(evt);
             }
         });
-        Star_Pane.add(Star_Estandar_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
+        Star_Pane.add(escenarios_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
 
         starfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusimagenes.jpg"))); // NOI18N
         starfondo.setText("jLabel4");
         Star_Pane.add(starfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 80, 790, 1090));
+
+        jLabel6.setText("Recurssos del Drive");
+        Star_Pane.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
+
+        jLabel7.setText("Actuales");
+        Star_Pane.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
+
+        jLabel8.setText("Máximo");
+        Star_Pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
+
+        Star_Estandar_Field1.setEditable(false);
+        Star_Estandar_Field1.setText("0");
+        Star_Estandar_Field1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Star_Estandar_Field1ActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(Star_Estandar_Field1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
+
+        animaciones_Field.setEditable(false);
+        animaciones_Field.setText("0");
+        animaciones_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animaciones_FieldActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(animaciones_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
+
+        doblajes_Field.setEditable(false);
+        doblajes_Field.setText("0");
+        doblajes_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doblajes_FieldActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(doblajes_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
+
+        plotTwist_Field.setEditable(false);
+        plotTwist_Field.setText("0");
+        plotTwist_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plotTwist_FieldActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(plotTwist_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
+
+        guiones_Field4.setEditable(false);
+        guiones_Field4.setText("0");
+        guiones_Field4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiones_Field4ActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(guiones_Field4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+
+        guiones_FieldMAX.setEditable(false);
+        guiones_FieldMAX.setText("0");
+        guiones_FieldMAX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiones_FieldMAXActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(guiones_FieldMAX, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
+
+        escenarios_FieldMAX.setEditable(false);
+        escenarios_FieldMAX.setText("0");
+        escenarios_FieldMAX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escenarios_FieldMAXActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(escenarios_FieldMAX, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
+
+        animaciones_FieldMAX.setEditable(false);
+        animaciones_FieldMAX.setText("0");
+        animaciones_FieldMAX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animaciones_FieldMAXActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(animaciones_FieldMAX, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
+
+        doblajes_FieldMAX.setEditable(false);
+        doblajes_FieldMAX.setText("0");
+        doblajes_FieldMAX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doblajes_FieldMAXActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(doblajes_FieldMAX, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, -1, -1));
+
+        plotTwist_FieldMAX.setEditable(false);
+        plotTwist_FieldMAX.setText("0");
+        plotTwist_FieldMAX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plotTwist_FieldMAXActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(plotTwist_FieldMAX, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -112,13 +238,53 @@ public class Interfaz1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Star_Estandar_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Star_Estandar_FieldActionPerformed
+    private void escenarios_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escenarios_FieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Star_Estandar_FieldActionPerformed
+    }//GEN-LAST:event_escenarios_FieldActionPerformed
 
     private void Star_PlotTwist_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Star_PlotTwist_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Star_PlotTwist_FieldActionPerformed
+
+    private void Star_Estandar_Field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Star_Estandar_Field1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Star_Estandar_Field1ActionPerformed
+
+    private void animaciones_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animaciones_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_animaciones_FieldActionPerformed
+
+    private void doblajes_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doblajes_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doblajes_FieldActionPerformed
+
+    private void plotTwist_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plotTwist_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plotTwist_FieldActionPerformed
+
+    private void guiones_Field4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiones_Field4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guiones_Field4ActionPerformed
+
+    private void guiones_FieldMAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiones_FieldMAXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guiones_FieldMAXActionPerformed
+
+    private void escenarios_FieldMAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escenarios_FieldMAXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escenarios_FieldMAXActionPerformed
+
+    private void animaciones_FieldMAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animaciones_FieldMAXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_animaciones_FieldMAXActionPerformed
+
+    private void doblajes_FieldMAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doblajes_FieldMAXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doblajes_FieldMAXActionPerformed
+
+    private void plotTwist_FieldMAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plotTwist_FieldMAXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plotTwist_FieldMAXActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,15 +333,28 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Disney_Pane;
-    private javax.swing.JTextField Star_Estandar_Field;
+    private javax.swing.JTextField Star_Estandar_Field1;
     private javax.swing.JPanel Star_Pane;
     private javax.swing.JTextField Star_PlotTwist_Field;
     private javax.swing.JTabbedPane TabbedPane_principal;
+    private javax.swing.JTextField animaciones_Field;
+    private javax.swing.JTextField animaciones_FieldMAX;
+    private javax.swing.JTextField doblajes_Field;
+    private javax.swing.JTextField doblajes_FieldMAX;
+    private javax.swing.JTextField escenarios_Field;
+    private javax.swing.JTextField escenarios_FieldMAX;
+    private javax.swing.JTextField guiones_Field4;
+    private javax.swing.JTextField guiones_FieldMAX;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField plotTwist_Field;
+    private javax.swing.JTextField plotTwist_FieldMAX;
     private javax.swing.JLabel starfondo;
     // End of variables declaration//GEN-END:variables
 }
