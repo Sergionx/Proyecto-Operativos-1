@@ -47,8 +47,7 @@ public class Empresa {
 
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
-            Empresa_Trabajadores_Iniciales trabajadores_Iniciales,
-            JTextField field_Viendo_Anime) {
+            Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
         this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
