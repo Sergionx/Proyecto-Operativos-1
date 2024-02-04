@@ -10,7 +10,7 @@ package Utils;
  */
 public class Constants {
 
-    public static final int MINUTE_DURATION = 1000; //TODO Pensar valor. Recordar que sleep es miliseconds
+    public static final int MINUTE_DURATION = 1; //TODO Pensar valor. Recordar que sleep es miliseconds
     public static final int HOUR_DURATION = MINUTE_DURATION * 60;
     public static final int DAY_DURATION = HOUR_DURATION * 24;
 }
