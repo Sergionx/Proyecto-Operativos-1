@@ -25,7 +25,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         empresas = new Empresa[]{
-            new Empresa(6, "Star Channel", Star_Estandar_Field, Star_PlotTwist_Field),};
+            new Empresa(6, "Star Channel", Star_Estandar_Field, Star_PlotTwist_Field, trabajadores_Star_Channel),};
 
         for (int i = 0; i < empresas.length; i++) {
             var empresa = empresas[i];
