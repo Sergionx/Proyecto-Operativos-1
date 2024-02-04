@@ -34,7 +34,6 @@ public abstract class Trabajador extends Thread {
     public void run() {
         while (true) {
             trabajar();
-            System.out.println("Trabajador: " + " gana: " + this.sueldoTotal + "$");
             descansar();
         }
     }
