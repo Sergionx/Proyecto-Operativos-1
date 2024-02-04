@@ -13,10 +13,7 @@ import Interfaces.clases.Empresa_Trabajadores_Iniciales;
  */
 public class Interfaz1 extends javax.swing.JFrame {
 
-    static Empresa[] empresas = {
-        new Empresa(1, "Disney"),
-        new Empresa(6, "Star Channel")
-    };
+    static Empresa[] empresas;
 
     /**
      * Creates new form Interfaz1
@@ -27,6 +24,8 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        empresas = new Empresa[]{
+            new Empresa(6, "Star Channel", Star_Estandar_Field, Star_PlotTwist_Field),};
 
         for (int i = 0; i < empresas.length; i++) {
             var empresa = empresas[i];
@@ -72,10 +71,22 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel3.setText("Estándar");
         Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, -1));
 
-        Star_PlotTwist_Field.setText("jTextField1");
+        Star_PlotTwist_Field.setEditable(false);
+        Star_PlotTwist_Field.setText("0");
+        Star_PlotTwist_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Star_PlotTwist_FieldActionPerformed(evt);
+            }
+        });
         Star_Pane.add(Star_PlotTwist_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, -1, -1));
 
-        Star_Estandar_Field.setText("jTextField1");
+        Star_Estandar_Field.setEditable(false);
+        Star_Estandar_Field.setText("0");
+        Star_Estandar_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Star_Estandar_FieldActionPerformed(evt);
+            }
+        });
         Star_Pane.add(Star_Estandar_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         starfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusimagenes.jpg"))); // NOI18N
@@ -100,6 +111,14 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Star_Estandar_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Star_Estandar_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Star_Estandar_FieldActionPerformed
+
+    private void Star_PlotTwist_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Star_PlotTwist_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Star_PlotTwist_FieldActionPerformed
 
     /**
      * @param args the command line arguments

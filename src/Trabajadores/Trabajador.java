@@ -19,7 +19,7 @@ public abstract class Trabajador extends Thread {
 
     protected int sueldo;
     private int sueldoTotal;
-    private final Semaphore mutex;
+    protected final Semaphore mutex;
     protected Drive drive;
     private final Ganancias ganancias;
 
@@ -34,7 +34,6 @@ public abstract class Trabajador extends Thread {
     public void run() {
         while (true) {
             trabajar();
-            System.out.println("Trabajador: " + " gana: " + this.sueldoTotal + "$");
             descansar();
         }
     }
