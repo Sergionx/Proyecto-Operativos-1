@@ -39,7 +39,7 @@ public class Empresa {
     private final Ganancias ganancias;
 
     private final Empresa_Labels empresa_Labels;
-
+    
     private final int last_carnet;
     public String nombre;
     private final Drive drive;
@@ -47,7 +47,8 @@ public class Empresa {
 
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
-            Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
+            Empresa_Trabajadores_Iniciales trabajadores_Iniciales,
+            JTextField field_Viendo_Anime) {
         this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
@@ -57,11 +58,13 @@ public class Empresa {
         this.trabajadores_Iniciales = trabajadores_Iniciales;
 
         this.ganancias = new Ganancias();
+        this.contador = new Contador();
         this.drive = new Drive(empresa_Labels.field_Estandar, empresa_Labels.field_PlotTwist);
         this.mutex = new Semaphore(1);
 
         this.initalizeEmpresaEspecifica(nombre);
         this.initalizeEmpleados();
+        
     }
 
     private void initalizeEmpresaEspecifica(String nombre) {
@@ -77,7 +80,7 @@ public class Empresa {
     }
 
     private void initalizeEmpleados() {
-        this.manager = new ProjectManager(this.mutex, this.drive, ganancias, this.contador);
+        this.manager = new ProjectManager(this.mutex, this.drive, ganancias, this.contador, this.empresa_Labels.field_Viendo_Anime);
         this.director = new Director(this.mutex, this.drive, ganancias, this.contador, this.manager);
 
         var trabajador = new TrabajadorEstudio(
@@ -108,6 +111,9 @@ public class Empresa {
         trabajdor4.start();
         trabajdor5.start();
         ensamblador.start();
+        
+        this.manager.start();
+        this.director.start();
 
         for (int i = 0; i < empleados.length; i++) {
 //            var trabajador = new TrabajadorEstudio(
@@ -118,4 +124,8 @@ public class Empresa {
         }
 
     }
+
+    
+    
+    
 }
