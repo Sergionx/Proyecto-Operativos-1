@@ -38,7 +38,8 @@ public class Interfaz1 extends javax.swing.JFrame {
             new Empresa_Labels(
             new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
             guiones_Field, doblajes_Field, escenarios_Field,
-            animaciones_Field, plotTwist_Field)
+            animaciones_Field, plotTwist_Field),
+            field_Viendo_Anime
             ),
 //            new Empresa_Labels(
 //            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
@@ -93,6 +94,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        field_Viendo_Anime = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -250,6 +252,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel13.setText("Animaciones");
         Star_Pane.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
+        field_Viendo_Anime.setEditable(false);
+        field_Viendo_Anime.setText("jTextField1");
+        Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 810, 450));
@@ -374,6 +380,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JTextField doblajes_FieldMAX;
     private javax.swing.JTextField escenarios_Field;
     private javax.swing.JTextField escenarios_FieldMAX;
+    private javax.swing.JTextField field_Viendo_Anime;
     private javax.swing.JTextField guiones_Field;
     private javax.swing.JTextField guiones_FieldMAX;
     private javax.swing.JLabel jLabel1;

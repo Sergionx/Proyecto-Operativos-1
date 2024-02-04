@@ -13,9 +13,12 @@ import javax.swing.JTextField;
 public class Empresa_Labels {
 
     public final Drive_Labels drive_Labels;
+    public final JTextField field_Viendo_Anime;
 
-    public Empresa_Labels(Drive_Labels drive_Labels) {
+
+    public Empresa_Labels(Drive_Labels drive_Labels,  JTextField field_Viendo_Anime) {
         this.drive_Labels = drive_Labels;
+        this.field_Viendo_Anime = field_Viendo_Anime;
     }
 
 }

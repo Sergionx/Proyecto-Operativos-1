@@ -92,7 +92,7 @@ public class Director extends Trabajador {
     }
     
     private void vigilar_ProjectManager() {
-        if (this.projectmanager.viendo_anime()) {
+        if (this.projectmanager.getViendo_anime()) {
             this.descontarSueldo(100);
         }
     }
