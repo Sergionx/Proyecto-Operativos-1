@@ -19,7 +19,7 @@ public abstract class Trabajador extends Thread {
 
     protected int sueldo;
     private int sueldoTotal;
-    private final Semaphore mutex;
+    protected final Semaphore mutex;
     protected Drive drive;
     private final Ganancias ganancias;
 
