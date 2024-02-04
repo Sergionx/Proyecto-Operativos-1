@@ -43,15 +43,20 @@ public class Ensamblador extends Trabajador {
     }
 
     public void subirCapitulo(boolean plotTwist) {
-        if (plotTwist) {
-            if (requerimientos_Plot.cumplirRequerimientos(drive)) {
-                this.drive.SubirCapitulo(requerimientos_Plot, plotTwist);
+        try {
+            this.mutex.acquire();
+            if (plotTwist) {
+                if (requerimientos_Plot.cumplirRequerimientos(drive)) {
+                    this.drive.SubirCapitulo(requerimientos_Plot, plotTwist);
+                }
+            } else {
+                if (requerimientos_Estandar.cumplirRequerimientos(drive)) {
+                    this.drive.SubirCapitulo(requerimientos_Estandar, plotTwist);
+                }
             }
-        } else {
-            if (requerimientos_Estandar.cumplirRequerimientos(drive)) {
-                this.drive.SubirCapitulo(requerimientos_Estandar, plotTwist);
-            }
-
+            this.mutex.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
