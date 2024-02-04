@@ -4,6 +4,9 @@
  */
 package Empresa;
 
+import Trabajadores.Contador;
+import Trabajadores.Director;
+import Trabajadores.ProjectManager;
 import Trabajadores.Trabajador;
 import java.util.concurrent.Semaphore;
 
@@ -13,16 +16,27 @@ import java.util.concurrent.Semaphore;
  */
 public class Empresa {
     private Trabajador empleados[];
+    private ProjectManager manager;
+    private Director director;
+    private Contador contador;
+    
     private int last_carnet;
     public String nombre;
     private Drive drive;
     private Semaphore mutex;
     
     public Empresa(int last_carnet, String nombre) {
-        this.empleados = new Trabajador[last_carnet + 12];
+        this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
         this.drive = new Drive();
         this.mutex = new Semaphore(1);
+        
+        this.initalizeEmpleados();
     } 
+    
+    private void initalizeEmpleados(){
+        this.manager = new ProjectManager(this.mutex, this.drive, this.contador);
+        this.director = new Director(this.mutex, this.drive, this.contador, this.manager);
+    }
  }
