@@ -56,36 +56,40 @@ public class Drive {
     public void SubirDrive(TipoTrabajador_Estudio tipo, int cantidad) {
         switch (tipo) {
             case GUIONISTA -> {
-                if (this.guiones < GUIONES_MAX) {
+                if (this.SePuedeSubir(guiones, cantidad, GUIONES_MAX)) {
                     this.setGuiones(guiones + cantidad);
                 }
             }
 
             case DISENADOR_ESCENARIO -> {
-                if (this.escenarios < ESCENARIOS_MAX) {
+                if (this.SePuedeSubir(escenarios, cantidad, ESCENARIOS_MAX)) {
                     this.setEscenarios(escenarios + cantidad);
                 }
             }
 
             case ANIMADOR -> {
-                if (this.animaciones < ANIMACIONES_MAX) {
+                if (this.SePuedeSubir(animaciones, cantidad, ANIMACIONES_MAX)) {
                     this.setAnimaciones(animaciones + cantidad);
                 }
             }
             case ACTOR_DOBLAJE -> {
-                if (this.doblajes < DOBLAJES_MAX) {
+                if (this.SePuedeSubir(doblajes, cantidad, DOBLAJES_MAX)) {
                     this.setDoblajes(doblajes + cantidad);
                 }
             }
 
             case PLOT_TWIST -> {
-                if (this.plot_twist < PLOT_TWIST_MAX) {
+                if (this.SePuedeSubir(plot_twist, cantidad, PLOT_TWIST_MAX)) {
                     this.setPlot_twist(plot_twist + cantidad);
                 }
             }
             default ->
                 throw new AssertionError(tipo.name());
         }
+    }
+
+    private boolean SePuedeSubir(int actual, int cantidad, int max) {
+        return (actual + cantidad) < max;
     }
 
     public void SubirCapitulo(Requerimientos_Capitulo requerimientos, boolean isPlotTwist) {
