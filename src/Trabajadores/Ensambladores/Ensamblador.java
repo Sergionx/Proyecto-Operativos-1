@@ -53,7 +53,6 @@ public class Ensamblador extends Trabajador {
                     System.out.println("Subo no plot");
                     this.drive.SubirCapitulo(requerimientos_Estandar, plotTwist);
                     this.capitulos_Para_PlotTwist++;
-
                 }
             }
             this.mutex.release();
