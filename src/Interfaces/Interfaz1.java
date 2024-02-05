@@ -99,6 +99,8 @@ public class Interfaz1 extends javax.swing.JFrame {
         field_VigilandoDirector = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         field_Contador = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -264,7 +266,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 field_Viendo_AnimeActionPerformed(evt);
             }
         });
-        Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 190, -1));
+        Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 190, -1));
 
         field_VigilandoDirector.setEditable(false);
         field_VigilandoDirector.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +274,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 field_VigilandoDirectorActionPerformed(evt);
             }
         });
-        Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 190, -1));
+        Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
 
         jLabel14.setText("Contador: ");
         Star_Pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
@@ -284,6 +286,12 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         Star_Pane.add(field_Contador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
+        jLabel16.setText("Estado del Director");
+        Star_Pane.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        jLabel17.setText("Estado del Project Manager");
+        Star_Pane.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -433,6 +441,8 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
