@@ -22,15 +22,29 @@ public class ProjectManager extends Trabajador {
     private boolean viendo_Anime = false;
     private final Contador contador;
     public int tiempo_Para_Contador = 32;
-    
-    private JTextField field_Viendo_Anime;
 
-    public ProjectManager(Semaphore mutex, Drive drive, Ganancias ganancias, 
-            Contador contador, JTextField field_Viendo_Anime) {
+    private int faltas = 0;
+    private int dinero_Descontado = 0;
+
+    private JTextField field_Viendo_Anime;
+    private final JTextField field_faltasPM;
+    private final JTextField field_DineroPM;
+
+    public ProjectManager(Semaphore mutex, Drive drive, Ganancias ganancias,
+            Contador contador,
+            JTextField field_Viendo_Anime, JTextField field_faltasPM,
+            JTextField field_DineroPM) {
         super(mutex, drive, ganancias);
         this.sueldo = 40;
         this.contador = contador;
-        this.field_Viendo_Anime= field_Viendo_Anime;
+
+        this.field_Viendo_Anime = field_Viendo_Anime;
+        this.field_faltasPM = field_faltasPM;
+        this.field_DineroPM = field_DineroPM;
+
+        this.field_DineroPM.setText("0$");
+        this.field_faltasPM.setText("0");
+
     }
 
     @Override
@@ -59,26 +73,34 @@ public class ProjectManager extends Trabajador {
         }
         this.pagarSueldo(sueldo * 24);
     }
-    
-    public boolean getViendo_anime(){
+
+    public boolean getViendo_anime() {
         return this.viendo_Anime;
     }
-
 
     /**
      * @param viendo_Anime the viendo_Anime to set
      */
     public void setViendo_Anime(boolean viendo_Anime) {
         this.viendo_Anime = viendo_Anime;
-        
+
         if (viendo_Anime) {
             this.field_Viendo_Anime.setText("Viendo anime");
             this.field_Viendo_Anime.setBackground(Color.GREEN);
-        }else{
+        } else {
             this.field_Viendo_Anime.setText("No esta viendo anime");
             this.field_Viendo_Anime.setBackground(Color.red);
         }
     }
-    
-    
+
+    @Override
+    public void descontarSueldo(int cantidad) {
+        this.dinero_Descontado += cantidad;
+        this.field_DineroPM.setText(this.dinero_Descontado + "$");
+
+        this.faltas++;
+        this.field_faltasPM.setText("" + this.faltas);
+        super.descontarSueldo(cantidad);
+
+    }
 }

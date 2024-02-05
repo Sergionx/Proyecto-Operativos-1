@@ -22,8 +22,10 @@ import javax.swing.JTextField;
 public class Director extends Trabajador {
 
     private final Contador contador;
+
     private final ProjectManager projectmanager;
     private boolean vigilando;
+    private boolean pillo_Al_PM_Daily = false;
     public final JTextField field_vigilando;
 
     public Director(Semaphore mutex, Drive drive, Ganancias ganancias,
@@ -35,7 +37,6 @@ public class Director extends Trabajador {
 
         this.field_vigilando = field_vigilando;
         this.setVigilando(false);
-        
     }
 
     @Override
@@ -62,6 +63,7 @@ public class Director extends Trabajador {
         } else {
             this.trabajar_administrativo();
         }
+        this.pillo_Al_PM_Daily = false;
     }
 
     private void enviarCapitulos() {
@@ -104,8 +106,9 @@ public class Director extends Trabajador {
     }
 
     private void vigilar_ProjectManager() {
-        if (this.projectmanager.getViendo_anime()) {
-            this.descontarSueldo(100);
+        if (this.projectmanager.getViendo_anime() && !this.pillo_Al_PM_Daily) {
+            this.pillo_Al_PM_Daily = true;
+            projectmanager.descontarSueldo(100);
         }
     }
 
@@ -120,12 +123,11 @@ public class Director extends Trabajador {
 
     public void setVigilando(boolean vigilando) {
         this.vigilando = vigilando;
-        
-        if (vigilando) {
+
+        if (this.vigilando) {
             this.field_vigilando.setText("Vigilando..");
             this.field_vigilando.setBackground(Color.GREEN);
-            
-        }else{
+        } else {
             this.field_vigilando.setText("No vigilando..");
             this.field_vigilando.setBackground(Color.red);
         }

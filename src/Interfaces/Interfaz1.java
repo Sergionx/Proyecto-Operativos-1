@@ -40,7 +40,8 @@ public class Interfaz1 extends javax.swing.JFrame {
             new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
             guiones_Field, doblajes_Field, escenarios_Field,
             animaciones_Field, plotTwist_Field),
-            field_Viendo_Anime, field_VigilandoDirector,
+            field_Viendo_Anime, field_FaltasPM, field_DescontadoPM,
+            field_VigilandoDirector,
             field_Contador
             ), //            new Empresa_Labels(
         //            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
@@ -101,6 +102,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         field_Contador = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        field_FaltasPM = new javax.swing.JTextField();
+        field_DescontadoPM = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -146,7 +151,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         starfondo.setText("jLabel4");
         Star_Pane.add(starfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 80, 790, 1090));
 
-        jLabel6.setText("Recurssos del Drive");
+        jLabel6.setText("Recursos del Drive");
         Star_Pane.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
 
         jLabel7.setText("Actuales");
@@ -274,7 +279,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 field_VigilandoDirectorActionPerformed(evt);
             }
         });
-        Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
+        Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
 
         jLabel14.setText("Contador: ");
         Star_Pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
@@ -288,10 +293,32 @@ public class Interfaz1 extends javax.swing.JFrame {
         Star_Pane.add(field_Contador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         jLabel16.setText("Estado del Director");
-        Star_Pane.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        Star_Pane.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabel17.setText("Estado del Project Manager");
         Star_Pane.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel18.setText("Faltas ");
+        Star_Pane.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+
+        jLabel19.setText("Dinero descontado");
+        Star_Pane.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+
+        field_FaltasPM.setEditable(false);
+        field_FaltasPM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_FaltasPMActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(field_FaltasPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+
+        field_DescontadoPM.setEditable(false);
+        field_DescontadoPM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_DescontadoPMActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(field_DescontadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -372,6 +399,14 @@ public class Interfaz1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_ContadorActionPerformed
 
+    private void field_FaltasPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_FaltasPMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_FaltasPMActionPerformed
+
+    private void field_DescontadoPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_DescontadoPMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_DescontadoPMActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -430,6 +465,8 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JTextField escenarios_Field;
     private javax.swing.JTextField escenarios_FieldMAX;
     private javax.swing.JTextField field_Contador;
+    private javax.swing.JTextField field_DescontadoPM;
+    private javax.swing.JTextField field_FaltasPM;
     private javax.swing.JTextField field_Viendo_Anime;
     private javax.swing.JTextField field_VigilandoDirector;
     private javax.swing.JTextField guiones_Field;
@@ -443,6 +480,8 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

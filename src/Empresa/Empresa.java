@@ -39,7 +39,7 @@ public class Empresa {
     private final Ganancias ganancias;
 
     private final Empresa_Labels empresa_Labels;
-    
+
     private final int last_carnet;
     public String nombre;
     private final Drive drive;
@@ -63,7 +63,7 @@ public class Empresa {
 
         this.initalizeEmpresaEspecifica(nombre);
         this.initalizeEmpleados();
-        
+
     }
 
     private void initalizeEmpresaEspecifica(String nombre) {
@@ -79,9 +79,11 @@ public class Empresa {
     }
 
     private void initalizeEmpleados() {
-        this.manager = new ProjectManager(this.mutex, this.drive, ganancias, 
-                this.contador, this.empresa_Labels.field_Viendo_Anime);
-        this.director = new Director(this.mutex, this.drive, ganancias, 
+        this.manager = new ProjectManager(this.mutex, this.drive, ganancias,
+                this.contador, this.empresa_Labels.field_Viendo_Anime,
+                this.empresa_Labels.field_faltasPM, this.empresa_Labels.field_DescontadoPM
+        );
+        this.director = new Director(this.mutex, this.drive, ganancias,
                 this.contador, this.manager, this.empresa_Labels.field_vigilando);
 
         var trabajador = new TrabajadorEstudio(
@@ -112,7 +114,7 @@ public class Empresa {
         trabajdor4.start();
         trabajdor5.start();
         ensamblador.start();
-        
+
         this.manager.start();
         this.director.start();
 
@@ -126,7 +128,4 @@ public class Empresa {
 
     }
 
-    
-    
-    
 }
