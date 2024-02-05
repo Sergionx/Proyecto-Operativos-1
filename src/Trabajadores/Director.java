@@ -23,7 +23,7 @@ public class Director extends Trabajador {
 
     private final Contador contador;
     private final ProjectManager projectmanager;
-    private boolean vigilando = false;
+    private boolean vigilando;
     public final JTextField field_vigilando;
 
     public Director(Semaphore mutex, Drive drive, Ganancias ganancias,
@@ -34,6 +34,8 @@ public class Director extends Trabajador {
         this.projectmanager = projectmanager;
 
         this.field_vigilando = field_vigilando;
+        this.setVigilando(false);
+        
     }
 
     @Override

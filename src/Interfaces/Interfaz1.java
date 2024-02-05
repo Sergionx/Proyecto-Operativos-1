@@ -68,7 +68,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         TabbedPane_principal = new javax.swing.JTabbedPane();
         Star_Pane = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -103,7 +103,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
-        jLabel14.setText("jLabel14");
+        jLabel15.setText("jLabel14");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -266,6 +266,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 190, -1));
 
+        field_VigilandoDirector.setEditable(false);
         field_VigilandoDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_VigilandoDirectorActionPerformed(evt);
@@ -431,6 +432,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

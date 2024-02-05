@@ -95,6 +95,7 @@ public class Drive {
         this.escenarios -= requerimientos.escenarios;
         this.plot_twist -= requerimientos.plotTwists;
 
+        System.out.println("capitulo subiendo");
         if (isPlotTwist) {
             this.setCapitulos_PlotTwist(capitulos_PlotTwist + 1);
         } else {
