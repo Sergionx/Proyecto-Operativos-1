@@ -90,8 +90,10 @@ public class TrabajadorEstudio extends Trabajador {
             this.mutex.acquire();
             if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
                 this.drive.SubirDrive(tipo, this.working_rate);
+                System.out.println("subo " + this.working_rate + " " + this.tipo);
             } else {
                 this.drive.SubirDrive(tipo);
+                System.out.println("subo " + 1 + " " + this.tipo);
             }
             this.mutex.release();
         } catch (InterruptedException ex) {

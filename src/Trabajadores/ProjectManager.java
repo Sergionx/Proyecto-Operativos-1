@@ -35,9 +35,9 @@ public class ProjectManager extends Trabajador {
 
     @Override
     public void trabajar() {
-        System.out.println("Comienza viendo anime");
+//        System.out.println("Comienza viendo anime");
         while (this.tiempo_Para_Contador != 0) {
-            System.out.println("Tiempo para contador" + this.tiempo_Para_Contador);
+//            System.out.println("Tiempo para contador" + this.tiempo_Para_Contador);
             this.setViendo_Anime(!this.getViendo_anime());
             try {
                 sleep(Constants.MINUTE_DURATION * 30);
@@ -70,7 +70,6 @@ public class ProjectManager extends Trabajador {
      */
     public void setViendo_Anime(boolean viendo_Anime) {
         this.viendo_Anime = viendo_Anime;
-        System.out.println("Viendo anime");
         
         if (viendo_Anime) {
             this.field_Viendo_Anime.setText("Viendo anime");
