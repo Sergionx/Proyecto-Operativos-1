@@ -41,7 +41,6 @@ public class Requerimientos_Capitulo {
                 || this.animaciones > drive.animaciones
                 || this.doblajes > drive.doblajes
                 || (this.plotTwists != 0 && this.plotTwists > drive.plot_twist));
-
     }
 
 }
