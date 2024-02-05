@@ -20,7 +20,6 @@ public class ProyectoOperativos1 {
         // TODO code application logic here
         
         InterfazInicial interfaz= new InterfazInicial();
-       
         interfaz.show();
         
         

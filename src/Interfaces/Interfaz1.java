@@ -262,14 +262,14 @@ public class Interfaz1 extends javax.swing.JFrame {
                 field_Viendo_AnimeActionPerformed(evt);
             }
         });
-        Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 190, -1));
 
         field_VigilandoDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_VigilandoDirectorActionPerformed(evt);
             }
         });
-        Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 190, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
