@@ -19,6 +19,7 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     /**
      * Creates new form Interfaz1
+     *
      * @param trabajadores_Disney
      * @param trabajadores_Star_Channel
      */
@@ -39,18 +40,17 @@ public class Interfaz1 extends javax.swing.JFrame {
             new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
             guiones_Field, doblajes_Field, escenarios_Field,
             animaciones_Field, plotTwist_Field),
-            field_Viendo_Anime, field_VigilandoDirector
-            ),
-//            new Empresa_Labels(
-//            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
-//            guiones_Field, doblajes_Field, escenarios_Field,
-//            animaciones_Field, plotTwist_Field)
-//            ) // Poner labels de disney
+            field_Viendo_Anime, field_VigilandoDirector,
+            field_Contador
+            ), //            new Empresa_Labels(
+        //            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
+        //            guiones_Field, doblajes_Field, escenarios_Field,
+        //            animaciones_Field, plotTwist_Field)
+        //            ) // Poner labels de disney
         };
 
         empresas = new Empresa[]{
-            new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel),
-//            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
+            new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
         };
 
         for (int i = 0; i < empresas.length; i++) {
@@ -97,6 +97,8 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         field_Viendo_Anime = new javax.swing.JTextField();
         field_VigilandoDirector = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        field_Contador = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -271,6 +273,17 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 190, -1));
 
+        jLabel14.setText("Contador: ");
+        Star_Pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        field_Contador.setEditable(false);
+        field_Contador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_ContadorActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(field_Contador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 810, 450));
@@ -346,6 +359,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_VigilandoDirectorActionPerformed
 
+    private void field_ContadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_ContadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_ContadorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +420,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JTextField doblajes_FieldMAX;
     private javax.swing.JTextField escenarios_Field;
     private javax.swing.JTextField escenarios_FieldMAX;
+    private javax.swing.JTextField field_Contador;
     private javax.swing.JTextField field_Viendo_Anime;
     private javax.swing.JTextField field_VigilandoDirector;
     private javax.swing.JTextField guiones_Field;

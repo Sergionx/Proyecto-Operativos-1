@@ -63,8 +63,8 @@ public class Director extends Trabajador {
     }
 
     private void enviarCapitulos() {
-        this.descansar();
         this.contador.reset();
+        this.descansar();
 //        ENviarcapitulos al drive
 
     }

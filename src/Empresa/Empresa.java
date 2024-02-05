@@ -57,7 +57,7 @@ public class Empresa {
         this.trabajadores_Iniciales = trabajadores_Iniciales;
 
         this.ganancias = new Ganancias();
-        this.contador = new Contador();
+        this.contador = new Contador(this.empresa_Labels.field_Contador);
         this.drive = new Drive(empresa_Labels.drive_Labels);
         this.mutex = new Semaphore(1);
 
