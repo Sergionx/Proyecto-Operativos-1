@@ -40,7 +40,7 @@ public class Interfaz1 extends javax.swing.JFrame {
             new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
             guiones_Field, doblajes_Field, escenarios_Field,
             animaciones_Field, plotTwist_Field),
-            field_Viendo_Anime,
+            field_Viendo_Anime, field_VigilandoDirector,
             field_Contador
             ), //            new Empresa_Labels(
         //            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
@@ -68,6 +68,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel15 = new javax.swing.JLabel();
         TabbedPane_principal = new javax.swing.JTabbedPane();
         Star_Pane = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -95,11 +96,14 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         field_Viendo_Anime = new javax.swing.JTextField();
+        field_VigilandoDirector = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         field_Contador = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+
+        jLabel15.setText("jLabel14");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -255,8 +259,20 @@ public class Interfaz1 extends javax.swing.JFrame {
         Star_Pane.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
         field_Viendo_Anime.setEditable(false);
-        field_Viendo_Anime.setText("jTextField1");
-        Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        field_Viendo_Anime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Viendo_AnimeActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(field_Viendo_Anime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 190, -1));
+
+        field_VigilandoDirector.setEditable(false);
+        field_VigilandoDirector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_VigilandoDirectorActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 190, -1));
 
         jLabel14.setText("Contador: ");
         Star_Pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
@@ -336,6 +352,14 @@ public class Interfaz1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_plotTwist_FieldMAXActionPerformed
 
+    private void field_Viendo_AnimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Viendo_AnimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Viendo_AnimeActionPerformed
+
+    private void field_VigilandoDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_VigilandoDirectorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_VigilandoDirectorActionPerformed
+
     private void field_ContadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_ContadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field_ContadorActionPerformed
@@ -399,6 +423,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JTextField escenarios_FieldMAX;
     private javax.swing.JTextField field_Contador;
     private javax.swing.JTextField field_Viendo_Anime;
+    private javax.swing.JTextField field_VigilandoDirector;
     private javax.swing.JTextField guiones_Field;
     private javax.swing.JTextField guiones_FieldMAX;
     private javax.swing.JLabel jLabel1;
@@ -407,6 +432,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -21,7 +21,9 @@ public class InterfazInicial extends javax.swing.JFrame {
      * Creates new form InterfazInicial
      */
     public InterfazInicial() {
+        System.out.println("holaaa");
         initComponents();
+        System.out.println("chap");
     }
 
     /**
