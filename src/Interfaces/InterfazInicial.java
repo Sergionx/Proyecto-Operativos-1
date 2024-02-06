@@ -6,6 +6,7 @@ package Interfaces;
 
 import Interfaces.Interfaz1;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import Utils.Funciones;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -195,7 +196,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             
             File fichero = fx.getSelectedFile();
-           trabajadores_Disney  = fc.Leer_txt(fichero.getAbsolutePath());
+           var hola  = Funciones.Leer_txt_trabajadores(fichero.getAbsolutePath());
             
     }//GEN-LAST:event_CargarTXTActionPerformed
 
