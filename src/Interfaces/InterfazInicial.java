@@ -6,6 +6,9 @@ package Interfaces;
 
 import Interfaces.Interfaz1;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import java.awt.Color;
+import java.io.File;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -63,8 +66,9 @@ public class InterfazInicial extends javax.swing.JFrame {
         BotonRedirigeInterfaz = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        fondoprincipal = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        CargarTXT = new javax.swing.JButton();
+        fondoprincipal = new javax.swing.JLabel();
 
         jToolBar1.setRollover(true);
 
@@ -157,12 +161,20 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1366_521.jpg"))); // NOI18N
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, 80));
 
+        jLabel12.setText("jLabel12");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
+
+        CargarTXT.setText("jButton1");
+        CargarTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargarTXTActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CargarTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, -1, -1));
+
         fondoprincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprincipaaal.png"))); // NOI18N
         fondoprincipal.setText("jLabel2");
         getContentPane().add(fondoprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 400));
-
-        jLabel12.setText("jLabel12");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,6 +185,19 @@ public class InterfazInicial extends javax.swing.JFrame {
         interfaz.show();
         
     }//GEN-LAST:event_BotonRedirigeInterfazActionPerformed
+
+    private void CargarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarTXTActionPerformed
+       CargarTXT.setBackground(new java.awt.Color(255, 204, 204));
+       JFileChooser fx = new JFileChooser();
+        
+        int seleccion = fx.showOpenDialog(this);
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            
+            File fichero = fx.getSelectedFile();
+           trabajadores_Disney  = fc.Leer_txt(fichero.getAbsolutePath());
+            
+    }//GEN-LAST:event_CargarTXTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +237,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRedirigeInterfaz;
+    private javax.swing.JButton CargarTXT;
     private javax.swing.JLabel fondoprincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
