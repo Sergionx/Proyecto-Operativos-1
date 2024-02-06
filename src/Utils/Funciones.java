@@ -31,10 +31,9 @@ public class Funciones {
         return resultado;
     }
 
-    public static int Leer_txt_cant_seg(String path) {
+    public static int Leer_txt_Int(String path) {
         int num = 0;
         String line;
-        String info = "";
         File file = new File(path);
 
         try {

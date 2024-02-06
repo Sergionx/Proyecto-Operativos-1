@@ -10,24 +10,33 @@ import Utils.Funciones;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.event.ChangeListener;
 
 /**
  *
  * @author valeriazampetti
  */
 public class InterfazInicial extends javax.swing.JFrame {
-    
+
     static Empresa_Trabajadores_Iniciales trabajadores_Disney;
     static Empresa_Trabajadores_Iniciales trabajadores_Star_Channel;
-    
+
+    static int segundos_Contador;
+    static int dias_Contador;
 
     /**
      * Creates new form InterfazInicial
      */
     public InterfazInicial() {
-        System.out.println("holaaa");
         initComponents();
-        System.out.println("chap");
+
+        segundos_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            segundos_Contador = (int) segundos_Spinner.getValue();
+        });
+
+        contador_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            dias_Contador = (int) contador_Spinner.getValue();
+        });
     }
 
     /**
@@ -55,7 +64,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        seconds_Spinner = new javax.swing.JSpinner();
+        segundos_Spinner = new javax.swing.JSpinner();
         jSpinner8 = new javax.swing.JSpinner();
         jSpinner9 = new javax.swing.JSpinner();
         jSpinner10 = new javax.swing.JSpinner();
@@ -123,7 +132,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Plot Twist");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
-        getContentPane().add(seconds_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
+        getContentPane().add(segundos_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
         getContentPane().add(jSpinner8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
         getContentPane().add(jSpinner9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
         getContentPane().add(jSpinner10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
@@ -246,26 +255,37 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     private void trabajadores_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_GuardarActionPerformed
         this.setVisible(false);
-        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney,trabajadores_Star_Channel);
+        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney, trabajadores_Star_Channel);
         interfaz.show();
-        
+
     }//GEN-LAST:event_trabajadores_GuardarActionPerformed
 
     private void trabajadores_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_CargarActionPerformed
-       CargarTXT.setBackground(new java.awt.Color(255, 204, 204));
-       JFileChooser fx = new JFileChooser();
-        
+        trabajadores_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
+
         int seleccion = fx.showOpenDialog(this);
-        
+
         if (seleccion == JFileChooser.APPROVE_OPTION) {
-            
+
             File fichero = fx.getSelectedFile();
-           var hola  = Funciones.Leer_txt_trabajadores(fichero.getAbsolutePath());
-            
+            var hola = Funciones.Leer_txt_trabajadores(fichero.getAbsolutePath());
+//            TODO HAcer lo de leer
+        }
     }//GEN-LAST:event_trabajadores_CargarActionPerformed
 
     private void segundos_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundos_CargarActionPerformed
-        // TODO add your handling code here:
+        segundos_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
+
+        int seleccion = fx.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+
+            File fichero = fx.getSelectedFile();
+            int segundos = Funciones.Leer_txt_Int(fichero.getAbsolutePath());
+            segundos_Spinner.setValue(segundos);
+        }
     }//GEN-LAST:event_segundos_CargarActionPerformed
 
     private void segundos_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundos_GuardarActionPerformed
@@ -273,13 +293,22 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_segundos_GuardarActionPerformed
 
     private void contador_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_CargarActionPerformed
-        // TODO add your handling code here:
+        contador_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
+
+        int seleccion = fx.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fx.getSelectedFile();
+            int dias = Funciones.Leer_txt_Int(fichero.getAbsolutePath());
+            contador_Spinner.setValue(dias);
+        }
     }//GEN-LAST:event_contador_CargarActionPerformed
 
     private void contador_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_GuardarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contador_GuardarActionPerformed
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -294,16 +323,24 @@ public class InterfazInicial extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazInicial.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazInicial.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazInicial.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazInicial.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -311,7 +348,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InterfazInicial().setVisible(true);
-                
+
             }
         });
     }
@@ -352,9 +389,9 @@ public class InterfazInicial extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private java.awt.ScrollPane scrollPane1;
-    private javax.swing.JSpinner seconds_Spinner;
     private javax.swing.JButton segundos_Cargar;
     private javax.swing.JButton segundos_Guardar;
+    private javax.swing.JSpinner segundos_Spinner;
     private javax.swing.JButton trabajadores_Cargar;
     private javax.swing.JButton trabajadores_Guardar;
     // End of variables declaration//GEN-END:variables
