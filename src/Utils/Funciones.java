@@ -112,5 +112,21 @@ public class Funciones {
         }
         
     }
+    
+    public static void write_txt_int(File file,  Empresa_Trabajadores_Iniciales trabajadores){
+        String trabajadores_txt = trabajadores.guionista + ","+ trabajadores.animador+ ","+ trabajadores.actor_doblaje+ ","+ trabajadores.disenador_escenario+ ","+ trabajadores.plot_twist;
+        try{
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(trabajadores_txt); 
+            pw.close();
+            JOptionPane.showMessageDialog(null, "Guardado Exitoso");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Guardado Ha Fallado");
+        }
+        
+    }
+    
+    
 
 }
