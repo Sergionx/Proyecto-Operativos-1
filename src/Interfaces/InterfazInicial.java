@@ -17,6 +17,7 @@ import javax.swing.event.ChangeListener;
  * @author valeriazampetti
  */
 public class InterfazInicial extends javax.swing.JFrame {
+    
 
     static Empresa_Trabajadores_Iniciales trabajadores_Disney;
     static Empresa_Trabajadores_Iniciales trabajadores_Star_Channel;
@@ -28,6 +29,7 @@ public class InterfazInicial extends javax.swing.JFrame {
      * Creates new form InterfazInicial
      */
     public InterfazInicial() {
+         this.setLocationRelativeTo(null);
         initComponents();
 
         segundos_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
@@ -289,7 +291,19 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_segundos_CargarActionPerformed
 
     private void segundos_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundos_GuardarActionPerformed
-        // TODO add your handling code here:
+         segundos_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
+
+        int seleccion = fx.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+
+            File fichero = fx.getSelectedFile();
+           
+            
+            Funciones.write_txt_int(fichero, segundos_Contador);
+        }
+      
     }//GEN-LAST:event_segundos_GuardarActionPerformed
 
     private void contador_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_CargarActionPerformed
@@ -306,7 +320,15 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_contador_CargarActionPerformed
 
     private void contador_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_GuardarActionPerformed
-        // TODO add your handling code here:
+         contador_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
+
+        int seleccion = fx.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fx.getSelectedFile();
+            Funciones.write_txt_int(fichero, segundos_Contador);
+        }
     }//GEN-LAST:event_contador_GuardarActionPerformed
 
     /**

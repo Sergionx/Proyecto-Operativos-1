@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.LineNumberReader;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -96,6 +97,20 @@ public class Funciones {
             JOptionPane.showMessageDialog(null, "ÉRROR AL LEER! ");
         }
         return new Empresa_Trabajadores_Iniciales[2];
+    }
+    
+    public static void write_txt_int(File file,  int numero){
+       
+        try{
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(numero); 
+            pw.close();
+            JOptionPane.showMessageDialog(null, "Guardado Exitoso");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Guardado Ha Fallado");
+        }
+        
     }
 
 }
