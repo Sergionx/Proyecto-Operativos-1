@@ -34,8 +34,6 @@ public class Empresa {
     private Requerimientos_Capitulo requerimiento_Estandar;
     private Requerimientos_Capitulo requerimiento_PlotTwist;
 
-    private Empresa_Trabajadores_Iniciales trabajadores_Iniciales;
-
     private final Ganancias ganancias;
 
     private final Empresa_Labels empresa_Labels;
@@ -44,21 +42,19 @@ public class Empresa {
     public String nombre;
     private final Drive drive;
     private final Semaphore mutex;
-    
+
     private final int[] ganancias_Daily;
     private GraficoEmpresa funcionesGrafico;
 
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
-            Empresa_Trabajadores_Iniciales trabajadores_Iniciales, 
+            Empresa_Trabajadores_Iniciales trabajadores_Iniciales,
             int[] ganancias_Daily, GraficoEmpresa funcionesGrafico) {
         this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
 
         this.empresa_Labels = empresa_Labels;
-
-        this.trabajadores_Iniciales = trabajadores_Iniciales;
 
         this.ganancias = new Ganancias();
         this.contador = new Contador(this.empresa_Labels.field_Contador);
@@ -69,7 +65,7 @@ public class Empresa {
         this.funcionesGrafico = funcionesGrafico;
 
         this.initalizeEmpresaEspecifica(nombre);
-        this.initalizeEmpleados();
+        this.initalizeEmpleados(trabajadores_Iniciales);
 
     }
 
@@ -90,7 +86,7 @@ public class Empresa {
         funcionesGrafico.crearGrafico();
     }
 
-    private void initalizeEmpleados() {
+    private void initalizeEmpleados(Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
         this.manager = new ProjectManager(this.mutex, this.drive, ganancias,
                 this.contador, this.empresa_Labels.field_Viendo_Anime,
                 this.empresa_Labels.field_faltasPM, this.empresa_Labels.field_DescontadoPM
@@ -98,46 +94,45 @@ public class Empresa {
         this.director = new Director(this.mutex, this.drive, this, ganancias,
                 this.contador, this.manager, this.empresa_Labels.field_vigilando);
 
-        var trabajador = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.GUIONISTA, mutex, drive,
-                ganancias, last_carnet);
+        int comienzoFor = 0;
 
-        var trabajdor2 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.ACTOR_DOBLAJE, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.guionista,
+                TipoTrabajador_Estudio.GUIONISTA);
+        comienzoFor += trabajadores_Iniciales.guionista;
 
-        var trabajdor3 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.ANIMADOR, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.actor_doblaje,
+                TipoTrabajador_Estudio.ACTOR_DOBLAJE);
+        comienzoFor += trabajadores_Iniciales.actor_doblaje;
 
-        var trabajdor4 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.DISENADOR_ESCENARIO, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.animador,
+                TipoTrabajador_Estudio.ANIMADOR);
+        comienzoFor += trabajadores_Iniciales.animador;
 
-        var trabajdor5 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.PLOT_TWIST, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.disenador_escenario,
+                TipoTrabajador_Estudio.DISENADOR_ESCENARIO);
+        comienzoFor += trabajadores_Iniciales.disenador_escenario;
 
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.plot_twist,
+                TipoTrabajador_Estudio.PLOT_TWIST);
+
+//        TODO - Pensar si esto es dinamico tambiern
         var ensamblador = new Ensamblador(mutex, drive, ganancias,
                 this.capitulos_rate, requerimiento_Estandar, requerimiento_PlotTwist);
-        trabajador.start();
-        trabajdor2.start();
-        trabajdor3.start();
-        trabajdor4.start();
-        trabajdor5.start();
+
         ensamblador.start();
 
         this.manager.start();
         this.director.start();
 
-        for (int i = 0; i < empleados.length; i++) {
-//            var trabajador = new TrabajadorEstudio(
-//                    TipoTrabajador_Estudio.GUIONISTA, mutex, drive,
-//                    ganancias, last_carnet);
-//            trabajador.start();
-//            this.empleados[i] = trabajador;
-        }
+    }
 
+    private void crearEmpleados(int comienzo, int cantidad, TipoTrabajador_Estudio tipo) {
+        for (int i = comienzo; i < cantidad; i++) {
+            var trabajador = new TrabajadorEstudio(
+                    tipo, mutex, drive, ganancias, last_carnet);
+            this.empleados[i] = trabajador;
+            trabajador.start();
+        }
     }
 
     public int[] getGanancias_Daily() {
