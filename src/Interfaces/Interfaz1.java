@@ -8,6 +8,9 @@ import Empresa.Empresa;
 import Interfaces.clases.Drive_Labels;
 import Interfaces.clases.Empresa_Labels;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import Interfaces.clases.Grafico_Utilidad;
+import org.jfree.chart.ChartPanel;
+import org.jfree.data.xy.XYDataset;
 
 /**
  *
@@ -15,6 +18,7 @@ import Interfaces.clases.Empresa_Trabajadores_Iniciales;
  */
 public class Interfaz1 extends javax.swing.JFrame {
 
+    static ChartPanel chartUtilidades;
     static Empresa[] empresas;
 
     /**
@@ -30,6 +34,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.crearEmpresas(trabajadores_Disney, trabajadores_Star_Channel);
+        this.crearGrafico();
 
     }
 
@@ -51,7 +56,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         };
 
         empresas = new Empresa[]{
-            new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
+            new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel,
+            new int[50], () -> {
+                crearGrafico();
+            }), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
         };
 
         for (int i = 0; i < empresas.length; i++) {
@@ -77,7 +85,6 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Star_PlotTwist_Field = new javax.swing.JTextField();
         escenarios_Field = new javax.swing.JTextField();
-        starfondo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -106,7 +113,8 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         field_FaltasPM = new javax.swing.JTextField();
         field_DescontadoPM = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        Chart_Panel = new javax.swing.JPanel();
+        Star_Fondo = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -146,10 +154,6 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         Star_Pane.add(escenarios_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
-
-        starfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusimagenes.jpg"))); // NOI18N
-        starfondo.setText("jLabel4");
-        Star_Pane.add(starfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 80, 790, 1090));
 
         jLabel6.setText("Recursos del Drive");
         Star_Pane.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
@@ -319,10 +323,10 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         Star_Pane.add(field_DescontadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
+        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 290, 260));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 810, 450));
+        Star_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
+        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 970, 490));
 
         TabbedPane_principal.addTab("tab2", Star_Pane);
 
@@ -330,11 +334,11 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disneyfondo.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
-        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 760, 410));
+        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 990, 480));
 
         TabbedPane_principal.addTab("tab2", Disney_Pane);
 
-        getContentPane().add(TabbedPane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 450));
+        getContentPane().add(TabbedPane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -449,12 +453,22 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
 
     private void crearGrafico() {
-//        TODO
+
+//TODO - Encontrar forma de pasar utilidades
+//TODO - Cuando hagamos disney, cambiar el segundo indice 0 por 1
+        chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
+                this.empresas[0].getGanancias_Daily(), this.empresas[0].getGanancias_Daily());
+
+        Chart_Panel.removeAll();
+        Chart_Panel.add(chartUtilidades);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Chart_Panel;
     private javax.swing.JPanel Disney_Pane;
     private javax.swing.JTextField Star_Estandar_Field;
+    private javax.swing.JLabel Star_Fondo;
     private javax.swing.JPanel Star_Pane;
     private javax.swing.JTextField Star_PlotTwist_Field;
     private javax.swing.JTabbedPane TabbedPane_principal;
@@ -485,13 +499,11 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField plotTwist_Field;
     private javax.swing.JTextField plotTwist_FieldMAX;
-    private javax.swing.JLabel starfondo;
     // End of variables declaration//GEN-END:variables
 }

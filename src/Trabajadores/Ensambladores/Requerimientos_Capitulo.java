@@ -27,7 +27,7 @@ public class Requerimientos_Capitulo {
         this.animaciones = animaciones;
         this.doblajes = doblajes;
         this.plotTwists = plotTwists;
-        this.ganancia = ganancia * 1000;
+        this.ganancia = ganancia;
     }
 
     @Override

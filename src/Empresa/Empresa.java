@@ -44,10 +44,14 @@ public class Empresa {
     public String nombre;
     private final Drive drive;
     private final Semaphore mutex;
+    
+    private final int[] ganancias_Daily;
+    private GraficoEmpresa funcionesGrafico;
 
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
-            Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
+            Empresa_Trabajadores_Iniciales trabajadores_Iniciales, 
+            int[] ganancias_Daily, GraficoEmpresa funcionesGrafico) {
         this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
@@ -60,6 +64,9 @@ public class Empresa {
         this.contador = new Contador(this.empresa_Labels.field_Contador);
         this.drive = new Drive(empresa_Labels.drive_Labels);
         this.mutex = new Semaphore(1);
+
+        this.ganancias_Daily = ganancias_Daily;
+        this.funcionesGrafico = funcionesGrafico;
 
         this.initalizeEmpresaEspecifica(nombre);
         this.initalizeEmpleados();
@@ -78,12 +85,17 @@ public class Empresa {
         }
     }
 
+    public void registrarGanancias(int day, int ganancias) {
+        this.ganancias_Daily[day] = ganancias;
+        funcionesGrafico.crearGrafico();
+    }
+
     private void initalizeEmpleados() {
         this.manager = new ProjectManager(this.mutex, this.drive, ganancias,
                 this.contador, this.empresa_Labels.field_Viendo_Anime,
                 this.empresa_Labels.field_faltasPM, this.empresa_Labels.field_DescontadoPM
         );
-        this.director = new Director(this.mutex, this.drive, ganancias,
+        this.director = new Director(this.mutex, this.drive, this, ganancias,
                 this.contador, this.manager, this.empresa_Labels.field_vigilando);
 
         var trabajador = new TrabajadorEstudio(
@@ -128,4 +140,7 @@ public class Empresa {
 
     }
 
+    public int[] getGanancias_Daily() {
+        return ganancias_Daily;
+    }
 }

@@ -31,6 +31,7 @@ public class Drive {
 
     private int capitulos_Estandar;
     private int capitulos_PlotTwist;
+    private int ganancias_Pending;
 
     public Drive(Drive_Labels labels) {
         this.guiones = 0;
@@ -104,8 +105,20 @@ public class Drive {
             this.setCapitulos_PlotTwist(capitulos_PlotTwist + 1);
         } else {
             this.setCapitulos_Estandar(capitulos_Estandar + 1);
-
         }
+        System.out.println("Subiendo capitulo con ganancias " + requerimientos.ganancia);
+        this.ganancias_Pending += requerimientos.ganancia;
+    }
+
+    public int vaciarCapitulos() {
+        var ganancias = this.ganancias_Pending;
+        
+        this.setCapitulos_Estandar(0);
+        this.setCapitulos_PlotTwist(0);
+        this.ganancias_Pending = 0;
+        System.out.println("Vacie capitulos");
+        
+        return ganancias;
     }
 
     public void setCapitulos_Estandar(int capitulos_Estandar) {
