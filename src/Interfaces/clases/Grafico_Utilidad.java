@@ -25,7 +25,6 @@ public class Grafico_Utilidad {
     public static ChartPanel createUtilityXYChart(String titleChart, int[] utilidadesDisney, int[] utilidadesStar) {
         XYDataset dataset = crearDataset(utilidadesDisney, utilidadesStar);
         JFreeChart xyChart = crearChart(dataset, titleChart);
-        
         ChartPanel chartPanel = new ChartPanel(xyChart);
         
 //     TODO - Encontrar dimensiones buenas
@@ -36,8 +35,8 @@ public class Grafico_Utilidad {
         renderer.setSeriesPaint(0, Color.BLUE);
         renderer.setSeriesPaint(1, Color.RED);
 
-        renderer.setSeriesStroke(0, new BasicStroke(8.0f));
-        renderer.setSeriesStroke(1, new BasicStroke(8.0f));
+        renderer.setSeriesStroke(0, new BasicStroke(4.0f));
+        renderer.setSeriesStroke(1, new BasicStroke(4.0f));
         plot.setRenderer(renderer);
 
         return chartPanel;

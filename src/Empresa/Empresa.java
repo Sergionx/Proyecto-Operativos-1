@@ -17,6 +17,8 @@ import Trabajadores.TrabajadorEstudio;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -41,7 +43,9 @@ public class Empresa {
     private final int last_carnet;
     public String nombre;
     private final Drive drive;
-    private final Semaphore mutex;
+
+    private final Semaphore mutex_Drive;
+    private final Semaphore mutex_Ganancias;
 
     private final int[] ganancias_Daily;
     private GraficoEmpresa funcionesGrafico;
@@ -56,14 +60,16 @@ public class Empresa {
 
         this.empresa_Labels = empresa_Labels;
 
-        this.ganancias = new Ganancias();
+        this.ganancias = new Ganancias(empresa_Labels.ganancias_Labels);
         this.contador = new Contador(this.empresa_Labels.field_Contador);
         this.drive = new Drive(empresa_Labels.drive_Labels);
-        this.mutex = new Semaphore(1);
+        this.mutex_Drive = new Semaphore(1);
+        this.mutex_Ganancias = new Semaphore(1);
 
         this.ganancias_Daily = ganancias_Daily;
         this.funcionesGrafico = funcionesGrafico;
 
+        System.out.println(trabajadores_Iniciales);
         this.initalizeEmpresaEspecifica(nombre);
         this.initalizeEmpleados(trabajadores_Iniciales);
 
@@ -82,16 +88,28 @@ public class Empresa {
     }
 
     public void registrarGanancias(int day, int ganancias) {
-        this.ganancias_Daily[day] = ganancias;
-        funcionesGrafico.crearGrafico();
+        try {
+            this.mutex_Ganancias.acquire();
+            this.ganancias_Daily[day] = ganancias;
+            this.ganancias.setGanancias_Bruto(ganancias);
+            funcionesGrafico.crearGrafico();
+
+            System.out.println("ganancias " + ganancias);
+            this.mutex_Ganancias.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     private void initalizeEmpleados(Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
-        this.manager = new ProjectManager(this.mutex, this.drive, ganancias,
+        this.manager = new ProjectManager(this.mutex_Drive, this.mutex_Ganancias,
+                this.drive, ganancias,
                 this.contador, this.empresa_Labels.field_Viendo_Anime,
                 this.empresa_Labels.field_faltasPM, this.empresa_Labels.field_DescontadoPM
         );
-        this.director = new Director(this.mutex, this.drive, this, ganancias,
+        this.director = new Director(this.mutex_Drive, this.mutex_Ganancias,
+                this.drive, this, ganancias,
                 this.contador, this.manager, this.empresa_Labels.field_vigilando);
 
         int comienzoFor = 0;
@@ -116,20 +134,20 @@ public class Empresa {
                 TipoTrabajador_Estudio.PLOT_TWIST);
 
 //        TODO - Pensar si esto es dinamico tambiern
-        var ensamblador = new Ensamblador(mutex, drive, ganancias,
+        var ensamblador = new Ensamblador(mutex_Drive, this.mutex_Ganancias,
+                drive, ganancias,
                 this.capitulos_rate, requerimiento_Estandar, requerimiento_PlotTwist);
 
         ensamblador.start();
 
         this.manager.start();
         this.director.start();
-
     }
 
     private void crearEmpleados(int comienzo, int cantidad, TipoTrabajador_Estudio tipo) {
-        for (int i = comienzo; i < cantidad; i++) {
+        for (int i = comienzo; i < comienzo + cantidad; i++) {
             var trabajador = new TrabajadorEstudio(
-                    tipo, mutex, drive, ganancias, last_carnet);
+                    tipo, mutex_Drive, this.mutex_Ganancias, drive, ganancias, last_carnet);
             this.empleados[i] = trabajador;
             trabajador.start();
         }
@@ -138,4 +156,5 @@ public class Empresa {
     public int[] getGanancias_Daily() {
         return ganancias_Daily;
     }
+
 }

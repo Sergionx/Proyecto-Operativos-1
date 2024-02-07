@@ -29,9 +29,9 @@ public class Director extends Trabajador {
     private boolean pillo_Al_PM_Daily = false;
     public final JTextField field_vigilando;
 
-    public Director(Semaphore mutex, Drive drive, Empresa empresa, Ganancias ganancias,
+    public Director(Semaphore mutex_Drive, Semaphore mutex_Ganancias, Drive drive, Empresa empresa, Ganancias ganancias,
             Contador contador, ProjectManager projectmanager, JTextField field_vigilando) {
-        super(mutex, drive, ganancias);
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
         this.sueldo = 60;
         this.contador = contador;
         this.projectmanager = projectmanager;
@@ -72,8 +72,10 @@ public class Director extends Trabajador {
         this.contador.reset();
 
         int ganancias = this.drive.vaciarCapitulos();
+        if (ganancias == 0) {
+            return;
+        }
         this.empresa.registrarGanancias(this.contador.get_Dia_Real(), ganancias);
-        System.out.println("ganancias " + ganancias);
         this.descansar();
     }
 

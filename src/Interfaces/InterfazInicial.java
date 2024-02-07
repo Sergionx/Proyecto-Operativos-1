@@ -4,13 +4,11 @@
  */
 package Interfaces;
 
-import Interfaces.Interfaz1;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 import Utils.Funciones;
-import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.event.ChangeListener;
+import javax.swing.JSpinner;
 
 /**
  *
@@ -18,7 +16,7 @@ import javax.swing.event.ChangeListener;
  */
 public class InterfazInicial extends javax.swing.JFrame {
 
-    static Empresa_Trabajadores_Iniciales trabajadores_Disney;
+    static Empresa_Trabajadores_Iniciales trabajadores_Disney_Channel;
     static Empresa_Trabajadores_Iniciales trabajadores_Star_Channel;
 
     static int segundos_Contador;
@@ -30,6 +28,9 @@ public class InterfazInicial extends javax.swing.JFrame {
     public InterfazInicial() {
         initComponents();
 
+        trabajadores_Disney_Channel = new Empresa_Trabajadores_Iniciales();
+        trabajadores_Star_Channel = new Empresa_Trabajadores_Iniciales();
+
         segundos_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             segundos_Contador = (int) segundos_Spinner.getValue();
         });
@@ -37,6 +38,16 @@ public class InterfazInicial extends javax.swing.JFrame {
         contador_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             dias_Contador = (int) contador_Spinner.getValue();
         });
+
+        conectarSpinnersEmpresa(new JSpinner[]{guionista_Star_Spinner,
+            disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
+            plotTwist_Star_Spinner
+        }, trabajadores_Star_Channel);
+        
+        conectarSpinnersEmpresa(new JSpinner[]{guionista_Disney_Spinner,
+            disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
+            plotTwist_Disney_Spinner
+        }, trabajadores_Disney_Channel);
     }
 
     /**
@@ -255,8 +266,10 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     private void trabajadores_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_GuardarActionPerformed
         this.setVisible(false);
-        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney, trabajadores_Star_Channel);
+
+        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
+
 
     }//GEN-LAST:event_trabajadores_GuardarActionPerformed
 
@@ -350,6 +363,29 @@ public class InterfazInicial extends javax.swing.JFrame {
                 new InterfazInicial().setVisible(true);
 
             }
+        });
+    }
+
+    private void conectarSpinnersEmpresa(javax.swing.JSpinner[] spinners,
+            Empresa_Trabajadores_Iniciales trabajadores_iniciales) {
+        spinners[0].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.guionista = (int) spinners[0].getValue();
+        });
+
+        spinners[1].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.disenador_escenario = (int) spinners[1].getValue();
+        });
+
+        spinners[2].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.animador = (int) spinners[2].getValue();
+        });
+
+        spinners[3].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.actor_doblaje = (int) spinners[3].getValue();
+        });
+
+        spinners[4].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.plot_twist = (int) spinners[4].getValue();
         });
     }
 
