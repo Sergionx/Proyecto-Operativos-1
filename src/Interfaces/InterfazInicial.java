@@ -231,7 +231,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Trabajadores");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, -1, -1));
         getContentPane().add(disenador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
