@@ -63,6 +63,9 @@
       </Layout>
     </Container>
     <Component class="javax.swing.JSpinner" name="guionista_Star_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="50" y="130" width="-1" height="-1"/>
@@ -70,6 +73,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="animador_Star_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="50" y="230" width="-1" height="-1"/>
@@ -77,6 +83,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="plotTwist_Star_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="50" y="330" width="-1" height="-1"/>
@@ -84,6 +93,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="doblaje_Star_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="50" y="280" width="-1" height="-1"/>
@@ -91,6 +103,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="disenador_Star_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="50" y="180" width="-1" height="-1"/>
@@ -98,6 +113,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="guionista_Disney_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="290" y="130" width="-1" height="-1"/>
@@ -195,6 +213,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="animador_Disney_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="290" y="230" width="-1" height="-1"/>
@@ -202,6 +223,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="doblaje_Disney_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="290" y="280" width="-1" height="-1"/>
@@ -209,6 +233,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="plotTwist_Disney_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="290" y="330" width="-1" height="-1"/>
@@ -435,6 +462,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JSpinner" name="disenador_Disney_Spinner">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(&#xa;    new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)&#xa;)"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="290" y="180" width="-1" height="-1"/>

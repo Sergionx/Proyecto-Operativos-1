@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Utils.FuncionesSpinner;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 import Utils.Constants;
 import Utils.Funciones;
@@ -24,7 +25,8 @@ public class InterfazInicial extends javax.swing.JFrame {
     static int segundos_Contador;
     static int dias_Contador;
 
-    final int minDay = 2;
+    final int max_Empleados_Star = 10 + 6;
+    final int max_Empleados_Disney = 10 + 1;
 
     /**
      * Creates new form InterfazInicial
@@ -47,12 +49,12 @@ public class InterfazInicial extends javax.swing.JFrame {
         conectarSpinnersEmpresa(new JSpinner[]{guionista_Star_Spinner,
             disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
             plotTwist_Star_Spinner
-        }, trabajadores_Star_Channel);
+        }, trabajadores_Star_Channel, max_Empleados_Star);
 
         conectarSpinnersEmpresa(new JSpinner[]{guionista_Disney_Spinner,
             disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
             plotTwist_Disney_Spinner
-        }, trabajadores_Disney_Channel);
+        }, trabajadores_Disney_Channel, max_Empleados_Disney);
     }
 
     /**
@@ -69,12 +71,24 @@ public class InterfazInicial extends javax.swing.JFrame {
         scrollPane1 = new java.awt.ScrollPane();
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        guionista_Star_Spinner = new javax.swing.JSpinner();
-        animador_Star_Spinner = new javax.swing.JSpinner();
-        plotTwist_Star_Spinner = new javax.swing.JSpinner();
-        doblaje_Star_Spinner = new javax.swing.JSpinner();
-        disenador_Star_Spinner = new javax.swing.JSpinner();
-        guionista_Disney_Spinner = new javax.swing.JSpinner();
+        guionista_Star_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)
+        );
+        animador_Star_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)
+        );
+        plotTwist_Star_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)
+        );
+        doblaje_Star_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)
+        );
+        disenador_Star_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Star, 1)
+        );
+        guionista_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)
+        );
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -83,9 +97,15 @@ public class InterfazInicial extends javax.swing.JFrame {
         segundos_Spinner = new javax.swing.JSpinner(
             new SpinnerNumberModel(10, 10, 1000000, 1000)
         );
-        animador_Disney_Spinner = new javax.swing.JSpinner();
-        doblaje_Disney_Spinner = new javax.swing.JSpinner();
-        plotTwist_Disney_Spinner = new javax.swing.JSpinner();
+        animador_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)
+        );
+        doblaje_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)
+        );
+        plotTwist_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)
+        );
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -100,7 +120,9 @@ public class InterfazInicial extends javax.swing.JFrame {
         segundos_Guardar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        disenador_Disney_Spinner = new javax.swing.JSpinner();
+        disenador_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)
+        );
         jLabel17 = new javax.swing.JLabel();
         contador_Spinner = new javax.swing.JSpinner(
             new SpinnerNumberModel(1, 1, 99, 1)
@@ -434,27 +456,40 @@ public class InterfazInicial extends javax.swing.JFrame {
     }
 
     private void conectarSpinnersEmpresa(javax.swing.JSpinner[] spinners,
-            Empresa_Trabajadores_Iniciales trabajadores_iniciales) {
+            Empresa_Trabajadores_Iniciales trabajadores_iniciales,
+            int max_Empleados) {
         spinners[0].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             trabajadores_iniciales.guionista = (int) spinners[0].getValue();
+
+            FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
+
         });
 
         spinners[1].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             trabajadores_iniciales.disenador_escenario = (int) spinners[1].getValue();
+
+            FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
         });
 
         spinners[2].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             trabajadores_iniciales.animador = (int) spinners[2].getValue();
+
+            FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
         });
 
         spinners[3].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             trabajadores_iniciales.actor_doblaje = (int) spinners[3].getValue();
+
+            FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
         });
 
         spinners[4].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             trabajadores_iniciales.plot_twist = (int) spinners[4].getValue();
+
+            FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner animador_Disney_Spinner;
