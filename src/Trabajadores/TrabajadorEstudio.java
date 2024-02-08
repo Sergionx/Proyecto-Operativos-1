@@ -21,11 +21,13 @@ public class TrabajadorEstudio extends Trabajador {
     private int working_rate;
     private final TipoTrabajador_Estudio tipo;
 
-    public TrabajadorEstudio(TipoTrabajador_Estudio tipo, Semaphore mutex,
+    public TrabajadorEstudio(TipoTrabajador_Estudio tipo,
+            Semaphore mutex_Drive, Semaphore mutex_Ganancias,
             Drive drive, Ganancias ganancias, int last_carnet
     ) {
-        super(mutex, drive, ganancias);
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
         this.tipo = tipo;
+
         this.asignarSueldo(tipo);
         this.asignarWorkingRate(tipo, last_carnet);
     }
@@ -58,13 +60,15 @@ public class TrabajadorEstudio extends Trabajador {
         if (null != tipo) {
             switch (tipo) {
                 case GUIONISTA:
-                    this.working_rate = 2 + last_carnet == 9 ? 2 : last_carnet / 3;
+                    System.out.println("working rate" + last_carnet + " fasfa" + last_carnet / 3);
+                    this.working_rate = 2 + (last_carnet == 9 ? 2 : last_carnet / 3);
+                    System.out.println("final " + working_rate);
                     break;
                 case DISENADOR_ESCENARIO:
-                    this.working_rate = 2 + last_carnet == 9 ? 2 : last_carnet / 3;
+                    this.working_rate = 2 + (last_carnet == 9 ? 2 : last_carnet / 3);
                     break;
                 case ANIMADOR:
-                    this.working_rate = 3 - last_carnet == 9 ? 2 : last_carnet / 3;
+                    this.working_rate = 3 - (last_carnet == 9 ? 2 : last_carnet / 3);
                     break;
                 case ACTOR_DOBLAJE:
                     this.working_rate = last_carnet < 5 ? 3 : 5;
@@ -83,12 +87,19 @@ public class TrabajadorEstudio extends Trabajador {
      */
     @Override
     public void trabajar() {
-        if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
-            this.drive.SubirDrive(tipo, this.working_rate);
-        } else {
-            this.drive.SubirDrive(tipo);
+        try {
+            this.mutex_Drive.acquire();
+            if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
+                this.drive.SubirDrive(tipo, this.working_rate);
+                System.out.println("subo " + this.working_rate + " " + this.tipo);
+            } else {
+                this.drive.SubirDrive(tipo);
+                System.out.println("subo " + 1 + " " + this.tipo);
+            }
+            this.mutex_Drive.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TrabajadorEstudio.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
@@ -98,12 +109,11 @@ public class TrabajadorEstudio extends Trabajador {
     public void descansar() {
         try {
             if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {
-                sleep(Constants.DAY_DURATION);
                 this.pagarSueldo(sueldo * 24);
-
+                sleep(Constants.DAY_DURATION);
             } else {
-                sleep(Constants.DAY_DURATION * working_rate);
                 this.pagarSueldo(sueldo * 24 * working_rate);
+                sleep(Constants.DAY_DURATION * working_rate);
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(TrabajadorEstudio.class.getName()).log(Level.SEVERE, null, ex);

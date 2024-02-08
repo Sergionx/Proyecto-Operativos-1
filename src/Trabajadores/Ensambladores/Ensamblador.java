@@ -23,8 +23,10 @@ public class Ensamblador extends Trabajador {
     private Requerimientos_Capitulo requerimientos_Estandar;
     private Requerimientos_Capitulo requerimientos_Plot;
 
-    public Ensamblador(Semaphore mutex, Drive drive, Ganancias ganancias, int capitulos_rate, Requerimientos_Capitulo requerimientos, Requerimientos_Capitulo requerimientos_Plot) {
-        super(mutex, drive, ganancias);
+    public Ensamblador(Semaphore mutex_Drive, Semaphore mutex_Ganancias,
+            Drive drive, Ganancias ganancias, int capitulos_rate, 
+            Requerimientos_Capitulo requerimientos, Requerimientos_Capitulo requerimientos_Plot) {
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
         this.capitulos_rate = capitulos_rate;
         this.capitulos_Para_PlotTwist = 0;
         this.requerimientos_Estandar = requerimientos;
@@ -34,24 +36,30 @@ public class Ensamblador extends Trabajador {
 
     @Override
     public void trabajar() {
-        if (capitulos_Para_PlotTwist == capitulos_rate - 1) {
-            subirCapitulo(true);
-        } else {
-            subirCapitulo(false);
-            this.capitulos_Para_PlotTwist++;
-        }
+        subirCapitulo(capitulos_Para_PlotTwist == capitulos_rate);
+        System.out.println("capitulos para plotsits " + this.capitulos_Para_PlotTwist + " rate " + this.capitulos_rate);
     }
 
     public void subirCapitulo(boolean plotTwist) {
-        if (plotTwist) {
-            if (requerimientos_Plot.cumplirRequerimientos(drive)) {
-                this.drive.SubirCapitulo(requerimientos_Plot, plotTwist);
+        System.out.println("Intentare subir un capitulo");
+        try {
+            this.mutex_Drive.acquire();
+            if (plotTwist) {
+                if (requerimientos_Plot.cumplirRequerimientos(drive)) {
+                    System.out.println("Subo plot");
+                    this.drive.SubirCapitulo(requerimientos_Plot, plotTwist);
+                    this.capitulos_Para_PlotTwist = 0;
+                }
+            } else {
+                if (requerimientos_Estandar.cumplirRequerimientos(drive)) {
+                    System.out.println("Subo no plot");
+                    this.drive.SubirCapitulo(requerimientos_Estandar, plotTwist);
+                    this.capitulos_Para_PlotTwist++;
+                }
             }
-        } else {
-            if (requerimientos_Estandar.cumplirRequerimientos(drive)) {
-                this.drive.SubirCapitulo(requerimientos_Estandar, plotTwist);
-            }
-
+            this.mutex_Drive.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

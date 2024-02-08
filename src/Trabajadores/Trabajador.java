@@ -19,13 +19,17 @@ public abstract class Trabajador extends Thread {
 
     protected int sueldo;
     private int sueldoTotal;
-    private final Semaphore mutex;
+
+    protected final Semaphore mutex_Drive;
+    protected final Semaphore mutex_Ganancias;
+
     protected Drive drive;
     private final Ganancias ganancias;
 
-    public Trabajador(Semaphore mutex, Drive drive, Ganancias ganancias) {
+    public Trabajador(Semaphore mutex_Drive, Semaphore mutex_Ganancias, Drive drive, Ganancias ganancias) {
         this.sueldoTotal = 0;
-        this.mutex = mutex;
+        this.mutex_Drive = mutex_Drive;
+        this.mutex_Ganancias = mutex_Ganancias;
         this.drive = drive;
         this.ganancias = ganancias;
     }
@@ -34,21 +38,33 @@ public abstract class Trabajador extends Thread {
     public void run() {
         while (true) {
             trabajar();
-            System.out.println("Trabajador: " + " gana: " + this.sueldoTotal + "$");
             descansar();
         }
     }
 
-    public void pagarSueldo(int cantidad){
-        this.sueldoTotal += cantidad;
-        this.ganancias.costos_Operativos += cantidad;
+    public void pagarSueldo(int cantidad) {
+        try {
+            this.mutex_Ganancias.acquire();
+            this.sueldoTotal += cantidad;
+            this.ganancias.setCostos_Operativos(cantidad);
+            this.mutex_Ganancias.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    public void descontarSueldo(int cantidad){
-        this.sueldoTotal -= cantidad;
-        this.ganancias.costos_Operativos -= cantidad;
+
+    public void descontarSueldo(int cantidad) {
+        try {
+            this.mutex_Ganancias.acquire();
+            this.sueldoTotal -= cantidad;
+            this.ganancias.setCostos_Operativos(-cantidad);
+            this.mutex_Ganancias.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    
+
     public abstract void descansar();
 
     public abstract void trabajar();
