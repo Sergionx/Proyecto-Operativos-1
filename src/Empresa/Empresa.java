@@ -131,13 +131,15 @@ public class Empresa {
 
         this.crearEmpleados(comienzoFor, trabajadores_Iniciales.plot_twist,
                 TipoTrabajador_Estudio.PLOT_TWIST);
-
-//        TODO - Pensar si esto es dinamico tambiern
-        var ensamblador = new Ensamblador(mutex_Drive, this.mutex_Ganancias,
+        comienzoFor += trabajadores_Iniciales.plot_twist;
+       
+          for (int i = comienzoFor; i <  comienzoFor + trabajadores_Iniciales.ensamblador; i++) {
+               var ensamblador = new Ensamblador(mutex_Drive, this.mutex_Ganancias,
                 drive, ganancias,
                 this.capitulos_rate, requerimiento_Estandar, requerimiento_PlotTwist);
-
-        ensamblador.start();
+            this.empleados[i] = ensamblador;
+            ensamblador.start();
+        }
 
         this.manager.start();
         this.director.start();
