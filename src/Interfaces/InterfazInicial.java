@@ -101,6 +101,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         contador_Cargar = new javax.swing.JButton();
         contador_Guardar = new javax.swing.JButton();
         siguiente = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
         fondoprincipal = new javax.swing.JLabel();
 
         jToolBar1.setRollover(true);
@@ -267,6 +268,10 @@ public class InterfazInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel18.setText("microsegundos");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, -1, -1));
 
         fondoprincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprincipaaal.png"))); // NOI18N
         fondoprincipal.setText("jLabel2");
@@ -457,6 +462,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
