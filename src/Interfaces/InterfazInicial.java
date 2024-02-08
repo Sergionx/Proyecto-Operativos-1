@@ -297,7 +297,8 @@ public class InterfazInicial extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
             File fichero = fx.getSelectedFile();
-            Funciones.write_txt_int(fichero, trabajadores_Disney_Channel);
+            Funciones.write_txt_Trabajadores(fichero, trabajadores_Star_Channel,
+                    trabajadores_Disney_Channel);
         }
 
 
