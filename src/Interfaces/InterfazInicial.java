@@ -103,6 +103,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         siguiente = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         fondoprincipal = new javax.swing.JLabel();
 
         jToolBar1.setRollover(true);
@@ -167,7 +168,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Duración de un segundo");
         jLabel9.setMaximumSize(new java.awt.Dimension(149, 60));
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 160, 40));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 180, 40));
 
         jLabel10.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,7 +215,7 @@ public class InterfazInicial extends javax.swing.JFrame {
                 segundos_CargarActionPerformed(evt);
             }
         });
-        getContentPane().add(segundos_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, -1, -1));
+        getContentPane().add(segundos_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
 
         segundos_Guardar.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         segundos_Guardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,7 +225,7 @@ public class InterfazInicial extends javax.swing.JFrame {
                 segundos_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(segundos_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 90, 20));
+        getContentPane().add(segundos_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,7 +235,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Trabajadores");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
         getContentPane().add(disenador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
@@ -242,7 +243,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel17.setText("Dias ");
         jLabel17.setMaximumSize(new java.awt.Dimension(149, 60));
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 40, 40));
-        getContentPane().add(contador_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, -1));
+        getContentPane().add(contador_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 90, -1));
 
         contador_Cargar.setText("Cargar");
         contador_Cargar.addActionListener(new java.awt.event.ActionListener() {
@@ -276,6 +277,10 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel19.setText("Contador");
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
 
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel20.setText("microsegundos");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, -1, -1));
+
         fondoprincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprincipaaal.png"))); // NOI18N
         fondoprincipal.setText("jLabel2");
         getContentPane().add(fondoprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 790, 410));
@@ -292,7 +297,8 @@ public class InterfazInicial extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
             File fichero = fx.getSelectedFile();
-            Funciones.write_txt_int(fichero, trabajadores_Disney_Channel);
+            Funciones.write_txt_Trabajadores(fichero, trabajadores_Star_Channel,
+                    trabajadores_Disney_Channel);
         }
 
 
@@ -468,6 +474,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

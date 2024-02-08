@@ -42,7 +42,7 @@ public class Empresa_Trabajadores_Iniciales {
 
     @Override
     public String toString() {
-        return "Empresa_Trabajadores_Iniciales{" + "guionista=" + guionista + ", disenador_escenario=" + disenador_escenario + ", animador=" + animador + ", actor_doblaje=" + actor_doblaje + ", plot_twist=" + plot_twist + '}';
+        return this.guionista + "," + this.animador + "," + this.actor_doblaje + "," + this.disenador_escenario + "," + this.plot_twist;
     }
 
 }

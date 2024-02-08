@@ -63,7 +63,6 @@ public class Funciones {
 
     public static Empresa_Trabajadores_Iniciales[] Leer_txt_trabajadores(String path) {
         String line;
-        String info = "";
         File file = new File(path);
 
         try {
@@ -98,35 +97,33 @@ public class Funciones {
         }
         return new Empresa_Trabajadores_Iniciales[2];
     }
-    
-    public static void write_txt_int(File file,  int numero){
-       
-        try{
+
+    public static void write_txt_int(File file, int numero) {
+
+        try {
             PrintWriter pw = new PrintWriter(file);
-            pw.print(numero); 
+            pw.print(numero);
             pw.close();
             JOptionPane.showMessageDialog(null, "Guardado Exitoso");
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Guardado Ha Fallado");
         }
-        
+
     }
-    
-    public static void write_txt_int(File file,  Empresa_Trabajadores_Iniciales trabajadores){
-        String trabajadores_txt = trabajadores.guionista + ","+ trabajadores.animador+ ","+ trabajadores.actor_doblaje+ ","+ trabajadores.disenador_escenario+ ","+ trabajadores.plot_twist;
-        try{
+
+    public static void write_txt_Trabajadores(File file,
+            Empresa_Trabajadores_Iniciales trabajadores_Star,
+            Empresa_Trabajadores_Iniciales trabjadores_Disney) {
+        String trabajadores_txt = trabajadores_Star.toString() + "\n" + trabjadores_Disney.toString();
+        
+        try {
             PrintWriter pw = new PrintWriter(file);
-            pw.print(trabajadores_txt); 
+            pw.print(trabajadores_txt);
             pw.close();
             JOptionPane.showMessageDialog(null, "Guardado Exitoso");
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Guardado Ha Fallado");
         }
-        
     }
-    
-    
 
 }
