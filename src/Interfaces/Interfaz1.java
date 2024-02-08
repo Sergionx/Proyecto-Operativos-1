@@ -17,6 +17,7 @@ import org.jfree.data.xy.XYDataset;
  *
  * @author valeriazampetti
  */
+
 public class Interfaz1 extends javax.swing.JFrame {
 
     static ChartPanel chartUtilidades;
@@ -41,27 +42,44 @@ public class Interfaz1 extends javax.swing.JFrame {
     private void crearEmpresas(Empresa_Trabajadores_Iniciales trabajadores_Disney,
             Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
         var labels = new Empresa_Labels[]{
+            
             new Empresa_Labels(
             new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
             guiones_Field, doblajes_Field, escenarios_Field,
             animaciones_Field, plotTwist_Field),
+            
+                    
             new Ganancias_Labels(Ganancias_Field, Costos_Field, Utilidades_Field),
             field_Viendo_Anime, field_FaltasPM, field_DescontadoPM,
             field_VigilandoDirector,
             field_Contador
-            ), //            new Empresa_Labels(
-        //            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
-        //            guiones_Field, doblajes_Field, escenarios_Field,
-        //            animaciones_Field, plotTwist_Field)
-        //            ) // Poner labels de disney
+            ), 
+            
+            new Empresa_Labels(
+                   new Drive_Labels(Star_Disney_Field2, Disney_PlotTwist_Field2,
+                   guiones_Field2, doblajes_Field2, escenarios_Field2,
+                   animaciones_Field2, plotTwist_Field2),
+            
+            
+            
+            new Ganancias_Labels (Ganancias_Field2, Costos_Field2, Utilidades_Field2), 
+            field_Viendo_Anime2, field_FaltasPM2, field_DescontadoPM2, field_VigilandoDirector2,field_Contador_Disney_Channel
+           ),
         };
+        
 
         empresas = new Empresa[]{
             new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel,
             new int[50], () -> {
                 crearGrafico();
-            }, InterfazInicial.dias_Contador)
-//            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
+            }, InterfazInicial.dias_Contador),
+            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney,
+                new int[50], () -> {
+                crearGrafico();
+            }, InterfazInicial.dias_Contador),
+                    
+     
+           
         };
 
         for (int i = 0; i < empresas.length; i++) {
@@ -124,7 +142,43 @@ public class Interfaz1 extends javax.swing.JFrame {
         Costos_Field = new javax.swing.JTextField();
         Star_Fondo = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
+        field_Contador_Disney_Channel = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        field_Viendo_Anime2 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        field_DescontadoPM2 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        field_FaltasPM2 = new javax.swing.JTextField();
+        Chart_Panel2 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        field_VigilandoDirector2 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        guiones_Field2 = new javax.swing.JTextField();
+        guiones_FieldMAX2 = new javax.swing.JTextField();
+        escenarios_Field2 = new javax.swing.JTextField();
+        animaciones_Field2 = new javax.swing.JTextField();
+        doblajes_Field2 = new javax.swing.JTextField();
+        plotTwist_Field2 = new javax.swing.JTextField();
+        escenarios_FieldMAX2 = new javax.swing.JTextField();
+        animaciones_FieldMAX22 = new javax.swing.JTextField();
+        doblajes_FieldMAX2 = new javax.swing.JTextField();
+        animaciones_FieldMAX2 = new javax.swing.JTextField();
+        plotTwist_FieldMAX2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        Star_Disney_Field2 = new javax.swing.JTextField();
+        Disney_PlotTwist_Field2 = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        Utilidades_Field2 = new javax.swing.JTextField();
+        Costos_Field2 = new javax.swing.JTextField();
+        Ganancias_Field2 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
 
         jLabel15.setText("jLabel14");
 
@@ -367,15 +421,239 @@ public class Interfaz1 extends javax.swing.JFrame {
         Star_Pane.add(Costos_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, -1));
 
         Star_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
-        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 480));
+        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 830, 540));
 
         TabbedPane_principal.addTab("tab2", Star_Pane);
 
         Disney_Pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disneyfondo.jpg"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 990, 480));
+        field_Contador_Disney_Channel.setEditable(false);
+        field_Contador_Disney_Channel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Contador_Disney_ChannelActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(field_Contador_Disney_Channel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
+        jLabel23.setText("Contador: ");
+        Disney_Pane.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        field_Viendo_Anime2.setEditable(false);
+        field_Viendo_Anime2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Viendo_Anime2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(field_Viendo_Anime2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 190, -1));
+
+        jLabel24.setText("Estado del Project Manager");
+        Disney_Pane.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        field_DescontadoPM2.setEditable(false);
+        field_DescontadoPM2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_DescontadoPM2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(field_DescontadoPM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
+
+        jLabel25.setText("Faltas ");
+        Disney_Pane.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+
+        field_FaltasPM2.setEditable(false);
+        field_FaltasPM2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_FaltasPM2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(field_FaltasPM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+        Disney_Pane.add(Chart_Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 340, 260));
+
+        jLabel26.setText("Dinero descontado");
+        Disney_Pane.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+
+        field_VigilandoDirector2.setEditable(false);
+        field_VigilandoDirector2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_VigilandoDirector2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(field_VigilandoDirector2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
+
+        jLabel27.setText("Estado del Director");
+        Disney_Pane.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+
+        jLabel28.setText("Recursos del Drive");
+        Disney_Pane.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
+
+        jLabel29.setText("Actuales");
+        Disney_Pane.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
+
+        jLabel30.setText("Máximo");
+        Disney_Pane.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
+
+        guiones_Field2.setEditable(false);
+        guiones_Field2.setText("0");
+        guiones_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiones_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(guiones_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+
+        guiones_FieldMAX2.setEditable(false);
+        guiones_FieldMAX2.setText("25");
+        guiones_FieldMAX2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiones_FieldMAX2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(guiones_FieldMAX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
+
+        escenarios_Field2.setEditable(false);
+        escenarios_Field2.setText("0");
+        escenarios_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escenarios_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(escenarios_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
+
+        animaciones_Field2.setEditable(false);
+        animaciones_Field2.setText("0");
+        animaciones_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animaciones_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(animaciones_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
+
+        doblajes_Field2.setEditable(false);
+        doblajes_Field2.setText("0");
+        doblajes_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doblajes_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(doblajes_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
+
+        plotTwist_Field2.setEditable(false);
+        plotTwist_Field2.setText("0");
+        plotTwist_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plotTwist_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(plotTwist_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
+
+        escenarios_FieldMAX2.setEditable(false);
+        escenarios_FieldMAX2.setText("20");
+        escenarios_FieldMAX2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escenarios_FieldMAX2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(escenarios_FieldMAX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
+
+        animaciones_FieldMAX22.setEditable(false);
+        animaciones_FieldMAX22.setText("55");
+        animaciones_FieldMAX22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animaciones_FieldMAX22ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(animaciones_FieldMAX22, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
+
+        doblajes_FieldMAX2.setEditable(false);
+        doblajes_FieldMAX2.setText("35");
+        doblajes_FieldMAX2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doblajes_FieldMAX2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(doblajes_FieldMAX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, -1, -1));
+
+        animaciones_FieldMAX2.setEditable(false);
+        animaciones_FieldMAX2.setText("55");
+        animaciones_FieldMAX2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animaciones_FieldMAX2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(animaciones_FieldMAX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
+
+        plotTwist_FieldMAX2.setEditable(false);
+        plotTwist_FieldMAX2.setText("10");
+        plotTwist_FieldMAX2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plotTwist_FieldMAX2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(plotTwist_FieldMAX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, -1, -1));
+
+        jLabel4.setText("Capitulos listos para entregar");
+        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, -1, -1));
+
+        jLabel31.setText("Estándar");
+        Disney_Pane.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 370, -1, -1));
+
+        jLabel32.setText("Plot Twist");
+        Disney_Pane.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 370, -1, -1));
+
+        Star_Disney_Field2.setEditable(false);
+        Star_Disney_Field2.setText("0");
+        Star_Disney_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Star_Disney_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(Star_Disney_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 400, -1, -1));
+
+        Disney_PlotTwist_Field2.setEditable(false);
+        Disney_PlotTwist_Field2.setText("0");
+        Disney_PlotTwist_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Disney_PlotTwist_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(Disney_PlotTwist_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 400, -1, -1));
+
+        jLabel33.setText("Ganancias en bruto");
+        Disney_Pane.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
+
+        jLabel34.setText("Costos Operativos");
+        Disney_Pane.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
+
+        jLabel35.setText("Utilidades totales");
+        Disney_Pane.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
+
+        Utilidades_Field2.setEditable(false);
+        Utilidades_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Utilidades_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(Utilidades_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, -1, -1));
+
+        Costos_Field2.setEditable(false);
+        Costos_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Costos_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(Costos_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, -1, -1));
+
+        Ganancias_Field2.setEditable(false);
+        Ganancias_Field2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ganancias_Field2ActionPerformed(evt);
+            }
+        });
+        Disney_Pane.add(Ganancias_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, -1, -1));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disneyfondo.jpg"))); // NOI18N
+        jLabel22.setText("jLabel22");
+        Disney_Pane.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
 
         TabbedPane_principal.addTab("tab2", Disney_Pane);
 
@@ -464,6 +742,90 @@ public class Interfaz1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Costos_FieldActionPerformed
 
+    private void field_Contador_Disney_ChannelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Contador_Disney_ChannelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Contador_Disney_ChannelActionPerformed
+
+    private void field_Viendo_Anime2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Viendo_Anime2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Viendo_Anime2ActionPerformed
+
+    private void field_DescontadoPM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_DescontadoPM2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_DescontadoPM2ActionPerformed
+
+    private void field_FaltasPM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_FaltasPM2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_FaltasPM2ActionPerformed
+
+    private void field_VigilandoDirector2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_VigilandoDirector2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_VigilandoDirector2ActionPerformed
+
+    private void guiones_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiones_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guiones_Field2ActionPerformed
+
+    private void guiones_FieldMAX2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiones_FieldMAX2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guiones_FieldMAX2ActionPerformed
+
+    private void escenarios_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escenarios_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escenarios_Field2ActionPerformed
+
+    private void animaciones_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animaciones_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_animaciones_Field2ActionPerformed
+
+    private void doblajes_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doblajes_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doblajes_Field2ActionPerformed
+
+    private void plotTwist_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plotTwist_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plotTwist_Field2ActionPerformed
+
+    private void escenarios_FieldMAX2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escenarios_FieldMAX2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escenarios_FieldMAX2ActionPerformed
+
+    private void animaciones_FieldMAX22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animaciones_FieldMAX22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_animaciones_FieldMAX22ActionPerformed
+
+    private void doblajes_FieldMAX2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doblajes_FieldMAX2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doblajes_FieldMAX2ActionPerformed
+
+    private void animaciones_FieldMAX2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animaciones_FieldMAX2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_animaciones_FieldMAX2ActionPerformed
+
+    private void plotTwist_FieldMAX2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plotTwist_FieldMAX2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plotTwist_FieldMAX2ActionPerformed
+
+    private void Star_Disney_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Star_Disney_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Star_Disney_Field2ActionPerformed
+
+    private void Disney_PlotTwist_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Disney_PlotTwist_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Disney_PlotTwist_Field2ActionPerformed
+
+    private void Utilidades_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Utilidades_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Utilidades_Field2ActionPerformed
+
+    private void Costos_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Costos_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Costos_Field2ActionPerformed
+
+    private void Ganancias_Field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ganancias_Field2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ganancias_Field2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -520,28 +882,48 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Chart_Panel;
+    private javax.swing.JPanel Chart_Panel2;
     private javax.swing.JTextField Costos_Field;
+    private javax.swing.JTextField Costos_Field2;
     private javax.swing.JPanel Disney_Pane;
+    private javax.swing.JTextField Disney_PlotTwist_Field2;
     private javax.swing.JTextField Ganancias_Field;
+    private javax.swing.JTextField Ganancias_Field2;
+    private javax.swing.JTextField Star_Disney_Field2;
     private javax.swing.JTextField Star_Estandar_Field;
     private javax.swing.JLabel Star_Fondo;
     private javax.swing.JPanel Star_Pane;
     private javax.swing.JTextField Star_PlotTwist_Field;
     private javax.swing.JTabbedPane TabbedPane_principal;
     private javax.swing.JTextField Utilidades_Field;
+    private javax.swing.JTextField Utilidades_Field2;
     private javax.swing.JTextField animaciones_Field;
+    private javax.swing.JTextField animaciones_Field2;
     private javax.swing.JTextField animaciones_FieldMAX;
+    private javax.swing.JTextField animaciones_FieldMAX2;
+    private javax.swing.JTextField animaciones_FieldMAX22;
     private javax.swing.JTextField doblajes_Field;
+    private javax.swing.JTextField doblajes_Field2;
     private javax.swing.JTextField doblajes_FieldMAX;
+    private javax.swing.JTextField doblajes_FieldMAX2;
     private javax.swing.JTextField escenarios_Field;
+    private javax.swing.JTextField escenarios_Field2;
     private javax.swing.JTextField escenarios_FieldMAX;
+    private javax.swing.JTextField escenarios_FieldMAX2;
     private javax.swing.JTextField field_Contador;
+    private javax.swing.JTextField field_Contador_Disney_Channel;
     private javax.swing.JTextField field_DescontadoPM;
+    private javax.swing.JTextField field_DescontadoPM2;
     private javax.swing.JTextField field_FaltasPM;
+    private javax.swing.JTextField field_FaltasPM2;
     private javax.swing.JTextField field_Viendo_Anime;
+    private javax.swing.JTextField field_Viendo_Anime2;
     private javax.swing.JTextField field_VigilandoDirector;
+    private javax.swing.JTextField field_VigilandoDirector2;
     private javax.swing.JTextField guiones_Field;
+    private javax.swing.JTextField guiones_Field2;
     private javax.swing.JTextField guiones_FieldMAX;
+    private javax.swing.JTextField guiones_FieldMAX2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -556,7 +938,21 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -564,6 +960,8 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField plotTwist_Field;
+    private javax.swing.JTextField plotTwist_Field2;
     private javax.swing.JTextField plotTwist_FieldMAX;
+    private javax.swing.JTextField plotTwist_FieldMAX2;
     // End of variables declaration//GEN-END:variables
 }
