@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import Utils.Constants;
 import Utils.Funciones;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -145,7 +146,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Plot Twist");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
-        getContentPane().add(segundos_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
+        getContentPane().add(segundos_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 90, -1));
         getContentPane().add(animador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
         getContentPane().add(doblaje_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
         getContentPane().add(plotTwist_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
@@ -164,7 +165,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Duración de un segundo");
         jLabel9.setMaximumSize(new java.awt.Dimension(149, 60));
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 80, 40));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 80, 40));
 
         jLabel10.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,7 +212,7 @@ public class InterfazInicial extends javax.swing.JFrame {
                 segundos_CargarActionPerformed(evt);
             }
         });
-        getContentPane().add(segundos_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
+        getContentPane().add(segundos_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
 
         segundos_Guardar.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         segundos_Guardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,7 +222,7 @@ public class InterfazInicial extends javax.swing.JFrame {
                 segundos_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(segundos_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
+        getContentPane().add(segundos_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +232,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Trabajadores");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
         getContentPane().add(disenador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
@@ -239,7 +240,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel17.setText("Dias del contador");
         jLabel17.setMaximumSize(new java.awt.Dimension(149, 60));
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 80, 40));
-        getContentPane().add(contador_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, -1));
+        getContentPane().add(contador_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 90, -1));
 
         contador_Cargar.setText("Cargar");
         contador_Cargar.addActionListener(new java.awt.event.ActionListener() {
@@ -361,8 +362,10 @@ public class InterfazInicial extends javax.swing.JFrame {
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
         this.setVisible(false);
 
+        Constants.setSecond(segundos_Contador);
         Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
+        
     }//GEN-LAST:event_siguienteActionPerformed
 
     /**
