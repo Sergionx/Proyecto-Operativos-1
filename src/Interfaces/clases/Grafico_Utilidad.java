@@ -6,6 +6,7 @@ package Interfaces.clases;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -22,13 +23,14 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class Grafico_Utilidad {
 
-    public static ChartPanel createUtilityXYChart(String titleChart, int[] utilidadesDisney, int[] utilidadesStar) {
+    public static ChartPanel createUtilityXYChart(String titleChart, Dimension dimensionPanel,
+            int[] utilidadesDisney, int[] utilidadesStar) {
         XYDataset dataset = crearDataset(utilidadesDisney, utilidadesStar);
         JFreeChart xyChart = crearChart(dataset, titleChart);
         ChartPanel chartPanel = new ChartPanel(xyChart);
         
 //     TODO - Encontrar dimensiones buenas
-        chartPanel.setPreferredSize(new java.awt.Dimension(600, 400)); 
+        chartPanel.setPreferredSize(dimensionPanel); 
         final XYPlot plot = xyChart.getXYPlot();
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();

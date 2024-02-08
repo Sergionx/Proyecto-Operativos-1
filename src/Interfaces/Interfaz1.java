@@ -113,9 +113,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        Chart_Panel = new javax.swing.JPanel();
         field_FaltasPM = new javax.swing.JTextField();
         field_DescontadoPM = new javax.swing.JTextField();
-        Chart_Panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -315,6 +315,7 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel19.setText("Dinero descontado");
         Star_Pane.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 340, 270));
 
         field_FaltasPM.setEditable(false);
         field_FaltasPM.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +332,6 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         Star_Pane.add(field_DescontadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
-        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 290, 260));
 
         jLabel5.setText("Utilidades totales");
         Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
@@ -510,8 +510,10 @@ public class Interfaz1 extends javax.swing.JFrame {
 //TODO - Encontrar forma de pasar utilidades
 //TODO - Cuando hagamos disney, cambiar el segundo indice 0 por 1
         chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
-                this.empresas[0].getGanancias_Daily(), this.empresas[0].getGanancias_Daily());
+                Chart_Panel.getSize(),
+                this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[0].getUtilidades_En_El_Tiempo());
 
+        
         Chart_Panel.removeAll();
         Chart_Panel.add(chartUtilidades);
 
