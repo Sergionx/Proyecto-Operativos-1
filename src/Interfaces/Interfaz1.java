@@ -873,7 +873,7 @@ public class Interfaz1 extends javax.swing.JFrame {
 //TODO - Cuando hagamos disney, cambiar el segundo indice 0 por 1
         chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
                 Chart_Panel.getSize(),
-                this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[0].getUtilidades_En_El_Tiempo());
+                this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[1].getUtilidades_En_El_Tiempo());
 
         Chart_Panel.removeAll();
         Chart_Panel.add(chartUtilidades);

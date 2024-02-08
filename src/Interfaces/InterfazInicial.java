@@ -10,6 +10,7 @@ import Utils.Funciones;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -22,6 +23,8 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     static int segundos_Contador;
     static int dias_Contador;
+
+    final int minDay = 2;
 
     /**
      * Creates new form InterfazInicial
@@ -77,7 +80,9 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        segundos_Spinner = new javax.swing.JSpinner();
+        segundos_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(10, 10, 1000000, 1000)
+        );
         animador_Disney_Spinner = new javax.swing.JSpinner();
         doblaje_Disney_Spinner = new javax.swing.JSpinner();
         plotTwist_Disney_Spinner = new javax.swing.JSpinner();
@@ -97,7 +102,9 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         disenador_Disney_Spinner = new javax.swing.JSpinner();
         jLabel17 = new javax.swing.JLabel();
-        contador_Spinner = new javax.swing.JSpinner();
+        contador_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, 99, 1)
+        );
         contador_Cargar = new javax.swing.JButton();
         contador_Guardar = new javax.swing.JButton();
         siguiente = new javax.swing.JButton();
@@ -379,7 +386,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         Constants.setSecond(segundos_Contador);
         Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
-        
+
     }//GEN-LAST:event_siguienteActionPerformed
 
     /**

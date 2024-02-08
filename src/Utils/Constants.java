@@ -16,7 +16,8 @@ public class Constants {
     public static int DAY_DURATION = HOUR_DURATION * 24;
 
     public static void setSecond(int seconds) {
-        SECOND_DURATION = seconds / 1000;
+        SECOND_DURATION = seconds;
+        
         MINUTE_DURATION = SECOND_DURATION * 60;
         HOUR_DURATION = MINUTE_DURATION * 60;
         DAY_DURATION = HOUR_DURATION * 24;
