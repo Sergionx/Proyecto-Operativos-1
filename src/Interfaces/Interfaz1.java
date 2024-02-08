@@ -8,6 +8,10 @@ import Empresa.Empresa;
 import Interfaces.clases.Drive_Labels;
 import Interfaces.clases.Empresa_Labels;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import Interfaces.clases.Ganancias_Labels;
+import Interfaces.clases.Grafico_Utilidad;
+import org.jfree.chart.ChartPanel;
+import org.jfree.data.xy.XYDataset;
 
 /**
  *
@@ -15,6 +19,7 @@ import Interfaces.clases.Empresa_Trabajadores_Iniciales;
  */
 public class Interfaz1 extends javax.swing.JFrame {
 
+    static ChartPanel chartUtilidades;
     static Empresa[] empresas;
 
     /**
@@ -30,6 +35,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.crearEmpresas(trabajadores_Disney, trabajadores_Star_Channel);
+        this.crearGrafico();
 
     }
 
@@ -37,9 +43,10 @@ public class Interfaz1 extends javax.swing.JFrame {
             Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
         var labels = new Empresa_Labels[]{
             new Empresa_Labels(
-            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
+                new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
             guiones_Field, doblajes_Field, escenarios_Field,
             animaciones_Field, plotTwist_Field),
+                new Ganancias_Labels(Ganancias_Field, Costos_Field, Utilidades_Field),
             field_Viendo_Anime, field_FaltasPM, field_DescontadoPM,
             field_VigilandoDirector,
             field_Contador
@@ -51,7 +58,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         };
 
         empresas = new Empresa[]{
-            new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
+            new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel,
+            new int[50], () -> {
+                crearGrafico();
+            }), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
         };
 
         for (int i = 0; i < empresas.length; i++) {
@@ -77,7 +87,6 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Star_PlotTwist_Field = new javax.swing.JTextField();
         escenarios_Field = new javax.swing.JTextField();
-        starfondo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -104,9 +113,16 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        Chart_Panel = new javax.swing.JPanel();
         field_FaltasPM = new javax.swing.JTextField();
         field_DescontadoPM = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        Utilidades_Field = new javax.swing.JTextField();
+        Ganancias_Field = new javax.swing.JTextField();
+        Costos_Field = new javax.swing.JTextField();
+        Star_Fondo = new javax.swing.JLabel();
         Disney_Pane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -146,10 +162,6 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         Star_Pane.add(escenarios_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
-
-        starfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusimagenes.jpg"))); // NOI18N
-        starfondo.setText("jLabel4");
-        Star_Pane.add(starfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 80, 790, 1090));
 
         jLabel6.setText("Recursos del Drive");
         Star_Pane.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
@@ -303,6 +315,7 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel19.setText("Dinero descontado");
         Star_Pane.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 340, 270));
 
         field_FaltasPM.setEditable(false);
         field_FaltasPM.addActionListener(new java.awt.event.ActionListener() {
@@ -320,9 +333,41 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(field_DescontadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 810, 450));
+        jLabel5.setText("Utilidades totales");
+        Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
+
+        jLabel20.setText("Ganancias en bruto");
+        Star_Pane.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
+
+        jLabel21.setText("Costos Operativos");
+        Star_Pane.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
+
+        Utilidades_Field.setEditable(false);
+        Utilidades_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Utilidades_FieldActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(Utilidades_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, -1, -1));
+
+        Ganancias_Field.setEditable(false);
+        Ganancias_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ganancias_FieldActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(Ganancias_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, -1, -1));
+
+        Costos_Field.setEditable(false);
+        Costos_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Costos_FieldActionPerformed(evt);
+            }
+        });
+        Star_Pane.add(Costos_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, -1));
+
+        Star_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
+        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 970, 490));
 
         TabbedPane_principal.addTab("tab2", Star_Pane);
 
@@ -330,11 +375,11 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disneyfondo.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
-        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 760, 410));
+        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 990, 480));
 
         TabbedPane_principal.addTab("tab2", Disney_Pane);
 
-        getContentPane().add(TabbedPane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 450));
+        getContentPane().add(TabbedPane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -407,6 +452,18 @@ public class Interfaz1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_DescontadoPMActionPerformed
 
+    private void Utilidades_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Utilidades_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Utilidades_FieldActionPerformed
+
+    private void Ganancias_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ganancias_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ganancias_FieldActionPerformed
+
+    private void Costos_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Costos_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Costos_FieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -449,15 +506,30 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
 
     private void crearGrafico() {
-//        TODO
+
+//TODO - Encontrar forma de pasar utilidades
+//TODO - Cuando hagamos disney, cambiar el segundo indice 0 por 1
+        chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
+                Chart_Panel.getSize(),
+                this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[0].getUtilidades_En_El_Tiempo());
+
+        
+        Chart_Panel.removeAll();
+        Chart_Panel.add(chartUtilidades);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Chart_Panel;
+    private javax.swing.JTextField Costos_Field;
     private javax.swing.JPanel Disney_Pane;
+    private javax.swing.JTextField Ganancias_Field;
     private javax.swing.JTextField Star_Estandar_Field;
+    private javax.swing.JLabel Star_Fondo;
     private javax.swing.JPanel Star_Pane;
     private javax.swing.JTextField Star_PlotTwist_Field;
     private javax.swing.JTabbedPane TabbedPane_principal;
+    private javax.swing.JTextField Utilidades_Field;
     private javax.swing.JTextField animaciones_Field;
     private javax.swing.JTextField animaciones_FieldMAX;
     private javax.swing.JTextField doblajes_Field;
@@ -483,6 +555,8 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -492,6 +566,5 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField plotTwist_Field;
     private javax.swing.JTextField plotTwist_FieldMAX;
-    private javax.swing.JLabel starfondo;
     // End of variables declaration//GEN-END:variables
 }

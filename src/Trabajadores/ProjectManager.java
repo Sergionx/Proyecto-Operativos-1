@@ -30,11 +30,11 @@ public class ProjectManager extends Trabajador {
     private final JTextField field_faltasPM;
     private final JTextField field_DineroPM;
 
-    public ProjectManager(Semaphore mutex, Drive drive, Ganancias ganancias,
+    public ProjectManager(Semaphore mutex_Drive, Semaphore mutex_Ganancias, Drive drive, Ganancias ganancias,
             Contador contador,
             JTextField field_Viendo_Anime, JTextField field_faltasPM,
             JTextField field_DineroPM) {
-        super(mutex, drive, ganancias);
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
         this.sueldo = 40;
         this.contador = contador;
 

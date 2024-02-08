@@ -5,8 +5,8 @@
 package Trabajadores;
 
 import Empresa.Drive;
+import Empresa.Empresa;
 import Empresa.Ganancias;
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +21,7 @@ import javax.swing.JTextField;
  */
 public class Director extends Trabajador {
 
+    private final Empresa empresa;
     private final Contador contador;
 
     private final ProjectManager projectmanager;
@@ -28,13 +29,14 @@ public class Director extends Trabajador {
     private boolean pillo_Al_PM_Daily = false;
     public final JTextField field_vigilando;
 
-    public Director(Semaphore mutex, Drive drive, Ganancias ganancias,
+    public Director(Semaphore mutex_Drive, Semaphore mutex_Ganancias, Drive drive, Empresa empresa, Ganancias ganancias,
             Contador contador, ProjectManager projectmanager, JTextField field_vigilando) {
-        super(mutex, drive, ganancias);
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
         this.sueldo = 60;
         this.contador = contador;
         this.projectmanager = projectmanager;
 
+        this.empresa = empresa;
         this.field_vigilando = field_vigilando;
         this.setVigilando(false);
     }
@@ -68,9 +70,11 @@ public class Director extends Trabajador {
 
     private void enviarCapitulos() {
         this.contador.reset();
-        this.descansar();
-//        ENviarcapitulos al drive
 
+        int ganancias = this.drive.vaciarCapitulos();
+
+        this.empresa.registrarUtilidades(this.contador.get_Dia_Real(), ganancias);
+        this.descansar();
     }
 
     private void trabajar_administrativo() {
@@ -81,7 +85,6 @@ public class Director extends Trabajador {
             var descanso_Restante = Constants.HOUR_DURATION * (24 - randomHour)
                     - Constants.MINUTE_DURATION * 35;
             sleep(descanso_Restante);
-
         } catch (InterruptedException ex) {
             Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
         }

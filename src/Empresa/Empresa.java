@@ -17,6 +17,8 @@ import Trabajadores.TrabajadorEstudio;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -34,8 +36,6 @@ public class Empresa {
     private Requerimientos_Capitulo requerimiento_Estandar;
     private Requerimientos_Capitulo requerimiento_PlotTwist;
 
-    private Empresa_Trabajadores_Iniciales trabajadores_Iniciales;
-
     private final Ganancias ganancias;
 
     private final Empresa_Labels empresa_Labels;
@@ -43,26 +43,34 @@ public class Empresa {
     private final int last_carnet;
     public String nombre;
     private final Drive drive;
-    private final Semaphore mutex;
+
+    private final Semaphore mutex_Drive;
+    private final Semaphore mutex_Ganancias;
+
+    private final int[] utilidades_En_El_Tiempo;
 
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
-            Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
+            Empresa_Trabajadores_Iniciales trabajadores_Iniciales,
+            int[] ganancias_Daily, GraficoEmpresa funcionesGrafico) {
         this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
 
         this.empresa_Labels = empresa_Labels;
 
-        this.trabajadores_Iniciales = trabajadores_Iniciales;
-
-        this.ganancias = new Ganancias();
-        this.contador = new Contador(this.empresa_Labels.field_Contador);
+        this.ganancias = new Ganancias(empresa_Labels.ganancias_Labels);
+        this.contador = new Contador(this.empresa_Labels.field_Contador,
+                funcionesGrafico, this);
         this.drive = new Drive(empresa_Labels.drive_Labels);
-        this.mutex = new Semaphore(1);
+        this.mutex_Drive = new Semaphore(1);
+        this.mutex_Ganancias = new Semaphore(1);
 
+        this.utilidades_En_El_Tiempo = ganancias_Daily;
+
+        System.out.println(trabajadores_Iniciales);
         this.initalizeEmpresaEspecifica(nombre);
-        this.initalizeEmpleados();
+        this.initalizeEmpleados(trabajadores_Iniciales);
 
     }
 
@@ -78,54 +86,73 @@ public class Empresa {
         }
     }
 
-    private void initalizeEmpleados() {
-        this.manager = new ProjectManager(this.mutex, this.drive, ganancias,
+    public void registrarUtilidades(int day, int ganancias) {
+        try {
+            this.mutex_Ganancias.acquire();
+            this.ganancias.setGanancias_Bruto(ganancias);
+
+            this.utilidades_En_El_Tiempo[day] = this.ganancias.getUtilidad_Total();
+
+            this.mutex_Ganancias.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void initalizeEmpleados(Empresa_Trabajadores_Iniciales trabajadores_Iniciales) {
+        this.manager = new ProjectManager(this.mutex_Drive, this.mutex_Ganancias,
+                this.drive, ganancias,
                 this.contador, this.empresa_Labels.field_Viendo_Anime,
                 this.empresa_Labels.field_faltasPM, this.empresa_Labels.field_DescontadoPM
         );
-        this.director = new Director(this.mutex, this.drive, ganancias,
+        this.director = new Director(this.mutex_Drive, this.mutex_Ganancias,
+                this.drive, this, ganancias,
                 this.contador, this.manager, this.empresa_Labels.field_vigilando);
 
-        var trabajador = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.GUIONISTA, mutex, drive,
-                ganancias, last_carnet);
+        int comienzoFor = 0;
 
-        var trabajdor2 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.ACTOR_DOBLAJE, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.guionista,
+                TipoTrabajador_Estudio.GUIONISTA);
+        comienzoFor += trabajadores_Iniciales.guionista;
 
-        var trabajdor3 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.ANIMADOR, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.actor_doblaje,
+                TipoTrabajador_Estudio.ACTOR_DOBLAJE);
+        comienzoFor += trabajadores_Iniciales.actor_doblaje;
 
-        var trabajdor4 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.DISENADOR_ESCENARIO, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.animador,
+                TipoTrabajador_Estudio.ANIMADOR);
+        comienzoFor += trabajadores_Iniciales.animador;
 
-        var trabajdor5 = new TrabajadorEstudio(
-                TipoTrabajador_Estudio.PLOT_TWIST, mutex, drive,
-                ganancias, last_carnet);
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.disenador_escenario,
+                TipoTrabajador_Estudio.DISENADOR_ESCENARIO);
+        comienzoFor += trabajadores_Iniciales.disenador_escenario;
 
-        var ensamblador = new Ensamblador(mutex, drive, ganancias,
+        this.crearEmpleados(comienzoFor, trabajadores_Iniciales.plot_twist,
+                TipoTrabajador_Estudio.PLOT_TWIST);
+
+//        TODO - Pensar si esto es dinamico tambiern
+        var ensamblador = new Ensamblador(mutex_Drive, this.mutex_Ganancias,
+                drive, ganancias,
                 this.capitulos_rate, requerimiento_Estandar, requerimiento_PlotTwist);
-        trabajador.start();
-        trabajdor2.start();
-        trabajdor3.start();
-        trabajdor4.start();
-        trabajdor5.start();
+
         ensamblador.start();
 
         this.manager.start();
         this.director.start();
+    }
 
-        for (int i = 0; i < empleados.length; i++) {
-//            var trabajador = new TrabajadorEstudio(
-//                    TipoTrabajador_Estudio.GUIONISTA, mutex, drive,
-//                    ganancias, last_carnet);
-//            trabajador.start();
-//            this.empleados[i] = trabajador;
+    private void crearEmpleados(int comienzo, int cantidad, TipoTrabajador_Estudio tipo) {
+        for (int i = comienzo; i < comienzo + cantidad; i++) {
+            var trabajador = new TrabajadorEstudio(
+                    tipo, mutex_Drive, this.mutex_Ganancias, drive, ganancias, last_carnet);
+            this.empleados[i] = trabajador;
+            trabajador.start();
         }
+    }
 
+    public int[] getUtilidades_En_El_Tiempo() {
+        return utilidades_En_El_Tiempo;
     }
 
 }

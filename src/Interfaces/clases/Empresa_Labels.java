@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 public class Empresa_Labels {
 
     public final Drive_Labels drive_Labels;
+    public final Ganancias_Labels ganancias_Labels;
 
     public final JTextField field_Viendo_Anime;
     public final JTextField field_faltasPM;
@@ -21,10 +22,12 @@ public class Empresa_Labels {
     public final JTextField field_Contador;
     public final JTextField field_vigilando;
 
-    public Empresa_Labels(Drive_Labels drive_Labels, JTextField field_Viendo_Anime, 
+    public Empresa_Labels(Drive_Labels drive_Labels, Ganancias_Labels ganancias_Labels,
+            JTextField field_Viendo_Anime, 
             JTextField field_faltasPM, JTextField field_DescontadoPM, 
             JTextField field_vigilando, JTextField field_Contador) {
         this.drive_Labels = drive_Labels;
+        this.ganancias_Labels = ganancias_Labels;
         
         this.field_Viendo_Anime = field_Viendo_Anime;
         this.field_faltasPM = field_faltasPM;

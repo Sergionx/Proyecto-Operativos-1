@@ -4,22 +4,19 @@
  */
 package Interfaces;
 
-import Interfaces.Interfaz1;
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 import Utils.Funciones;
-import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.event.ChangeListener;
+import javax.swing.JSpinner;
 
 /**
  *
  * @author valeriazampetti
  */
 public class InterfazInicial extends javax.swing.JFrame {
-    
 
-    static Empresa_Trabajadores_Iniciales trabajadores_Disney;
+    static Empresa_Trabajadores_Iniciales trabajadores_Disney_Channel;
     static Empresa_Trabajadores_Iniciales trabajadores_Star_Channel;
 
     static int segundos_Contador;
@@ -32,6 +29,9 @@ public class InterfazInicial extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
         initComponents();
 
+        trabajadores_Disney_Channel = new Empresa_Trabajadores_Iniciales();
+        trabajadores_Star_Channel = new Empresa_Trabajadores_Iniciales();
+
         segundos_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             segundos_Contador = (int) segundos_Spinner.getValue();
         });
@@ -39,6 +39,16 @@ public class InterfazInicial extends javax.swing.JFrame {
         contador_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             dias_Contador = (int) contador_Spinner.getValue();
         });
+
+        conectarSpinnersEmpresa(new JSpinner[]{guionista_Star_Spinner,
+            disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
+            plotTwist_Star_Spinner
+        }, trabajadores_Star_Channel);
+        
+        conectarSpinnersEmpresa(new JSpinner[]{guionista_Disney_Spinner,
+            disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
+            plotTwist_Disney_Spinner
+        }, trabajadores_Disney_Channel);
     }
 
     /**
@@ -55,21 +65,21 @@ public class InterfazInicial extends javax.swing.JFrame {
         scrollPane1 = new java.awt.ScrollPane();
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
-        jSpinner5 = new javax.swing.JSpinner();
-        jSpinner6 = new javax.swing.JSpinner();
+        guionista_Star_Spinner = new javax.swing.JSpinner();
+        animador_Star_Spinner = new javax.swing.JSpinner();
+        plotTwist_Star_Spinner = new javax.swing.JSpinner();
+        doblaje_Star_Spinner = new javax.swing.JSpinner();
+        disenador_Star_Spinner = new javax.swing.JSpinner();
+        guionista_Disney_Spinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         segundos_Spinner = new javax.swing.JSpinner();
-        jSpinner8 = new javax.swing.JSpinner();
-        jSpinner9 = new javax.swing.JSpinner();
-        jSpinner10 = new javax.swing.JSpinner();
+        animador_Disney_Spinner = new javax.swing.JSpinner();
+        doblaje_Disney_Spinner = new javax.swing.JSpinner();
+        plotTwist_Disney_Spinner = new javax.swing.JSpinner();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -84,7 +94,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         segundos_Guardar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jSpinner11 = new javax.swing.JSpinner();
+        disenador_Disney_Spinner = new javax.swing.JSpinner();
         jLabel17 = new javax.swing.JLabel();
         contador_Spinner = new javax.swing.JSpinner();
         contador_Cargar = new javax.swing.JButton();
@@ -104,12 +114,12 @@ public class InterfazInicial extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
-        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
-        getContentPane().add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
-        getContentPane().add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
-        getContentPane().add(jSpinner4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
-        getContentPane().add(jSpinner5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-        getContentPane().add(jSpinner6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+        getContentPane().add(guionista_Star_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        getContentPane().add(animador_Star_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        getContentPane().add(plotTwist_Star_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+        getContentPane().add(doblaje_Star_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+        getContentPane().add(disenador_Star_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        getContentPane().add(guionista_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,9 +146,9 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel6.setText("Plot Twist");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
         getContentPane().add(segundos_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
-        getContentPane().add(jSpinner8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
-        getContentPane().add(jSpinner9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
-        getContentPane().add(jSpinner10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
+        getContentPane().add(animador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+        getContentPane().add(doblaje_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
+        getContentPane().add(plotTwist_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,8 +231,8 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Trabajadores");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, -1, -1));
-        getContentPane().add(jSpinner11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, -1, -1));
+        getContentPane().add(disenador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -276,6 +286,7 @@ public class InterfazInicial extends javax.swing.JFrame {
             Funciones.write_txt_int(fichero, trabajadores_Disney);
         }
             
+
 
     }//GEN-LAST:event_trabajadores_GuardarActionPerformed
 
@@ -399,11 +410,42 @@ public class InterfazInicial extends javax.swing.JFrame {
         });
     }
 
+    private void conectarSpinnersEmpresa(javax.swing.JSpinner[] spinners,
+            Empresa_Trabajadores_Iniciales trabajadores_iniciales) {
+        spinners[0].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.guionista = (int) spinners[0].getValue();
+        });
+
+        spinners[1].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.disenador_escenario = (int) spinners[1].getValue();
+        });
+
+        spinners[2].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.animador = (int) spinners[2].getValue();
+        });
+
+        spinners[3].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.actor_doblaje = (int) spinners[3].getValue();
+        });
+
+        spinners[4].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            trabajadores_iniciales.plot_twist = (int) spinners[4].getValue();
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner animador_Disney_Spinner;
+    private javax.swing.JSpinner animador_Star_Spinner;
     private javax.swing.JButton contador_Cargar;
     private javax.swing.JButton contador_Guardar;
     private javax.swing.JSpinner contador_Spinner;
+    private javax.swing.JSpinner disenador_Disney_Spinner;
+    private javax.swing.JSpinner disenador_Star_Spinner;
+    private javax.swing.JSpinner doblaje_Disney_Spinner;
+    private javax.swing.JSpinner doblaje_Star_Spinner;
     private javax.swing.JLabel fondoprincipal;
+    private javax.swing.JSpinner guionista_Disney_Spinner;
+    private javax.swing.JSpinner guionista_Star_Spinner;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -422,18 +464,10 @@ public class InterfazInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner11;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JSpinner plotTwist_Disney_Spinner;
+    private javax.swing.JSpinner plotTwist_Star_Spinner;
     private java.awt.ScrollPane scrollPane1;
     private javax.swing.JButton segundos_Cargar;
     private javax.swing.JButton segundos_Guardar;
