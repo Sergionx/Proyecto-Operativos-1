@@ -33,14 +33,16 @@ public class Ganancias {
 
     public void setCostos_Operativos(int costos_Operativos) {
         this.costos_Operativos += costos_Operativos;
-        System.out.println("costos " + this.costos_Operativos);
         this.labels.field_costos.setText(-this.costos_Operativos + "$");
         this.setUtilidad_Total();
     }
 
     private void setUtilidad_Total() {
         this.utilidad_Total = ganancias_Bruto - costos_Operativos;
-        System.out.println("utilidad total " + utilidad_Total);
         this.labels.field_utilidades.setText(this.utilidad_Total + "$");
+    }
+
+    public int getUtilidad_Total() {
+        return utilidad_Total;
     }
 }

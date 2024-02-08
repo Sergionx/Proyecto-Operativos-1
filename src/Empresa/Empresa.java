@@ -47,8 +47,7 @@ public class Empresa {
     private final Semaphore mutex_Drive;
     private final Semaphore mutex_Ganancias;
 
-    private final int[] ganancias_Daily;
-    private GraficoEmpresa funcionesGrafico;
+    private final int[] utilidades_En_El_Tiempo;
 
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
@@ -61,13 +60,13 @@ public class Empresa {
         this.empresa_Labels = empresa_Labels;
 
         this.ganancias = new Ganancias(empresa_Labels.ganancias_Labels);
-        this.contador = new Contador(this.empresa_Labels.field_Contador);
+        this.contador = new Contador(this.empresa_Labels.field_Contador,
+                funcionesGrafico, this);
         this.drive = new Drive(empresa_Labels.drive_Labels);
         this.mutex_Drive = new Semaphore(1);
         this.mutex_Ganancias = new Semaphore(1);
 
-        this.ganancias_Daily = ganancias_Daily;
-        this.funcionesGrafico = funcionesGrafico;
+        this.utilidades_En_El_Tiempo = ganancias_Daily;
 
         System.out.println(trabajadores_Iniciales);
         this.initalizeEmpresaEspecifica(nombre);
@@ -87,14 +86,13 @@ public class Empresa {
         }
     }
 
-    public void registrarGanancias(int day, int ganancias) {
+    public void registrarUtilidades(int day, int ganancias) {
         try {
             this.mutex_Ganancias.acquire();
-            this.ganancias_Daily[day] = ganancias;
             this.ganancias.setGanancias_Bruto(ganancias);
-            funcionesGrafico.crearGrafico();
 
-            System.out.println("ganancias " + ganancias);
+            this.utilidades_En_El_Tiempo[day] = this.ganancias.getUtilidad_Total();
+
             this.mutex_Ganancias.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,8 +151,8 @@ public class Empresa {
         }
     }
 
-    public int[] getGanancias_Daily() {
-        return ganancias_Daily;
+    public int[] getUtilidades_En_El_Tiempo() {
+        return utilidades_En_El_Tiempo;
     }
 
 }
