@@ -22,8 +22,8 @@ public class InterfazInicial extends javax.swing.JFrame {
     static Empresa_Trabajadores_Iniciales trabajadores_Disney_Channel;
     static Empresa_Trabajadores_Iniciales trabajadores_Star_Channel;
 
-    static int segundos_Contador;
-    static int dias_Contador;
+    static int segundos_Contador = 1;
+    static int dias_Contador = 1;
 
     final int max_Empleados_Star = 10 + 6;
     final int max_Empleados_Disney = 10 + 1;
@@ -100,7 +100,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         segundos_Spinner = new javax.swing.JSpinner(
-            new SpinnerNumberModel(10, 10, 1000000, 1000)
+            new SpinnerNumberModel(1, 1, 1000000, 10)
         );
         animador_Disney_Spinner = new javax.swing.JSpinner(
             new SpinnerNumberModel(1, 1, max_Empleados_Disney, 1)
@@ -317,7 +317,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel20.setText("microsegundos");
+        jLabel20.setText("10^-4");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, -1, -1));
         getContentPane().add(ensamblador_Star_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
 
@@ -433,7 +433,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
         this.setVisible(false);
-
+        System.out.println("segundos_Contador" + segundos_Contador);
         Constants.setSecond(segundos_Contador);
         Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
