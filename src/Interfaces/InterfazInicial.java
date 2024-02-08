@@ -26,7 +26,7 @@ public class InterfazInicial extends javax.swing.JFrame {
      * Creates new form InterfazInicial
      */
     public InterfazInicial() {
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         initComponents();
 
         trabajadores_Disney_Channel = new Empresa_Trabajadores_Iniciales();
@@ -44,7 +44,7 @@ public class InterfazInicial extends javax.swing.JFrame {
             disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
             plotTwist_Star_Spinner
         }, trabajadores_Star_Channel);
-        
+
         conectarSpinnersEmpresa(new JSpinner[]{guionista_Disney_Spinner,
             disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
             plotTwist_Disney_Spinner
@@ -285,13 +285,12 @@ public class InterfazInicial extends javax.swing.JFrame {
             File fichero = fx.getSelectedFile();
             Funciones.write_txt_int(fichero, trabajadores_Disney_Channel);
         }
-            
 
 
     }//GEN-LAST:event_trabajadores_GuardarActionPerformed
 
     private void trabajadores_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_CargarActionPerformed
-        
+
         trabajadores_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
@@ -320,7 +319,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_segundos_CargarActionPerformed
 
     private void segundos_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundos_GuardarActionPerformed
-         segundos_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        segundos_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
         int seleccion = fx.showOpenDialog(this);
@@ -328,11 +327,10 @@ public class InterfazInicial extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
             File fichero = fx.getSelectedFile();
-           
-   
+
             Funciones.write_txt_int(fichero, segundos_Contador);
         }
-      
+
     }//GEN-LAST:event_segundos_GuardarActionPerformed
 
     private void contador_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_CargarActionPerformed
@@ -349,7 +347,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_contador_CargarActionPerformed
 
     private void contador_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_GuardarActionPerformed
-         contador_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        contador_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
         int seleccion = fx.showOpenDialog(this);
@@ -361,7 +359,8 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_contador_GuardarActionPerformed
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
-       this.setVisible(false);
+        this.setVisible(false);
+
         Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
     }//GEN-LAST:event_siguienteActionPerformed
