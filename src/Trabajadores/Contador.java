@@ -4,6 +4,8 @@
  */
 package Trabajadores;
 
+import Empresa.Empresa;
+import Empresa.GraficoEmpresa;
 import java.awt.Color;
 import javax.swing.JTextField;
 
@@ -19,8 +21,16 @@ public class Contador {
 
     public final JTextField field_Contador;
 
-    public Contador(JTextField field_Contador) {
+    private final Empresa empresa;
+    private final GraficoEmpresa funcionesGrafico;
+
+    public Contador(JTextField field_Contador, GraficoEmpresa funcionesGrafico,
+            Empresa empresa) {
         this.field_Contador = field_Contador;
+
+        this.empresa = empresa;
+        this.funcionesGrafico = funcionesGrafico;
+
         this.duracion = leerTxt();
         this.setDias_faltantes(this.duracion);
     }
@@ -34,6 +44,9 @@ public class Contador {
         System.out.println("SIGUIENTE DIA");
         this.setDias_faltantes(dias_Faltantes - 1);
         this.dia_Real++;
+
+        this.empresa.registrarUtilidades(dia_Real, 0);
+        this.funcionesGrafico.crearGrafico();
     }
 
 //    Review pensar mejor nombre

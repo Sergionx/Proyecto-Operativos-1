@@ -72,10 +72,8 @@ public class Director extends Trabajador {
         this.contador.reset();
 
         int ganancias = this.drive.vaciarCapitulos();
-        if (ganancias == 0) {
-            return;
-        }
-        this.empresa.registrarGanancias(this.contador.get_Dia_Real(), ganancias);
+
+        this.empresa.registrarUtilidades(this.contador.get_Dia_Real(), ganancias);
         this.descansar();
     }
 
@@ -87,7 +85,6 @@ public class Director extends Trabajador {
             var descanso_Restante = Constants.HOUR_DURATION * (24 - randomHour)
                     - Constants.MINUTE_DURATION * 35;
             sleep(descanso_Restante);
-
         } catch (InterruptedException ex) {
             Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
         }
