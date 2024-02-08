@@ -28,13 +28,25 @@ public class InterfazInicial extends javax.swing.JFrame {
     final int max_Empleados_Star = 10 + 6;
     final int max_Empleados_Disney = 10 + 1;
 
+    final JSpinner[] spinners_Star;
+    final JSpinner[] spinners_Disney;
+
     /**
      * Creates new form InterfazInicial
      */
     public InterfazInicial() {
+
         this.setLocationRelativeTo(null);
         initComponents();
 
+        this.spinners_Star = new JSpinner[]{guionista_Star_Spinner,
+            disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
+            plotTwist_Star_Spinner, ensamblador_Star_Spinner
+        };
+        this.spinners_Disney = new JSpinner[]{guionista_Disney_Spinner,
+            disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
+            plotTwist_Disney_Spinner, ensamblador_Disney_Spinner
+        };
         trabajadores_Disney_Channel = new Empresa_Trabajadores_Iniciales();
         trabajadores_Star_Channel = new Empresa_Trabajadores_Iniciales();
 
@@ -46,15 +58,9 @@ public class InterfazInicial extends javax.swing.JFrame {
             dias_Contador = (int) contador_Spinner.getValue();
         });
 
-        conectarSpinnersEmpresa(new JSpinner[]{guionista_Star_Spinner,
-            disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
-            plotTwist_Star_Spinner, ensamblador_Star_Spinner
-        }, trabajadores_Star_Channel, max_Empleados_Star);
+        conectarSpinnersEmpresa(spinners_Star, trabajadores_Star_Channel, max_Empleados_Star);
 
-        conectarSpinnersEmpresa(new JSpinner[]{guionista_Disney_Spinner,
-            disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
-            plotTwist_Disney_Spinner, ensamblador_Disney_Spinner
-        }, trabajadores_Disney_Channel, max_Empleados_Disney);
+        conectarSpinnersEmpresa(spinners_Disney, trabajadores_Disney_Channel, max_Empleados_Disney);
     }
 
     /**
@@ -350,17 +356,24 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_trabajadores_GuardarActionPerformed
 
     private void trabajadores_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_CargarActionPerformed
-
         trabajadores_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
         int seleccion = fx.showOpenDialog(this);
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
-
             File fichero = fx.getSelectedFile();
-            var hola = Funciones.Leer_txt_trabajadores(fichero.getAbsolutePath());
-//            TODO HAcer lo de leer
+            Empresa_Trabajadores_Iniciales[] trabajadores_Inciales
+                    = Funciones.Leer_txt_trabajadores(fichero.getAbsolutePath());
+            var spinnersList = new JSpinner[][]{spinners_Star, spinners_Disney};
+
+            for (int i = 0; i < trabajadores_Inciales.length; i++) {
+                var trabajador_Incial = trabajadores_Inciales[i];
+                var spinners = spinnersList[i];
+
+                initalizeTrabajadoresSpinners(spinners, trabajador_Incial);
+            }
+
         }
     }//GEN-LAST:event_trabajadores_CargarActionPerformed
 
@@ -471,7 +484,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         });
     }
 
-    private void conectarSpinnersEmpresa(javax.swing.JSpinner[] spinners,
+    private void conectarSpinnersEmpresa(JSpinner[] spinners,
             Empresa_Trabajadores_Iniciales trabajadores_iniciales,
             int max_Empleados) {
         spinners[0].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
@@ -504,7 +517,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
         });
-        
+
         spinners[5].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             trabajadores_iniciales.ensamblador = (int) spinners[5].getValue();
 
@@ -512,6 +525,15 @@ public class InterfazInicial extends javax.swing.JFrame {
         });
     }
 
+    private void initalizeTrabajadoresSpinners(JSpinner[] spinners,
+            Empresa_Trabajadores_Iniciales trabajadores_iniciales) {
+        spinners[0].setValue(trabajadores_iniciales.guionista);
+        spinners[1].setValue(trabajadores_iniciales.disenador_escenario);
+        spinners[2].setValue(trabajadores_iniciales.animador);
+        spinners[3].setValue(trabajadores_iniciales.actor_doblaje);
+        spinners[4].setValue(trabajadores_iniciales.plot_twist);
+        spinners[5].setValue(trabajadores_iniciales.ensamblador);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner animador_Disney_Spinner;

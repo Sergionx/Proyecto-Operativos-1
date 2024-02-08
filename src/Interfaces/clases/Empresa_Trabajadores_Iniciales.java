@@ -26,25 +26,21 @@ public class Empresa_Trabajadores_Iniciales {
         this.ensamblador = 0;
     }
 
-    public Empresa_Trabajadores_Iniciales(int guionista, int disenador_escenario, int animador, int actor_doblaje, int plot_twist) {
-        this.guionista = guionista;
-        this.disenador_escenario = disenador_escenario;
-        this.animador = animador;
-        this.actor_doblaje = actor_doblaje;
-        this.plot_twist = plot_twist;
-    }
-
     public Empresa_Trabajadores_Iniciales(int[] trabajador) {
         this.guionista = trabajador[0];
         this.disenador_escenario = trabajador[1];
         this.animador = trabajador[2];
         this.actor_doblaje = trabajador[3];
         this.plot_twist = trabajador[4];
+        this.ensamblador = trabajador[5];
+
     }
 
     @Override
     public String toString() {
-        return this.guionista + "," + this.animador + "," + this.actor_doblaje + "," + this.disenador_escenario + "," + this.plot_twist;
+        return this.guionista + "," + this.animador + "," + this.actor_doblaje 
+                + "," + this.disenador_escenario + "," + this.plot_twist
+                + "," + this.ensamblador;
     }
 
 }

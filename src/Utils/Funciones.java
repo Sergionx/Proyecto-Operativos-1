@@ -8,8 +8,11 @@ import Interfaces.clases.Empresa_Trabajadores_Iniciales;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -70,16 +73,15 @@ public class Funciones {
                 file.createNewFile();
                 return new Empresa_Trabajadores_Iniciales[2];
             }
-            FileReader fr = new FileReader(file);
-            LineNumberReader lineaReader = new LineNumberReader(fr);
-            BufferedReader br = new BufferedReader(fr);
 
-            var trabajadores_Iniciales = new Empresa_Trabajadores_Iniciales[lineaReader.getLineNumber()];
+            var trabajadores_Iniciales = new Empresa_Trabajadores_Iniciales[getLineNumber(file)];
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
 
             var index = 0;
             while ((line = br.readLine()) != null) {
                 var numeros = line.split(",");
-                int[] trabajadores = new int[5];
+                int[] trabajadores = new int[6];
 
                 for (int i = 0; i < numeros.length; i++) {
                     trabajadores[i] = Integer.parseInt(numeros[i]);
@@ -96,6 +98,20 @@ public class Funciones {
             JOptionPane.showMessageDialog(null, "ÉRROR AL LEER! ");
         }
         return new Empresa_Trabajadores_Iniciales[2];
+    }
+
+    private static int getLineNumber(File file) {
+        int lines = 0;
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while (br.readLine() != null) {
+                lines++;
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return lines;
     }
 
     public static void write_txt_int(File file, int numero) {
@@ -115,7 +131,7 @@ public class Funciones {
             Empresa_Trabajadores_Iniciales trabajadores_Star,
             Empresa_Trabajadores_Iniciales trabjadores_Disney) {
         String trabajadores_txt = trabajadores_Star.toString() + "\n" + trabjadores_Disney.toString();
-        
+
         try {
             PrintWriter pw = new PrintWriter(file);
             pw.print(trabajadores_txt);
