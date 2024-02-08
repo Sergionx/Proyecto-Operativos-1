@@ -315,7 +315,7 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel19.setText("Dinero descontado");
         Star_Pane.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
-        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 340, 270));
+        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 340, 260));
 
         field_FaltasPM.setEditable(false);
         field_FaltasPM.addActionListener(new java.awt.event.ActionListener() {
@@ -367,7 +367,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         Star_Pane.add(Costos_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, -1));
 
         Star_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
-        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 970, 490));
+        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 480));
 
         TabbedPane_principal.addTab("tab2", Star_Pane);
 
