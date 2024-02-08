@@ -26,7 +26,7 @@ public class InterfazInicial extends javax.swing.JFrame {
      * Creates new form InterfazInicial
      */
     public InterfazInicial() {
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         initComponents();
 
         trabajadores_Disney_Channel = new Empresa_Trabajadores_Iniciales();
@@ -283,7 +283,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
             File fichero = fx.getSelectedFile();
-            Funciones.write_txt_int(fichero, trabajadores_Disney);
+            Funciones.write_txt_int(fichero, trabajadores_Disney_Channel);
         }
             
 
@@ -362,7 +362,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
        this.setVisible(false);
-        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney, trabajadores_Star_Channel);
+        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
     }//GEN-LAST:event_siguienteActionPerformed
 
