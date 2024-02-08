@@ -26,6 +26,7 @@ public class InterfazInicial extends javax.swing.JFrame {
      * Creates new form InterfazInicial
      */
     public InterfazInicial() {
+         this.setLocationRelativeTo(null);
         initComponents();
 
         trabajadores_Disney_Channel = new Empresa_Trabajadores_Iniciales();
@@ -98,6 +99,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         contador_Spinner = new javax.swing.JSpinner();
         contador_Cargar = new javax.swing.JButton();
         contador_Guardar = new javax.swing.JButton();
+        siguiente = new javax.swing.JButton();
         fondoprincipal = new javax.swing.JLabel();
 
         jToolBar1.setRollover(true);
@@ -182,7 +184,7 @@ public class InterfazInicial extends javax.swing.JFrame {
                 trabajadores_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(trabajadores_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, -1, -1));
+        getContentPane().add(trabajadores_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,7 +203,7 @@ public class InterfazInicial extends javax.swing.JFrame {
                 trabajadores_CargarActionPerformed(evt);
             }
         });
-        getContentPane().add(trabajadores_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, -1, -1));
+        getContentPane().add(trabajadores_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
 
         segundos_Cargar.setText("Cargar");
         segundos_Cargar.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +231,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Trabajadores");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, -1, -1));
         getContentPane().add(disenador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
@@ -257,6 +259,14 @@ public class InterfazInicial extends javax.swing.JFrame {
         });
         getContentPane().add(contador_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, -1, -1));
 
+        siguiente.setText("Siguiente");
+        siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, -1, -1));
+
         fondoprincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprincipaaal.png"))); // NOI18N
         fondoprincipal.setText("jLabel2");
         getContentPane().add(fondoprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 790, 400));
@@ -265,15 +275,23 @@ public class InterfazInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void trabajadores_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_GuardarActionPerformed
-        this.setVisible(false);
+        trabajadores_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
 
-        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
-        interfaz.show();
+        int seleccion = fx.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+
+            File fichero = fx.getSelectedFile();
+            Funciones.write_txt_int(fichero, trabajadores_Disney_Channel);
+        }
+            
 
 
     }//GEN-LAST:event_trabajadores_GuardarActionPerformed
 
     private void trabajadores_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_CargarActionPerformed
+        
         trabajadores_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
@@ -302,7 +320,19 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_segundos_CargarActionPerformed
 
     private void segundos_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundos_GuardarActionPerformed
-        // TODO add your handling code here:
+         segundos_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
+
+        int seleccion = fx.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+
+            File fichero = fx.getSelectedFile();
+           
+   
+            Funciones.write_txt_int(fichero, segundos_Contador);
+        }
+      
     }//GEN-LAST:event_segundos_GuardarActionPerformed
 
     private void contador_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_CargarActionPerformed
@@ -319,8 +349,22 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_contador_CargarActionPerformed
 
     private void contador_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_GuardarActionPerformed
-        // TODO add your handling code here:
+         contador_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        JFileChooser fx = new JFileChooser();
+
+        int seleccion = fx.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fx.getSelectedFile();
+            Funciones.write_txt_int(fichero, segundos_Contador);
+        }
     }//GEN-LAST:event_contador_GuardarActionPerformed
+
+    private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
+       this.setVisible(false);
+        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney, trabajadores_Star_Channel);
+        interfaz.show();
+    }//GEN-LAST:event_siguienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,6 +472,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     private javax.swing.JButton segundos_Cargar;
     private javax.swing.JButton segundos_Guardar;
     private javax.swing.JSpinner segundos_Spinner;
+    private javax.swing.JButton siguiente;
     private javax.swing.JButton trabajadores_Cargar;
     private javax.swing.JButton trabajadores_Guardar;
     // End of variables declaration//GEN-END:variables
