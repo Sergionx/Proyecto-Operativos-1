@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import Utils.Constants;
 import Utils.Funciones;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -44,7 +45,7 @@ public class InterfazInicial extends javax.swing.JFrame {
             disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
             plotTwist_Star_Spinner
         }, trabajadores_Star_Channel);
-        
+
         conectarSpinnersEmpresa(new JSpinner[]{guionista_Disney_Spinner,
             disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
             plotTwist_Disney_Spinner
@@ -147,7 +148,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Plot Twist");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
-        getContentPane().add(segundos_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, -1, -1));
+        getContentPane().add(segundos_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 90, -1));
         getContentPane().add(animador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
         getContentPane().add(doblaje_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
         getContentPane().add(plotTwist_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
@@ -293,13 +294,12 @@ public class InterfazInicial extends javax.swing.JFrame {
             File fichero = fx.getSelectedFile();
             Funciones.write_txt_int(fichero, trabajadores_Disney_Channel);
         }
-            
 
 
     }//GEN-LAST:event_trabajadores_GuardarActionPerformed
 
     private void trabajadores_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadores_CargarActionPerformed
-        
+
         trabajadores_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
@@ -328,7 +328,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_segundos_CargarActionPerformed
 
     private void segundos_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundos_GuardarActionPerformed
-         segundos_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        segundos_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
         int seleccion = fx.showOpenDialog(this);
@@ -336,11 +336,10 @@ public class InterfazInicial extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
             File fichero = fx.getSelectedFile();
-           
-   
+
             Funciones.write_txt_int(fichero, segundos_Contador);
         }
-      
+
     }//GEN-LAST:event_segundos_GuardarActionPerformed
 
     private void contador_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_CargarActionPerformed
@@ -357,7 +356,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_contador_CargarActionPerformed
 
     private void contador_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contador_GuardarActionPerformed
-         contador_Cargar.setBackground(new java.awt.Color(255, 204, 204));
+        contador_Cargar.setBackground(new java.awt.Color(255, 204, 204));
         JFileChooser fx = new JFileChooser();
 
         int seleccion = fx.showOpenDialog(this);
@@ -369,9 +368,12 @@ public class InterfazInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_contador_GuardarActionPerformed
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
-       this.setVisible(false);
+        this.setVisible(false);
+
+        Constants.setSecond(segundos_Contador);
         Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
+        
     }//GEN-LAST:event_siguienteActionPerformed
 
     /**

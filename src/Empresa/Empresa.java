@@ -52,7 +52,8 @@ public class Empresa {
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
             Empresa_Trabajadores_Iniciales trabajadores_Iniciales,
-            int[] ganancias_Daily, GraficoEmpresa funcionesGrafico) {
+            int[] ganancias_Daily, GraficoEmpresa funcionesGrafico,
+            int contador_Duracion) {
         this.empleados = new Trabajador[last_carnet + 10];
         this.last_carnet = last_carnet;
         this.nombre = nombre;
@@ -61,7 +62,7 @@ public class Empresa {
 
         this.ganancias = new Ganancias(empresa_Labels.ganancias_Labels);
         this.contador = new Contador(this.empresa_Labels.field_Contador,
-                funcionesGrafico, this);
+                funcionesGrafico, this, contador_Duracion);
         this.drive = new Drive(empresa_Labels.drive_Labels);
         this.mutex_Drive = new Semaphore(1);
         this.mutex_Ganancias = new Semaphore(1);

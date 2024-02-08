@@ -36,17 +36,16 @@ public class Interfaz1 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.crearEmpresas(trabajadores_Disney, trabajadores_Star_Channel);
         this.crearGrafico();
-
     }
 
     private void crearEmpresas(Empresa_Trabajadores_Iniciales trabajadores_Disney,
             Empresa_Trabajadores_Iniciales trabajadores_Star_Channel) {
         var labels = new Empresa_Labels[]{
             new Empresa_Labels(
-                new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
+            new Drive_Labels(Star_Estandar_Field, Star_PlotTwist_Field,
             guiones_Field, doblajes_Field, escenarios_Field,
             animaciones_Field, plotTwist_Field),
-                new Ganancias_Labels(Ganancias_Field, Costos_Field, Utilidades_Field),
+            new Ganancias_Labels(Ganancias_Field, Costos_Field, Utilidades_Field),
             field_Viendo_Anime, field_FaltasPM, field_DescontadoPM,
             field_VigilandoDirector,
             field_Contador
@@ -61,7 +60,8 @@ public class Interfaz1 extends javax.swing.JFrame {
             new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel,
             new int[50], () -> {
                 crearGrafico();
-            }), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
+            }, InterfazInicial.dias_Contador)
+//            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney)
         };
 
         for (int i = 0; i < empresas.length; i++) {
@@ -513,7 +513,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                 Chart_Panel.getSize(),
                 this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[0].getUtilidades_En_El_Tiempo());
 
-        
         Chart_Panel.removeAll();
         Chart_Panel.add(chartUtilidades);
 

@@ -29,7 +29,6 @@ public class Grafico_Utilidad {
         JFreeChart xyChart = crearChart(dataset, titleChart);
         ChartPanel chartPanel = new ChartPanel(xyChart);
         
-//     TODO - Encontrar dimensiones buenas
         chartPanel.setPreferredSize(dimensionPanel); 
         final XYPlot plot = xyChart.getXYPlot();
 

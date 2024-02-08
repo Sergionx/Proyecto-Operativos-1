@@ -25,19 +25,14 @@ public class Contador {
     private final GraficoEmpresa funcionesGrafico;
 
     public Contador(JTextField field_Contador, GraficoEmpresa funcionesGrafico,
-            Empresa empresa) {
+            Empresa empresa, int duracion) {
         this.field_Contador = field_Contador;
 
         this.empresa = empresa;
         this.funcionesGrafico = funcionesGrafico;
 
-        this.duracion = leerTxt();
+        this.duracion = duracion;
         this.setDias_faltantes(this.duracion);
-    }
-
-    private int leerTxt() {
-//        TODO - Logica para leer txt
-        return 2;
     }
 
     public void siguiente_Dia() {
