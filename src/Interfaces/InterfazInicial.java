@@ -362,7 +362,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
        this.setVisible(false);
-        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney, trabajadores_Star_Channel);
+        Interfaz1 interfaz = new Interfaz1(trabajadores_Disney_Channel, trabajadores_Star_Channel);
         interfaz.show();
     }//GEN-LAST:event_siguienteActionPerformed
 
