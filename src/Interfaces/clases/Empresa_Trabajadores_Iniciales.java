@@ -15,6 +15,7 @@ public class Empresa_Trabajadores_Iniciales {
     public int animador;
     public int actor_doblaje;
     public int plot_twist;
+    public int ensamblador;
 
     public Empresa_Trabajadores_Iniciales() {
         this.guionista = 0;
@@ -22,6 +23,7 @@ public class Empresa_Trabajadores_Iniciales {
         this.animador = 0;
         this.actor_doblaje = 0;
         this.plot_twist = 0;
+        this.ensamblador = 0;
     }
 
     public Empresa_Trabajadores_Iniciales(int guionista, int disenador_escenario, int animador, int actor_doblaje, int plot_twist) {
