@@ -1019,7 +1019,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                 return;
             }
             var cantidad = (int) spinners[1].getValue();
-            System.out.println("DISENADOR_ESCENARIODISENADOR_ESCENARIO");
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.DISENADOR_ESCENARIO);
 
@@ -1033,7 +1032,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                 return;
             }
             var cantidad = (int) spinners[2].getValue();
-            System.out.println("ANIMADORANIMADORANIMADORANIMADOR");
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ANIMADOR);
 
@@ -1047,7 +1045,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                 return;
             }
             var cantidad = (int) spinners[3].getValue();
-            System.out.println("ACTOR_DOBLAJEACTOR_DOBLAJEACTOR_DOBLAJE" + cantidad);
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ACTOR_DOBLAJE);
 
@@ -1061,7 +1058,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                 return;
             }
             var cantidad = (int) spinners[4].getValue();
-            System.out.println("PLOT_TWISTPLOT_TWISTPLOT_TWISTPLOT_TWISTPLOT_TWIST");
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.PLOT_TWIST);
 
@@ -1075,7 +1071,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                 return;
             }
             var cantidad = (int) spinners[5].getValue();
-            System.out.println("ENSAMBLADORENSAMBLADORENSAMBLADORENSAMBLADORENSAMBLADOR");
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ENSAMBLADOR);
 
