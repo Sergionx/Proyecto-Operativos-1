@@ -5,7 +5,7 @@
 package Interfaces;
 
 import Utils.FuncionesSpinner;
-import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import Interfaces.clases.Empresa_Trabajadores;
 import Utils.Constants;
 import Utils.Funciones;
 import java.io.File;
@@ -19,14 +19,14 @@ import javax.swing.SpinnerNumberModel;
  */
 public class InterfazInicial extends javax.swing.JFrame {
 
-    static Empresa_Trabajadores_Iniciales trabajadores_Disney_Channel;
-    static Empresa_Trabajadores_Iniciales trabajadores_Star_Channel;
+    static Empresa_Trabajadores trabajadores_Disney_Channel;
+    static Empresa_Trabajadores trabajadores_Star_Channel;
 
     static int segundos_Contador = 1;
     static int dias_Contador = 1;
 
-    final int max_Empleados_Star = 10 + 6;
-    final int max_Empleados_Disney = 10 + 1;
+    static final int max_Empleados_Star = 10 + 6;
+    static final int max_Empleados_Disney = 10 + 1;
 
     final JSpinner[] spinners_Star;
     final JSpinner[] spinners_Disney;
@@ -47,8 +47,8 @@ public class InterfazInicial extends javax.swing.JFrame {
             disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
             plotTwist_Disney_Spinner, ensamblador_Disney_Spinner
         };
-        trabajadores_Disney_Channel = new Empresa_Trabajadores_Iniciales();
-        trabajadores_Star_Channel = new Empresa_Trabajadores_Iniciales();
+        trabajadores_Disney_Channel = new Empresa_Trabajadores();
+        trabajadores_Star_Channel = new Empresa_Trabajadores();
 
         segundos_Spinner.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             segundos_Contador = (int) segundos_Spinner.getValue();
@@ -363,7 +363,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File fichero = fx.getSelectedFile();
-            Empresa_Trabajadores_Iniciales[] trabajadores_Inciales
+            Empresa_Trabajadores[] trabajadores_Inciales
                     = Funciones.Leer_txt_trabajadores(fichero.getAbsolutePath());
             var spinnersList = new JSpinner[][]{spinners_Star, spinners_Disney};
 
@@ -485,7 +485,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     }
 
     private void conectarSpinnersEmpresa(JSpinner[] spinners,
-            Empresa_Trabajadores_Iniciales trabajadores_iniciales,
+            Empresa_Trabajadores trabajadores_iniciales,
             int max_Empleados) {
         spinners[0].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             trabajadores_iniciales.guionista = (int) spinners[0].getValue();
@@ -526,7 +526,7 @@ public class InterfazInicial extends javax.swing.JFrame {
     }
 
     private void initalizeTrabajadoresSpinners(JSpinner[] spinners,
-            Empresa_Trabajadores_Iniciales trabajadores_iniciales) {
+            Empresa_Trabajadores trabajadores_iniciales) {
         spinners[0].setValue(trabajadores_iniciales.guionista);
         spinners[1].setValue(trabajadores_iniciales.disenador_escenario);
         spinners[2].setValue(trabajadores_iniciales.animador);

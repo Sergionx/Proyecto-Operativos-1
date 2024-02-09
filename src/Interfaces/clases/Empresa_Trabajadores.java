@@ -8,7 +8,7 @@ package Interfaces.clases;
  *
  * @author valeriazampetti
  */
-public class Empresa_Trabajadores_Iniciales {
+public class Empresa_Trabajadores {
 
     public int guionista;
     public int disenador_escenario;
@@ -17,7 +17,7 @@ public class Empresa_Trabajadores_Iniciales {
     public int plot_twist;
     public int ensamblador;
 
-    public Empresa_Trabajadores_Iniciales() {
+    public Empresa_Trabajadores() {
         this.guionista = 0;
         this.disenador_escenario = 0;
         this.animador = 0;
@@ -26,7 +26,7 @@ public class Empresa_Trabajadores_Iniciales {
         this.ensamblador = 0;
     }
 
-    public Empresa_Trabajadores_Iniciales(int[] trabajador) {
+    public Empresa_Trabajadores(int[] trabajador) {
         this.guionista = trabajador[0];
         this.disenador_escenario = trabajador[1];
         this.animador = trabajador[2];
