@@ -14,12 +14,9 @@ import Trabajadores.ProjectManager;
 import Trabajadores.TipoTrabajador_Estudio;
 import Trabajadores.Trabajador;
 import Trabajadores.TrabajadorEstudio;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTextField;
 
 /**
  *
@@ -48,9 +45,8 @@ public class Empresa {
     private final Semaphore mutex_Ganancias;
 
     private final int[] utilidades_En_El_Tiempo;
-    
+
     private Empresa_Trabajadores numero_Trabajadores;
-    
 
     public Empresa(int last_carnet, String nombre,
             Empresa_Labels empresa_Labels,
@@ -106,7 +102,7 @@ public class Empresa {
 
     private void initalizeEmpleados(Empresa_Trabajadores trabajadores_Iniciales) {
         this.numero_Trabajadores = trabajadores_Iniciales;
-        
+
         this.manager = new ProjectManager(this.mutex_Drive, this.mutex_Ganancias,
                 this.drive, ganancias,
                 this.contador, this.empresa_Labels.field_Viendo_Anime,
@@ -154,34 +150,119 @@ public class Empresa {
 
     private void crearEmpleados(int comienzo, int cantidad, TipoTrabajador_Estudio tipo) {
         for (int i = comienzo; i < comienzo + cantidad; i++) {
-            Trabajador trabajador;
-            if (tipo == TipoTrabajador_Estudio.ENSAMBLADOR) {
-                trabajador = new Ensamblador(mutex_Drive, this.mutex_Ganancias,
-                        drive, ganancias,
-                        this.capitulos_rate, requerimiento_Estandar, requerimiento_PlotTwist);
-            } else {
-                trabajador = new TrabajadorEstudio(
-                        tipo, mutex_Drive, this.mutex_Ganancias, drive, ganancias, last_carnet);
-            }
-
-            this.empleados[i] = trabajador;
-            trabajador.start();
+            this.empleados[i] = creaEmpleado(tipo);
         }
+    }
+
+    private Trabajador creaEmpleado(TipoTrabajador_Estudio tipo) {
+        Trabajador trabajador;
+        if (tipo == TipoTrabajador_Estudio.ENSAMBLADOR) {
+            trabajador = new Ensamblador(mutex_Drive, this.mutex_Ganancias,
+                    drive, ganancias,
+                    this.capitulos_rate, requerimiento_Estandar, requerimiento_PlotTwist);
+        } else {
+            trabajador = new TrabajadorEstudio(
+                    tipo, mutex_Drive, this.mutex_Ganancias, drive, ganancias, last_carnet);
+        }
+
+        trabajador.start();
+        return trabajador;
     }
 
     public void modificarEmpleados(int cantidad, TipoTrabajador_Estudio tipoTrabajador) {
         var difference = getDiferenciaTrabajadores(cantidad, tipoTrabajador);
 
+        if (difference < 0) {
+            removerEmpleados(difference * -1, tipoTrabajador);
+        } else {
+            agregarEmpleados(difference, tipoTrabajador);
+        }
+        actualizar_Trabajadores(difference, tipoTrabajador);
+
+    }
+
+    private void agregarEmpleados(int cantidad, TipoTrabajador_Estudio tipo) {
+        int empleados_Por_Agregrar = cantidad;
+        
+         for (int i = 0; i <  this.empleados.length; i++) {
+            var empleado = this.empleados[i];
+            if (empleado == null) {
+                this.empleados[i] = creaEmpleado(tipo);
+                empleados_Por_Agregrar--;
+            }
+
+            if (empleados_Por_Agregrar == 0) {
+                break;
+            }
+        }
+    }
+
+    private void removerEmpleados(int cantidad, TipoTrabajador_Estudio tipo) {
+        int empleados_Por_Remover = cantidad;
+
+        for (int i = 0; i <  this.empleados.length; i++) {
+            var empleado = this.empleados[i];
+            System.out.println(empleado);
+            if (empleado != null && empleado.compararTipos(tipo)) {
+                empleado.stop();
+                this.empleados[i] = null;
+                empleados_Por_Remover--;
+            }
+
+            if (empleados_Por_Remover == 0) {
+                break;
+            }
+        }
     }
 
     private int getDiferenciaTrabajadores(int cantidad, TipoTrabajador_Estudio tipoTrabajador) {
-//        switch (tipoTrabajador) {
-//            case GUIONISTA:
-//                return this.
-//            default:
-//                throw new AssertionError();
-//        }
-return 4;
+        switch (tipoTrabajador) {
+            case GUIONISTA -> {
+                return cantidad - this.numero_Trabajadores.guionista;
+            }
+            case ACTOR_DOBLAJE -> {
+                return cantidad - this.numero_Trabajadores.actor_doblaje;
+            }
+            case ANIMADOR -> {
+                return cantidad - this.numero_Trabajadores.animador;
+            }
+            case DISENADOR_ESCENARIO -> {
+                return cantidad - this.numero_Trabajadores.disenador_escenario;
+            }
+            case PLOT_TWIST -> {
+                return cantidad - this.numero_Trabajadores.plot_twist;
+            }
+            case ENSAMBLADOR -> {
+                return cantidad - this.numero_Trabajadores.ensamblador;
+            }
+            default ->
+                throw new AssertionError();
+        }
+    }
+
+    private void actualizar_Trabajadores(int cantidad, TipoTrabajador_Estudio tipo) {
+        switch (tipo) {
+            case GUIONISTA -> {
+                this.numero_Trabajadores.guionista += cantidad;
+            }
+            case ACTOR_DOBLAJE -> {
+                this.numero_Trabajadores.actor_doblaje += cantidad;
+            }
+            case ANIMADOR -> {
+                this.numero_Trabajadores.actor_doblaje += cantidad;
+            }
+            case DISENADOR_ESCENARIO -> {
+                this.numero_Trabajadores.disenador_escenario += cantidad;
+            }
+            case PLOT_TWIST -> {
+                this.numero_Trabajadores.plot_twist += cantidad;
+            }
+            case ENSAMBLADOR -> {
+                this.numero_Trabajadores.ensamblador += cantidad;
+            }
+            default ->
+                throw new AssertionError();
+        }
     }
 
     public int[] getUtilidades_En_El_Tiempo() {
