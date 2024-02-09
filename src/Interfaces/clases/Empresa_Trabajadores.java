@@ -18,12 +18,12 @@ public class Empresa_Trabajadores {
     public int ensamblador;
 
     public Empresa_Trabajadores() {
-        this.guionista = 0;
-        this.disenador_escenario = 0;
-        this.animador = 0;
-        this.actor_doblaje = 0;
-        this.plot_twist = 0;
-        this.ensamblador = 0;
+        this.guionista = 1;
+        this.disenador_escenario = 1;
+        this.animador = 1;
+        this.actor_doblaje = 1;
+        this.plot_twist = 1;
+        this.ensamblador = 1;
     }
 
     public Empresa_Trabajadores(int[] trabajador) {
