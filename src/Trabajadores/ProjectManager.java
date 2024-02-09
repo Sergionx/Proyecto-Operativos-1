@@ -34,7 +34,7 @@ public class ProjectManager extends Trabajador {
             Contador contador,
             JTextField field_Viendo_Anime, JTextField field_faltasPM,
             JTextField field_DineroPM) {
-        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias, TipoTrabajador_Estudio.PROJECT_MANAGER);
         this.sueldo = 40;
         this.contador = contador;
 

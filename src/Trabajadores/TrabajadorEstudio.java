@@ -19,14 +19,12 @@ import java.util.logging.Logger;
 public class TrabajadorEstudio extends Trabajador {
 
     private int working_rate;
-    private final TipoTrabajador_Estudio tipo;
 
     public TrabajadorEstudio(TipoTrabajador_Estudio tipo,
             Semaphore mutex_Drive, Semaphore mutex_Ganancias,
             Drive drive, Ganancias ganancias, int last_carnet
     ) {
-        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
-        this.tipo = tipo;
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias, tipo);
 
         this.asignarSueldo(tipo);
         this.asignarWorkingRate(tipo, last_carnet);
@@ -87,6 +85,10 @@ public class TrabajadorEstudio extends Trabajador {
      */
     @Override
     public void trabajar() {
+        if (tipo == TipoTrabajador_Estudio.GUIONISTA){
+            System.out.println("guionistra trabaja");
+        }
+        
         try {
             this.mutex_Drive.acquire();
             if (tipo == TipoTrabajador_Estudio.ANIMADOR || tipo == TipoTrabajador_Estudio.ACTOR_DOBLAJE) {

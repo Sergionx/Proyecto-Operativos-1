@@ -36,7 +36,7 @@ public class Contador {
     }
 
     public void siguiente_Dia() {
-        System.out.println("SIGUIENTE DIA");
+        System.out.println("SIGUIENTE DIA \n \n");
         this.setDias_faltantes(dias_Faltantes - 1);
         this.dia_Real++;
 

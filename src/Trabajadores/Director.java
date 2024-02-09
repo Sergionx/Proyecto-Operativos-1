@@ -31,7 +31,7 @@ public class Director extends Trabajador {
 
     public Director(Semaphore mutex_Drive, Semaphore mutex_Ganancias, Drive drive, Empresa empresa, Ganancias ganancias,
             Contador contador, ProjectManager projectmanager, JTextField field_vigilando) {
-        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias, TipoTrabajador_Estudio.DIRECTOR);
         this.sueldo = 60;
         this.contador = contador;
         this.projectmanager = projectmanager;

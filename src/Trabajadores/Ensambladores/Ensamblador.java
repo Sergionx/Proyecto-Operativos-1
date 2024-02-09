@@ -6,6 +6,7 @@ package Trabajadores.Ensambladores;
 
 import Empresa.Drive;
 import Empresa.Ganancias;
+import Trabajadores.TipoTrabajador_Estudio;
 import Trabajadores.Trabajador;
 import Utils.Constants;
 import java.util.concurrent.Semaphore;
@@ -26,7 +27,7 @@ public class Ensamblador extends Trabajador {
     public Ensamblador(Semaphore mutex_Drive, Semaphore mutex_Ganancias,
             Drive drive, Ganancias ganancias, int capitulos_rate, 
             Requerimientos_Capitulo requerimientos, Requerimientos_Capitulo requerimientos_Plot) {
-        super(mutex_Drive, mutex_Ganancias, drive, ganancias);
+        super(mutex_Drive, mutex_Ganancias, drive, ganancias, TipoTrabajador_Estudio.ENSAMBLADOR);
         this.capitulos_rate = capitulos_rate;
         this.capitulos_Para_PlotTwist = 0;
         this.requerimientos_Estandar = requerimientos;

@@ -25,18 +25,23 @@ public abstract class Trabajador extends Thread {
 
     protected Drive drive;
     private final Ganancias ganancias;
+    protected TipoTrabajador_Estudio tipo;
 
-    public Trabajador(Semaphore mutex_Drive, Semaphore mutex_Ganancias, Drive drive, Ganancias ganancias) {
+    private volatile boolean contratado = true;
+
+    public Trabajador(Semaphore mutex_Drive, Semaphore mutex_Ganancias,
+            Drive drive, Ganancias ganancias, TipoTrabajador_Estudio tipo) {
         this.sueldoTotal = 0;
         this.mutex_Drive = mutex_Drive;
         this.mutex_Ganancias = mutex_Ganancias;
         this.drive = drive;
         this.ganancias = ganancias;
+        this.tipo = tipo;
     }
 
     @Override
     public void run() {
-        while (true) {
+        while (this.contratado) {
             trabajar();
             descansar();
         }
@@ -63,6 +68,14 @@ public abstract class Trabajador extends Thread {
             Logger.getLogger(Trabajador.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public boolean compararTipos(TipoTrabajador_Estudio tipo) {
+        return this.tipo == tipo;
+    }
+
+    public void despedir() {
+        this.contratado = false;
     }
 
     public abstract void descansar();
