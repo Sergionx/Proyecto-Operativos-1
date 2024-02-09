@@ -26,6 +26,10 @@ public class Interfaz1 extends javax.swing.JFrame {
     static ChartPanel chartUtilidades;
     static Empresa[] empresas;
 
+    private boolean ignoreListeners_Star = false;
+    final JSpinner[] spinners_Trabajadores_Star;
+//    final JSpinner[] spinners_Trabajadores_Disney;
+
     /**
      * Creates new form Interfaz1
      *
@@ -36,9 +40,19 @@ public class Interfaz1 extends javax.swing.JFrame {
             Empresa_Trabajadores trabajadores_Star_Channel) {
         initComponents();
 
+        this.spinners_Trabajadores_Star = new JSpinner[]{guionista_Star_Spinner,
+            disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
+            plotTwist_Star_Spinner, ensamblador_Star_Spinner
+        };
+//        this.spinners_Trabajadores_Disney = new JSpinner[]{guionista_Disney_Spinner,
+//            disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
+//            plotTwist_Disney_Spinner, ensamblador_Disney_Spinner
+//        };
+
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.crearEmpresas(trabajadores_Disney, trabajadores_Star_Channel);
+
         this.crearGrafico();
     }
 
@@ -66,16 +80,21 @@ public class Interfaz1 extends javax.swing.JFrame {
             new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel,
             new int[50], () -> {
                 crearGrafico();
-            }, InterfazInicial.dias_Contador),
-            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney,
-            new int[50], () -> {
-                crearGrafico();
-            }, InterfazInicial.dias_Contador),};
+            }, InterfazInicial.dias_Contador), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney,
+        //            new int[50], () -> {
+        //                crearGrafico();
+        //            }, InterfazInicial.dias_Contador)
+        };
 
         for (int i = 0; i < empresas.length; i++) {
             var empresa = empresas[i];
             this.TabbedPane_principal.setTitleAt(i, empresa.nombre);
         }
+
+        this.conectarSpinnersEmpresa(spinners_Trabajadores_Star, empresas[0],
+                InterfazInicial.max_Empleados_Star);
+//        this.conectarSpinnersEmpresa(spinners_Trabajadores_Disney, empresas[1],
+//                InterfazInicial.max_Empleados_Disney);
     }
 
     /**
@@ -921,53 +940,95 @@ public class Interfaz1 extends javax.swing.JFrame {
             Empresa empresa,
             int max_Empleados) {
         spinners[0].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            if (ignoreListeners_Star) {
+                return;
+            }
             var cantidad = (int) spinners[0].getValue();
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.GUIONISTA);
 
+            ignoreListeners_Star = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
-
+            ignoreListeners_Star = false;
         });
 
         spinners[1].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            if (ignoreListeners_Star) {
+                return;
+            }
             var cantidad = (int) spinners[1].getValue();
+            System.out.println("DISENADOR_ESCENARIODISENADOR_ESCENARIO");
+
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.DISENADOR_ESCENARIO);
 
+            ignoreListeners_Star = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
+            ignoreListeners_Star = false;
         });
 
         spinners[2].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            if (ignoreListeners_Star) {
+                return;
+            }
             var cantidad = (int) spinners[2].getValue();
+            System.out.println("ANIMADORANIMADORANIMADORANIMADOR");
+
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ANIMADOR);
+
+            ignoreListeners_Star = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
+            ignoreListeners_Star = false;
         });
 
         spinners[3].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            if (ignoreListeners_Star) {
+                return;
+            }
             var cantidad = (int) spinners[3].getValue();
+            System.out.println("ACTOR_DOBLAJEACTOR_DOBLAJEACTOR_DOBLAJE" + cantidad);
+
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ACTOR_DOBLAJE);
+
+            ignoreListeners_Star = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
+            ignoreListeners_Star = false;
         });
 
         spinners[4].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            if (ignoreListeners_Star) {
+                return;
+            }
             var cantidad = (int) spinners[4].getValue();
+            System.out.println("PLOT_TWISTPLOT_TWISTPLOT_TWISTPLOT_TWISTPLOT_TWIST");
+
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.PLOT_TWIST);
+
+            ignoreListeners_Star = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
+            ignoreListeners_Star = false;
         });
 
         spinners[5].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-//            TODO - Ensaamblador
-//            trabajadores_iniciales.ensamblador = (int) spinners[5].getValue();
+            if (ignoreListeners_Star) {
+                return;
+            }
+            var cantidad = (int) spinners[5].getValue();
+            System.out.println("ENSAMBLADORENSAMBLADORENSAMBLADORENSAMBLADORENSAMBLADOR");
 
+            empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ENSAMBLADOR);
+
+            ignoreListeners_Star = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
+            ignoreListeners_Star = false;
         });
     }
 
     private void crearGrafico() {
-        chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
-                Chart_Panel.getSize(),
-                this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[1].getUtilidades_En_El_Tiempo());
-
-        Chart_Panel.removeAll();
-        Chart_Panel.add(chartUtilidades);
+//        chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
+//                Chart_Panel.getSize(),
+//                this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[1].getUtilidades_En_El_Tiempo());
+//
+//        Chart_Panel.removeAll();
+//        Chart_Panel.add(chartUtilidades);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
