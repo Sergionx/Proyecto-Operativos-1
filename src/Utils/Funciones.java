@@ -4,7 +4,7 @@
  */
 package Utils;
 
-import Interfaces.clases.Empresa_Trabajadores_Iniciales;
+import Interfaces.clases.Empresa_Trabajadores;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -64,17 +64,17 @@ public class Funciones {
         return num;
     }
 
-    public static Empresa_Trabajadores_Iniciales[] Leer_txt_trabajadores(String path) {
+    public static Empresa_Trabajadores[] Leer_txt_trabajadores(String path) {
         String line;
         File file = new File(path);
 
         try {
             if (!file.exists()) {
                 file.createNewFile();
-                return new Empresa_Trabajadores_Iniciales[2];
+                return new Empresa_Trabajadores[2];
             }
 
-            var trabajadores_Iniciales = new Empresa_Trabajadores_Iniciales[getLineNumber(file)];
+            var trabajadores_Iniciales = new Empresa_Trabajadores[getLineNumber(file)];
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
 
@@ -87,7 +87,7 @@ public class Funciones {
                     trabajadores[i] = Integer.parseInt(numeros[i]);
                 }
 
-                trabajadores_Iniciales[index] = new Empresa_Trabajadores_Iniciales(trabajadores);
+                trabajadores_Iniciales[index] = new Empresa_Trabajadores(trabajadores);
                 index++;
             }
             br.close();
@@ -97,7 +97,7 @@ public class Funciones {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ÉRROR AL LEER! ");
         }
-        return new Empresa_Trabajadores_Iniciales[2];
+        return new Empresa_Trabajadores[2];
     }
 
     private static int getLineNumber(File file) {
@@ -128,8 +128,8 @@ public class Funciones {
     }
 
     public static void write_txt_Trabajadores(File file,
-            Empresa_Trabajadores_Iniciales trabajadores_Star,
-            Empresa_Trabajadores_Iniciales trabjadores_Disney) {
+            Empresa_Trabajadores trabajadores_Star,
+            Empresa_Trabajadores trabjadores_Disney) {
         String trabajadores_txt = trabajadores_Star.toString() + "\n" + trabjadores_Disney.toString();
 
         try {
