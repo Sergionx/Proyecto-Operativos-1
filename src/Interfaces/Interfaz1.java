@@ -249,14 +249,17 @@ public class Interfaz1 extends javax.swing.JFrame {
         Star_Pane.setAutoscrolls(true);
         Star_Pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Capitulos listos para entregar");
         Star_Pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Plot Twist");
         Star_Pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Estándar");
         Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
 
@@ -278,12 +281,15 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(escenarios_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Recursos del Drive");
         Star_Pane.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Actuales");
         Star_Pane.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Máximo");
         Star_Pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
 
@@ -377,18 +383,23 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(plotTwist_FieldMAX, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, -1, -1));
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Escenarios");
         Star_Pane.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
 
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Guiones");
         Star_Pane.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Plot Twists");
         Star_Pane.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Doblajes");
         Star_Pane.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
 
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Animaciones");
         Star_Pane.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
@@ -408,6 +419,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(field_VigilandoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
 
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Contador: ");
         Star_Pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
@@ -419,18 +431,22 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(field_Contador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Estado del Director");
         Star_Pane.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Estado del Project Manager");
         Star_Pane.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Faltas ");
         Star_Pane.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Dinero descontado");
         Star_Pane.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
-        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 340, 260));
+        Star_Pane.add(Chart_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 340, 260));
 
         field_FaltasPM.setEditable(false);
         field_FaltasPM.addActionListener(new java.awt.event.ActionListener() {
@@ -448,12 +464,15 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Star_Pane.add(field_DescontadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Utilidades totales");
         Star_Pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
 
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Ganancias en bruto");
         Star_Pane.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
 
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Costos Operativos");
         Star_Pane.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
 
@@ -518,7 +537,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         Star_Pane.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 340, -1, -1));
 
         Star_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/starplusfondo2.jpg"))); // NOI18N
-        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 980, 540));
+        Star_Pane.add(Star_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 550));
 
         TabbedPane_principal.addTab("tab2", Star_Pane);
 
@@ -532,6 +551,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Disney_Pane.add(field_Contador_Disney_Channel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Contador: ");
         Disney_Pane.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
@@ -543,6 +563,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Disney_Pane.add(field_Viendo_Anime2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 190, -1));
 
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Estado del Project Manager");
         Disney_Pane.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
@@ -554,6 +575,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Disney_Pane.add(field_DescontadoPM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
 
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Faltas ");
         Disney_Pane.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
@@ -565,8 +587,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Disney_Pane.add(field_FaltasPM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
 
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Dinero descontado");
-        Disney_Pane.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+        Disney_Pane.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
 
         field_VigilandoDirector2.setEditable(false);
         field_VigilandoDirector2.addActionListener(new java.awt.event.ActionListener() {
@@ -576,15 +599,19 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Disney_Pane.add(field_VigilandoDirector2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
 
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Estado del Director");
         Disney_Pane.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Recursos del Drive");
         Disney_Pane.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
 
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Actuales");
         Disney_Pane.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
 
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Máximo");
         Disney_Pane.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
 
@@ -687,25 +714,29 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
         Disney_Pane.add(plotTwist_FieldMAX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Capitulos listos para entregar");
-        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
+        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, -1, -1));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Estándar");
-        Disney_Pane.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, -1, -1));
+        Disney_Pane.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Plot Twist");
-        Disney_Pane.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, -1, -1));
+        Disney_Pane.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 440, -1, -1));
 
         Star_Disney_Field2.setEditable(false);
+        Star_Disney_Field2.setForeground(new java.awt.Color(255, 255, 255));
         Star_Disney_Field2.setText("0");
         Star_Disney_Field2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Star_Disney_Field2ActionPerformed(evt);
             }
         });
-        Disney_Pane.add(Star_Disney_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, -1, -1));
+        Disney_Pane.add(Star_Disney_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, -1, -1));
 
         Disney_PlotTwist_Field2.setEditable(false);
         Disney_PlotTwist_Field2.setText("0");
@@ -714,16 +745,19 @@ public class Interfaz1 extends javax.swing.JFrame {
                 Disney_PlotTwist_Field2ActionPerformed(evt);
             }
         });
-        Disney_Pane.add(Disney_PlotTwist_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
+        Disney_Pane.add(Disney_PlotTwist_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 470, -1, -1));
 
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Ganancias en bruto");
         Disney_Pane.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
 
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Costos Operativos");
-        Disney_Pane.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
+        Disney_Pane.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
 
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Utilidades totales");
-        Disney_Pane.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
+        Disney_Pane.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, -1, -1));
 
         Utilidades_Field2.setEditable(false);
         Utilidades_Field2.addActionListener(new java.awt.event.ActionListener() {
@@ -731,7 +765,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 Utilidades_Field2ActionPerformed(evt);
             }
         });
-        Disney_Pane.add(Utilidades_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, -1, -1));
+        Disney_Pane.add(Utilidades_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, -1, -1));
 
         Costos_Field2.setEditable(false);
         Costos_Field2.addActionListener(new java.awt.event.ActionListener() {
@@ -786,7 +820,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         Disney_Pane.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 340, -1, -1));
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disneyfondo.jpg"))); // NOI18N
-        Disney_Pane.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, -40, 1020, -1));
+        Disney_Pane.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1000, -1));
 
         TabbedPane_principal.addTab("tab2", Disney_Pane);
 
