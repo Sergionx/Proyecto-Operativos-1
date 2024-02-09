@@ -23,12 +23,14 @@ import org.jfree.data.xy.XYDataset;
  */
 public class Interfaz1 extends javax.swing.JFrame {
 
+    static ChartPanel chartUtilidades_Disney;
     static ChartPanel chartUtilidades;
+
     static Empresa[] empresas;
 
-    private boolean ignoreListeners_Star = false;
+    private boolean ignoreListeners = false;
     final JSpinner[] spinners_Trabajadores_Star;
-//    final JSpinner[] spinners_Trabajadores_Disney;
+    final JSpinner[] spinners_Trabajadores_Disney;
 
     /**
      * Creates new form Interfaz1
@@ -44,10 +46,10 @@ public class Interfaz1 extends javax.swing.JFrame {
             disenador_Star_Spinner, animador_Star_Spinner, doblaje_Star_Spinner,
             plotTwist_Star_Spinner, ensamblador_Star_Spinner
         };
-//        this.spinners_Trabajadores_Disney = new JSpinner[]{guionista_Disney_Spinner,
-//            disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
-//            plotTwist_Disney_Spinner, ensamblador_Disney_Spinner
-//        };
+        this.spinners_Trabajadores_Disney = new JSpinner[]{guionista_Disney_Spinner,
+            disenador_Disney_Spinner, animador_Disney_Spinner, doblaje_Disney_Spinner,
+            plotTwist_Disney_Spinner, ensamblador_Disney_Spinner
+        };
 
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -80,10 +82,11 @@ public class Interfaz1 extends javax.swing.JFrame {
             new Empresa(6, "Star Channel", labels[0], trabajadores_Star_Channel,
             new int[50], () -> {
                 crearGrafico();
-            }, InterfazInicial.dias_Contador), //            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney,
-        //            new int[50], () -> {
-        //                crearGrafico();
-        //            }, InterfazInicial.dias_Contador)
+            }, InterfazInicial.dias_Contador),
+            new Empresa(1, "Disney Channel", labels[1], trabajadores_Disney,
+            new int[50], () -> {
+                crearGrafico();
+            }, InterfazInicial.dias_Contador)
         };
 
         for (int i = 0; i < empresas.length; i++) {
@@ -93,8 +96,8 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         this.conectarSpinnersEmpresa(spinners_Trabajadores_Star, empresas[0],
                 InterfazInicial.max_Empleados_Star);
-//        this.conectarSpinnersEmpresa(spinners_Trabajadores_Disney, empresas[1],
-//                InterfazInicial.max_Empleados_Disney);
+        this.conectarSpinnersEmpresa(spinners_Trabajadores_Disney, empresas[1],
+                InterfazInicial.max_Empleados_Disney);
     }
 
     /**
@@ -182,7 +185,6 @@ public class Interfaz1 extends javax.swing.JFrame {
         field_DescontadoPM2 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         field_FaltasPM2 = new javax.swing.JTextField();
-        Chart_Panel2 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         field_VigilandoDirector2 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
@@ -211,6 +213,30 @@ public class Interfaz1 extends javax.swing.JFrame {
         Utilidades_Field2 = new javax.swing.JTextField();
         Costos_Field2 = new javax.swing.JTextField();
         Ganancias_Field2 = new javax.swing.JTextField();
+        guionista_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, InterfazInicial.max_Empleados_Star, 1)
+        );
+        jLabel42 = new javax.swing.JLabel();
+        disenador_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, InterfazInicial.max_Empleados_Star, 1)
+        );
+        jLabel43 = new javax.swing.JLabel();
+        animador_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, InterfazInicial.max_Empleados_Star, 1)
+        );
+        jLabel44 = new javax.swing.JLabel();
+        doblaje_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, InterfazInicial.max_Empleados_Star, 1)
+        );
+        jLabel45 = new javax.swing.JLabel();
+        plotTwist_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, InterfazInicial.max_Empleados_Star, 1)
+        );
+        jLabel46 = new javax.swing.JLabel();
+        ensamblador_Disney_Spinner = new javax.swing.JSpinner(
+            new SpinnerNumberModel(1, 1, InterfazInicial.max_Empleados_Star, 1)
+        );
+        jLabel47 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
 
         jLabel15.setText("jLabel14");
@@ -226,9 +252,11 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel1.setText("Capitulos listos para entregar");
         Star_Pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Plot Twist");
         Star_Pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Estándar");
         Star_Pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
 
@@ -536,7 +564,6 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         Disney_Pane.add(field_FaltasPM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
-        Disney_Pane.add(Chart_Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 340, 260));
 
         jLabel26.setText("Dinero descontado");
         Disney_Pane.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
@@ -661,13 +688,15 @@ public class Interfaz1 extends javax.swing.JFrame {
         Disney_Pane.add(plotTwist_FieldMAX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, -1, -1));
 
         jLabel4.setText("Capitulos listos para entregar");
-        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, -1, -1));
+        Disney_Pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
 
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel31.setText("Estándar");
-        Disney_Pane.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 370, -1, -1));
+        Disney_Pane.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, -1, -1));
 
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel32.setText("Plot Twist");
-        Disney_Pane.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 370, -1, -1));
+        Disney_Pane.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, -1, -1));
 
         Star_Disney_Field2.setEditable(false);
         Star_Disney_Field2.setText("0");
@@ -676,7 +705,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 Star_Disney_Field2ActionPerformed(evt);
             }
         });
-        Disney_Pane.add(Star_Disney_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 400, -1, -1));
+        Disney_Pane.add(Star_Disney_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, -1, -1));
 
         Disney_PlotTwist_Field2.setEditable(false);
         Disney_PlotTwist_Field2.setText("0");
@@ -685,7 +714,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 Disney_PlotTwist_Field2ActionPerformed(evt);
             }
         });
-        Disney_Pane.add(Disney_PlotTwist_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 400, -1, -1));
+        Disney_Pane.add(Disney_PlotTwist_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
 
         jLabel33.setText("Ganancias en bruto");
         Disney_Pane.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
@@ -719,10 +748,45 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         Disney_Pane.add(Ganancias_Field2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, -1, -1));
+        Disney_Pane.add(guionista_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, -1, -1));
+
+        jLabel42.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel42.setText("Guionista");
+        Disney_Pane.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, -1, -1));
+        Disney_Pane.add(disenador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, -1, -1));
+
+        jLabel43.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel43.setText("Diseñador escenario");
+        Disney_Pane.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 140, -1, -1));
+        Disney_Pane.add(animador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, -1, -1));
+
+        jLabel44.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel44.setText("Animador");
+        Disney_Pane.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, -1, -1));
+        Disney_Pane.add(doblaje_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, -1, -1));
+
+        jLabel45.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel45.setText("Actor Doblaje");
+        Disney_Pane.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 240, -1, 20));
+        Disney_Pane.add(plotTwist_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
+
+        jLabel46.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel46.setText("Plot Twist");
+        Disney_Pane.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 290, -1, -1));
+        Disney_Pane.add(ensamblador_Disney_Spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, -1, -1));
+
+        jLabel47.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel47.setText("Ensamblador");
+        Disney_Pane.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 340, -1, -1));
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disneyfondo.jpg"))); // NOI18N
-        jLabel22.setText("jLabel22");
-        Disney_Pane.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
+        Disney_Pane.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, -40, 1020, -1));
 
         TabbedPane_principal.addTab("tab2", Disney_Pane);
 
@@ -937,22 +1001,21 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
 
     private void conectarSpinnersEmpresa(JSpinner[] spinners,
-            Empresa empresa,
-            int max_Empleados) {
+            Empresa empresa, int max_Empleados) {
         spinners[0].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (ignoreListeners_Star) {
+            if (ignoreListeners) {
                 return;
             }
             var cantidad = (int) spinners[0].getValue();
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.GUIONISTA);
 
-            ignoreListeners_Star = true;
+            ignoreListeners = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
-            ignoreListeners_Star = false;
+            ignoreListeners = false;
         });
 
         spinners[1].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (ignoreListeners_Star) {
+            if (ignoreListeners) {
                 return;
             }
             var cantidad = (int) spinners[1].getValue();
@@ -960,13 +1023,13 @@ public class Interfaz1 extends javax.swing.JFrame {
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.DISENADOR_ESCENARIO);
 
-            ignoreListeners_Star = true;
+            ignoreListeners = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
-            ignoreListeners_Star = false;
+            ignoreListeners = false;
         });
 
         spinners[2].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (ignoreListeners_Star) {
+            if (ignoreListeners) {
                 return;
             }
             var cantidad = (int) spinners[2].getValue();
@@ -974,13 +1037,13 @@ public class Interfaz1 extends javax.swing.JFrame {
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ANIMADOR);
 
-            ignoreListeners_Star = true;
+            ignoreListeners = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
-            ignoreListeners_Star = false;
+            ignoreListeners = false;
         });
 
         spinners[3].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (ignoreListeners_Star) {
+            if (ignoreListeners) {
                 return;
             }
             var cantidad = (int) spinners[3].getValue();
@@ -988,13 +1051,13 @@ public class Interfaz1 extends javax.swing.JFrame {
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ACTOR_DOBLAJE);
 
-            ignoreListeners_Star = true;
+            ignoreListeners = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
-            ignoreListeners_Star = false;
+            ignoreListeners = false;
         });
 
         spinners[4].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (ignoreListeners_Star) {
+            if (ignoreListeners) {
                 return;
             }
             var cantidad = (int) spinners[4].getValue();
@@ -1002,13 +1065,13 @@ public class Interfaz1 extends javax.swing.JFrame {
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.PLOT_TWIST);
 
-            ignoreListeners_Star = true;
+            ignoreListeners = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
-            ignoreListeners_Star = false;
+            ignoreListeners = false;
         });
 
         spinners[5].addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (ignoreListeners_Star) {
+            if (ignoreListeners) {
                 return;
             }
             var cantidad = (int) spinners[5].getValue();
@@ -1016,24 +1079,23 @@ public class Interfaz1 extends javax.swing.JFrame {
 
             empresa.modificarEmpleados(cantidad, TipoTrabajador_Estudio.ENSAMBLADOR);
 
-            ignoreListeners_Star = true;
+            ignoreListeners = true;
             FuncionesSpinner.set_Maximum_Spinner(spinners, max_Empleados);
-            ignoreListeners_Star = false;
+            ignoreListeners = false;
         });
     }
 
     private void crearGrafico() {
-//        chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
-//                Chart_Panel.getSize(),
-//                this.empresas[0].getUtilidades_En_El_Tiempo(), this.empresas[1].getUtilidades_En_El_Tiempo());
-//
-//        Chart_Panel.removeAll();
-//        Chart_Panel.add(chartUtilidades);
+        chartUtilidades_Disney = chartUtilidades = Grafico_Utilidad.createUtilityXYChart("Utilidades en el tiempo",
+                Chart_Panel.getSize(),
+                Interfaz1.empresas[0].getUtilidades_En_El_Tiempo(), Interfaz1.empresas[1].getUtilidades_En_El_Tiempo());
+
+        Chart_Panel.removeAll();
+        Chart_Panel.add(chartUtilidades);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Chart_Panel;
-    private javax.swing.JPanel Chart_Panel2;
     private javax.swing.JTextField Costos_Field;
     private javax.swing.JTextField Costos_Field2;
     private javax.swing.JPanel Disney_Pane;
@@ -1053,13 +1115,17 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JTextField animaciones_FieldMAX;
     private javax.swing.JTextField animaciones_FieldMAX2;
     private javax.swing.JTextField animaciones_FieldMAX22;
+    private javax.swing.JSpinner animador_Disney_Spinner;
     private javax.swing.JSpinner animador_Star_Spinner;
+    private javax.swing.JSpinner disenador_Disney_Spinner;
     private javax.swing.JSpinner disenador_Star_Spinner;
+    private javax.swing.JSpinner doblaje_Disney_Spinner;
     private javax.swing.JSpinner doblaje_Star_Spinner;
     private javax.swing.JTextField doblajes_Field;
     private javax.swing.JTextField doblajes_Field2;
     private javax.swing.JTextField doblajes_FieldMAX;
     private javax.swing.JTextField doblajes_FieldMAX2;
+    private javax.swing.JSpinner ensamblador_Disney_Spinner;
     private javax.swing.JSpinner ensamblador_Star_Spinner;
     private javax.swing.JTextField escenarios_Field;
     private javax.swing.JTextField escenarios_Field2;
@@ -1079,6 +1145,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JTextField guiones_Field2;
     private javax.swing.JTextField guiones_FieldMAX;
     private javax.swing.JTextField guiones_FieldMAX2;
+    private javax.swing.JSpinner guionista_Disney_Spinner;
     private javax.swing.JSpinner guionista_Star_Spinner;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1116,11 +1183,18 @@ public class Interfaz1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JSpinner plotTwist_Disney_Spinner;
     private javax.swing.JTextField plotTwist_Field;
     private javax.swing.JTextField plotTwist_Field2;
     private javax.swing.JTextField plotTwist_FieldMAX;
